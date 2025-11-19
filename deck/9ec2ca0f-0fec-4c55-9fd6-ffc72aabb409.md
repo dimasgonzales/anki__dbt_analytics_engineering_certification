@@ -1,0 +1,24 @@
+---
+uuid: 9ec2ca0f-0fec-4c55-9fd6-ffc72aabb409
+guid: Cqi2~#:wuN
+---
+
+<front>
+What is the rationale behind starting some yaml keys with a "+" prefix in dbt configuration yaml (e.g. `+materialized: view`)?
+</front>
+
+---
+
+<back>
+
+It is used to help disambiguate between resource path keys and config keys, especially in the `dbt_project.yml` file (for any files that use `config-version: 2`). For example, in:  
+```
+models:
++materialized: view
+jaffle\_shop:
+marts:
++materialized: table
+```  
+`+materialized` is a "config" key, while `jaffle_shop` is a resource path key (all child attributes of `jaffle_shop` apply to the `jaffle_shop` schema). The plus sign not only helps to call out this difference, it is *required* in cases where a resource path name overlaps with a config key (e.g. if we had a schema that was also called `materialized` for some reason).
+
+</back>

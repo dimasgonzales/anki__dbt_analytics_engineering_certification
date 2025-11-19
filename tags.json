@@ -1,0 +1,176 @@
+[
+  {
+    "parent_tag": "development",
+    "child_tag": "materializations",
+    "description": "Core dbt materializations and persistence strategies",
+    "keywords": ["table", "view", "incremental", "ephemeral", "incremental_strategy", "unique_key", "merge", "insert_overwrite"]
+  },
+  {
+    "parent_tag": "development",
+    "child_tag": "seeds",
+    "description": "Loading and using static CSV files in dbt",
+    "keywords": ["csv", "static data", "ref", "seed config", "types"]
+  },
+  {
+    "parent_tag": "development",
+    "child_tag": "snapshots",
+    "description": "Implementing Type 2 Slowly Changing Dimensions (SCD)",
+    "keywords": ["scd type 2", "timestamp", "check", "strategy", "invalidate_hard_deletes", "historical data"]
+  },
+  {
+    "parent_tag": "development",
+    "child_tag": "modularity",
+    "description": "DRY principles, CTEs, and referencing models",
+    "keywords": ["ref", "cte", "dry", "dag", "dependencies", "ref-logic"]
+  },
+  {
+    "parent_tag": "development",
+    "child_tag": "jinja-macros",
+    "description": "Using Jinja for control flow and creating reusable macros",
+    "keywords": ["jinja", "macro", "control structures", "variables", "set", "for loop", "if statement", "environment variables"]
+  },
+  {
+    "parent_tag": "development",
+    "child_tag": "sql-performance",
+    "description": "Optimizing SQL queries and model performance",
+    "keywords": ["optimization", "partitions", "clustering", "limit", "filters", "cte"]
+  },
+  {
+    "parent_tag": "development",
+    "child_tag": "cli-commands",
+    "description": "Essential dbt CLI commands and flags",
+    "keywords": ["run", "test", "build", "seed", "snapshot", "run-operation", "full-refresh", "fail-fast"]
+  },
+  {
+    "parent_tag": "development",
+    "child_tag": "project-config",
+    "description": "Configuring dbt_project.yml and model properties",
+    "keywords": ["dbt_project.yml", "profile", "vars", "models config", "tagging"]
+  },
+  {
+    "parent_tag": "development",
+    "child_tag": "sources",
+    "description": "Configuring and testing raw data sources",
+    "keywords": ["source", "src", "loader", "freshness", "loaded_at_field", "overrides"]
+  },
+  {
+    "parent_tag": "development",
+    "child_tag": "packages",
+    "description": "Installing and using dbt packages",
+    "keywords": ["packages.yml", "hub", "dbt_utils", "codegen", "dependencies"]
+  },
+  {
+    "parent_tag": "development",
+    "child_tag": "python-models",
+    "description": "Creating and configuring Python models",
+    "keywords": ["python", "dataframe", "pandas", "snowpark", "materialization"]
+  },
+  {
+    "parent_tag": "development",
+    "child_tag": "grants",
+    "description": "Managing user access and privileges",
+    "keywords": ["grants", "access control", "privileges", "roles", "security"]
+  },
+  {
+    "parent_tag": "governance",
+    "child_tag": "contracts",
+    "description": "Enforcing model contracts and data shape",
+    "keywords": ["contract", "constraints", "enforced", "schema", "data quality"]
+  },
+  {
+    "parent_tag": "governance",
+    "child_tag": "versioning",
+    "description": "Managing model versions and deprecation",
+    "keywords": ["versions", "latest_version", "deprecation_date", "prerelease"]
+  },
+  {
+    "parent_tag": "governance",
+    "child_tag": "model-access",
+    "description": "Configuring model access levels and groups",
+    "keywords": ["access", "public", "private", "protected", "groups"]
+  },
+  {
+    "parent_tag": "debugging",
+    "child_tag": "error-logs",
+    "description": "Interpreting dbt logs and error messages",
+    "keywords": ["dbt.log", "debug", "compilation error", "runtime error", "database error"]
+  },
+  {
+    "parent_tag": "debugging",
+    "child_tag": "compiled-code",
+    "description": "Troubleshooting using compiled SQL artifacts",
+    "keywords": ["target", "compiled", "run", "manifest.json", "debugging"]
+  },
+  {
+    "parent_tag": "debugging",
+    "child_tag": "yaml-compilation",
+    "description": "Fixing YAML syntax and configuration errors",
+    "keywords": ["indentation", "syntax error", "parsing", "validation"]
+  },
+  {
+    "parent_tag": "pipelines",
+    "child_tag": "deployment-jobs",
+    "description": "Configuring jobs and environments in dbt Cloud",
+    "keywords": ["environment", "job", "schedule", "commands", "defer", "production"]
+  },
+  {
+    "parent_tag": "pipelines",
+    "child_tag": "dag-failures",
+    "description": "Handling and recovering from DAG failures",
+    "keywords": ["broken dag", "upstream failure", "skipping", "dependency"]
+  },
+  {
+    "parent_tag": "pipelines",
+    "child_tag": "dbt-clone",
+    "description": "Using zero-copy clones for environments",
+    "keywords": ["clone", "zero-copy", "blue-green", "staging"]
+  },
+  {
+    "parent_tag": "testing",
+    "child_tag": "test-types",
+    "description": "Implementing generic, singular, and unit tests",
+    "keywords": ["unique", "not_null", "accepted_values", "relationships", "singular", "unit test", "mock"]
+  },
+  {
+    "parent_tag": "testing",
+    "child_tag": "test-config",
+    "description": "Configuring test severity and failure handling",
+    "keywords": ["severity", "warn", "error", "store_failures", "limit", "where"]
+  },
+  {
+    "parent_tag": "documentation",
+    "child_tag": "docs-generation",
+    "description": "Generating and hosting dbt documentation",
+    "keywords": ["docs generate", "serve", "catalog.json", "manifest.json", "assets"]
+  },
+  {
+    "parent_tag": "documentation",
+    "child_tag": "descriptions",
+    "description": "Documenting models, columns, and sources",
+    "keywords": ["doc blocks", "markdown", "description", "meta"]
+  },
+  {
+    "parent_tag": "documentation",
+    "child_tag": "exposures",
+    "description": "Defining downstream dependencies and exposures",
+    "keywords": ["exposure", "dashboard", "notebook", "owner", "maturity"]
+  },
+  {
+    "parent_tag": "documentation",
+    "child_tag": "lineage",
+    "description": "Understanding and visualizing the DAG",
+    "keywords": ["graph", "lineage", "dependencies", "upstream", "downstream"]
+  },
+  {
+    "parent_tag": "state",
+    "child_tag": "state-concepts",
+    "description": "Leveraging artifacts for state comparison",
+    "keywords": ["state", "artifacts", "manifest", "comparison", "slim ci"]
+  },
+  {
+    "parent_tag": "state",
+    "child_tag": "selectors",
+    "description": "Using node selection syntax",
+    "keywords": ["select", "exclude", "tag", "path", "state:modified", "intersection", "union"]
+  }
+]
