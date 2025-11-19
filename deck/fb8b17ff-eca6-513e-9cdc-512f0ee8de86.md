@@ -1,10 +1,12 @@
 ---
 uuid: fb8b17ff-eca6-513e-9cdc-512f0ee8de86
 guid: LNbCu:E4is
-tags:
-  - jinja_adapter
 citations:
-  - https://docs.getdbt.com/reference/dbt-jinja-functions/adapter
+- https://docs.getdbt.com/reference/dbt-jinja-functions/adapter
+tags:
+- compiled-code
+- jinja-macros
+- sql-performance
 ---
 
 <front>

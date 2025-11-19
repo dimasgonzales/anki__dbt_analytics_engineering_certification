@@ -3,6 +3,8 @@
 # dependencies = [
 #   "pyyaml>=6.0.1",
 #   "openai>=1.0.0",
+#   "outlines>=0.0.42",
+#   "pydantic>=2.7.0",
 # ]
 # ///
 """
@@ -15,14 +17,25 @@ Supports three strategies:
 """
 
 import argparse
+import asyncio
 import json
 import re
 import sys
+import time
 from pathlib import Path
 from typing import Any
 
 import yaml
-from openai import OpenAI
+from pydantic import ValidationError
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+try:  # When executed as part of the scripts package
+    from .llm_structured import generate_tag_batch
+except ImportError:  # When executed directly via uv run scripts/auto_tagger.py
+    from llm_structured import generate_tag_batch
 
 
 def load_tags(tags_path: Path) -> list[dict[str, Any]]:
@@ -90,19 +103,108 @@ def keyword_score_tags(
     return scores[:max_tags]
 
 
-def llm_score_tags(
+def prefilter_tags(
+    flashcard: dict[str, Any],
+    tags: list[dict[str, Any]],
+    min_tags: int = 10
+) -> list[dict[str, Any]]:
+    """Pre-filter tags by keyword matching to reduce prompt size."""
+    content = (flashcard['front'] + ' ' + flashcard['back']).lower()
+    relevant = []
+    
+    for tag in tags:
+        if any(kw.lower() in content for kw in tag['keywords']):
+            relevant.append(tag)
+    
+    # If too few matches, use all tags
+    return relevant if len(relevant) >= min_tags else tags
+
+
+async def llm_score_tags_batch(
     flashcards: list[dict[str, Any]],
     tags: list[dict[str, Any]],
-    client: OpenAI,
-    max_tags: int = 3
+    tag_list: str,
+    llm_url: str,
+    *,
+    max_tags: int = 3,
+    retry_count: int = 3,
+    model_name: str | None = None,
+) -> dict[Path, list[tuple[str, float, str]]]:
+    """Score tags for a single batch using structured LLM output."""
+
+    cards_text = []
+    for i, card in enumerate(flashcards, start=1):
+        cards_text.append(
+            f"Card {i}:\n"
+            f"Question: {card['front']}\n"
+            f"Answer: {card['back']}\n"
+        )
+
+    prompt = f"""You are a dbt Analytics Engineering expert. Assign up to {max_tags} child_tags to each flashcard.
+
+Available tags:
+{tag_list}
+
+Flashcards:
+{''.join(cards_text)}
+
+Instructions:
+- Use child_tag names exactly as listed.
+- Provide confidence between 0 and 1 and a short reason for every tag.
+- card_index must match the card number above (starting at 1).
+"""
+
+    for retry in range(retry_count):
+        try:
+            structured = await generate_tag_batch(
+                prompt,
+                llm_url=llm_url,
+                model_name=model_name or "qwen/qwen3-coder-30b",
+            )
+
+            output: dict[Path, list[tuple[str, float, str]]] = {}
+            for card_result in structured.cards:
+                idx = card_result.card_index - 1
+                if 0 <= idx < len(flashcards):
+                    card_path = flashcards[idx]['path']
+                    tag_tuples = [
+                        (tag.tag, float(tag.confidence), tag.reason)
+                        for tag in card_result.tags[:max_tags]
+                    ]
+                    output[card_path] = tag_tuples
+
+            return output
+
+        except (ValidationError, Exception) as e:
+            if retry == retry_count - 1:
+                print(f"LLM structured output error after {retry_count} retries: {e}", file=sys.stderr)
+                return {card['path']: [] for card in flashcards}
+
+            backoff = 2 ** retry
+            print(f"Retry {retry+1}/{retry_count} after {backoff}s due to: {e}", file=sys.stderr)
+            await asyncio.sleep(backoff)
+
+    return {card['path']: [] for card in flashcards}
+
+
+async def llm_score_tags(
+    flashcards: list[dict[str, Any]],
+    tags: list[dict[str, Any]],
+    llm_url: str,
+    *,
+    max_tags: int = 3,
+    batch_size: int = 10,
+    max_concurrent: int = 3,
+    model_name: str | None = None,
+    retry_count: int = 3,
 ) -> dict[Path, list[tuple[str, float, str]]]:
     """
-    Score tags using LLM semantic understanding.
+    Score tags using LLM with parallel batch processing.
     
-    Batches multiple flashcards per API call for efficiency.
+    Processes multiple batches concurrently for better throughput.
     Returns dict mapping card_path -> list of (child_tag, score, reason) tuples.
     """
-    # Build tag reference for LLM
+    # Build tag list once (shared across all batches)
     tag_descriptions = []
     for tag in tags:
         tag_descriptions.append(
@@ -110,85 +212,49 @@ def llm_score_tags(
         )
     tag_list = '\n'.join(tag_descriptions)
     
-    # Build batch prompt with multiple cards
-    cards_text = []
-    for i, card in enumerate(flashcards):
-        cards_text.append(
-            f"Card {i+1}:\n"
-            f"Question: {card['front']}\n"
-            f"Answer: {card['back']}\n"
-        )
+    # Split into batches
+    batches = [flashcards[i:i+batch_size] for i in range(0, len(flashcards), batch_size)]
     
-    prompt = f"""You are a dbt Analytics Engineering expert. Assign the most relevant tags to each flashcard.
-
-Available tags:
-{tag_list}
-
-Flashcards:
-{chr(10).join(cards_text)}
-
-For each card, return the top {max_tags} most relevant tags (use child_tag names only).
-Consider:
-1. Primary concept (what is the card mainly about?)
-2. Secondary concepts (what supporting topics are mentioned?)
-3. Use tag descriptions to understand semantic relationships
-
-Return ONLY valid JSON (no markdown):
-{{
-  "cards": [
-    {{
-      "card_index": 1,
-      "tags": [
-        {{"tag": "child_tag_name", "confidence": 0.95, "reason": "brief explanation"}},
-        ...
-      ]
-    }},
-    ...
-  ]
-}}"""
-
-    try:
-        response = client.chat.completions.create(
-            model="qwen3-next-80b-a3b-instruct",
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0,
-            max_tokens=2000,
-        )
-        
-        # Parse JSON response
-        response_text = response.choices[0].message.content.strip()
-        # Remove markdown code blocks if present
-        response_text = re.sub(r'^```json\s*\n?', '', response_text)
-        response_text = re.sub(r'\n?```\s*$', '', response_text)
-        
-        result = json.loads(response_text)
-        
-        # Map results back to flashcards
-        output = {}
-        for card_result in result.get('cards', []):
-            idx = card_result['card_index'] - 1
-            if 0 <= idx < len(flashcards):
-                card_path = flashcards[idx]['path']
-                tag_tuples = [
-                    (t['tag'], t['confidence'], t['reason'])
-                    for t in card_result.get('tags', [])
-                ]
-                output[card_path] = tag_tuples
-        
-        return output
+    # Process batches with concurrency limit
+    semaphore = asyncio.Semaphore(max_concurrent)
     
-    except Exception as e:
-        print(f"LLM API error: {e}", file=sys.stderr)
-        # Return empty results for all cards
-        return {card['path']: [] for card in flashcards}
+    async def bounded_process(batch_idx: int, batch: list[dict[str, Any]]):
+        async with semaphore:
+            start_time = time.time()
+            result = await llm_score_tags_batch(
+                batch,
+                tags,
+                tag_list,
+                llm_url,
+                max_tags=max_tags,
+                retry_count=retry_count,
+                model_name=model_name,
+            )
+            elapsed = time.time() - start_time
+            print(f"Batch {batch_idx+1}/{len(batches)} completed in {elapsed:.1f}s ({elapsed/len(batch):.2f}s per card)")
+            return result
+    
+    # Process all batches in parallel (with semaphore limiting concurrency)
+    batch_results = await asyncio.gather(
+        *[bounded_process(i, batch) for i, batch in enumerate(batches)]
+    )
+    
+    # Merge results from all batches
+    output = {}
+    for batch_result in batch_results:
+        output.update(batch_result)
+    
+    return output
 
 
-def hybrid_score_tags(
+async def hybrid_score_tags(
     flashcard: dict[str, Any],
     tags: list[dict[str, Any]],
-    client: OpenAI,
+    llm_url: str,
     threshold: float,
-    max_tags: int = 3
+    max_tags: int = 3,
+    batch_size: int = 10,
+    model_name: str | None = None,
 ) -> tuple[list[tuple[str, float, str]], str]:
     """
     Hybrid approach: keyword first, LLM fallback for low confidence.
@@ -202,8 +268,16 @@ def hybrid_score_tags(
     if keyword_results and keyword_results[0][1] >= threshold:
         return keyword_results, "keyword"
     
-    # Fall back to LLM
-    llm_results = llm_score_tags([flashcard], tags, client, max_tags)
+    # Fall back to LLM (single card batch)
+    llm_results = await llm_score_tags(
+        [flashcard],
+        tags,
+        llm_url,
+        max_tags=max_tags,
+        batch_size=1,
+        max_concurrent=1,
+        model_name=model_name,
+    )
     return llm_results.get(flashcard['path'], []), "llm"
 
 
@@ -261,8 +335,14 @@ def main():
     parser.add_argument(
         '--batch-size',
         type=int,
-        default=5,
-        help='Number of cards per LLM API call (default: 5)'
+        default=10,
+        help='Number of cards per LLM API call (default: 10)'
+    )
+    parser.add_argument(
+        '--max-concurrent',
+        type=int,
+        default=3,
+        help='Maximum concurrent LLM batch requests (default: 3)'
     )
     parser.add_argument(
         '--dry-run',
@@ -284,8 +364,14 @@ def main():
     parser.add_argument(
         '--llm-url',
         type=str,
-        default='http://localhost:1234/v1',
-        help='OpenAI-compatible API base URL (default: http://localhost:1234/v1)'
+        default='http://127.0.0.1:1234/v1',
+        help='OpenAI-compatible API base URL (default: http://127.0.0.1:1234/v1)'
+    )
+    parser.add_argument(
+        '--llm-model',
+        type=str,
+        default='qwen/qwen3-coder-30b',
+        help='LLM model name to use for llm/hybrid strategies'
     )
     
     args = parser.parse_args()
@@ -298,11 +384,9 @@ def main():
     tags = load_tags(args.tags_file)
     print(f"Loaded {len(tags)} tags from {args.tags_file}")
     
-    # Initialize LLM client if needed
-    client = None
     if args.strategy in ('llm', 'hybrid'):
-        client = OpenAI(base_url=args.llm_url, api_key="not-needed")
-        print(f"Initialized LLM client: {args.llm_url}")
+        print(f"LLM endpoint: {args.llm_url}")
+        print(f"Batch size: {args.batch_size}, Max concurrent: {args.max_concurrent}")
     
     # Find all flashcard files
     if not args.deck_dir.exists():
@@ -350,38 +434,74 @@ def main():
                 stats['failed'] += 1
     
     elif args.strategy == 'llm':
-        print(f"Using LLM strategy (batch size: {args.batch_size})...")
-        for i in range(0, len(flashcards), args.batch_size):
-            batch = flashcards[i:i+args.batch_size]
-            print(f"Processing batch {i//args.batch_size + 1}/{(len(flashcards)-1)//args.batch_size + 1}...")
+        print(f"Using LLM strategy (batch size: {args.batch_size}, concurrent: {args.max_concurrent})...")
+        start_time = time.time()
+        
+        try:
+            # Process all flashcards with parallel batching
+            results = asyncio.run(llm_score_tags(
+                flashcards,
+                tags,
+                args.llm_url,
+                max_tags=args.max_tags,
+                batch_size=args.batch_size,
+                max_concurrent=args.max_concurrent,
+                model_name=args.llm_model,
+            ))
             
-            try:
-                results = llm_score_tags(batch, tags, client, args.max_tags)
-                
-                for card in batch:
-                    card_results = results.get(card['path'], [])
-                    if card_results:
-                        tag_names = [r[0] for r in card_results]
-                        update_flashcard_tags(card['path'], tag_names, args.dry_run)
-                        stats['tagged'] += 1
-                        stats['llm'] += 1
-                        
-                        if args.dry_run:
-                            for tag, conf, reason in card_results:
-                                print(f"    {tag} (conf: {conf:.2f}) - {reason}")
-                    else:
-                        stats['failed'] += 1
-            except Exception as e:
-                print(f"Error processing batch: {e}", file=sys.stderr)
-                stats['failed'] += len(batch)
+            for card in flashcards:
+                card_results = results.get(card['path'], [])
+                if card_results:
+                    tag_names = [r[0] for r in card_results]
+                    update_flashcard_tags(card['path'], tag_names, args.dry_run)
+                    stats['tagged'] += 1
+                    stats['llm'] += 1
+                    
+                    if args.dry_run:
+                        print(f"\n[DRY RUN] Would update {card['path'].name}:")
+                        print(f"  Tags: {tag_names}")
+                        for tag, conf, reason in card_results:
+                            print(f"    {tag} (conf: {conf:.2f}) - {reason}")
+                else:
+                    stats['failed'] += 1
+        
+        except Exception as e:
+            print(f"Error processing flashcards: {e}", file=sys.stderr)
+            stats['failed'] = len(flashcards)
+        
+        elapsed = time.time() - start_time
+        print(f"\nTotal processing time: {elapsed:.1f}s ({elapsed/len(flashcards):.2f}s per card)")
     
     elif args.strategy == 'hybrid':
         print(f"Using hybrid strategy (threshold: {args.threshold})...")
-        for card in flashcards:
-            try:
-                results, strategy = hybrid_score_tags(
-                    card, tags, client, args.threshold, args.max_tags
+        start_time = time.time()
+        
+        async def process_all_hybrid():
+            tasks = []
+            for card in flashcards:
+                tasks.append(
+                    hybrid_score_tags(
+                        card,
+                        tags,
+                        args.llm_url,
+                        args.threshold,
+                        args.max_tags,
+                        args.batch_size,
+                        model_name=args.llm_model,
+                    )
                 )
+            return await asyncio.gather(*tasks, return_exceptions=True)
+        
+        try:
+            all_results = asyncio.run(process_all_hybrid())
+            
+            for card, result in zip(flashcards, all_results):
+                if isinstance(result, Exception):
+                    print(f"Error processing {card['path'].name}: {result}", file=sys.stderr)
+                    stats['failed'] += 1
+                    continue
+                
+                results, strategy = result
                 
                 if results:
                     tag_names = [r[0] for r in results]
@@ -390,14 +510,20 @@ def main():
                     stats[strategy] += 1
                     
                     if args.dry_run:
+                        print(f"\n[DRY RUN] Would update {card['path'].name}:")
                         print(f"  Strategy: {strategy}")
+                        print(f"  Tags: {tag_names}")
                         for tag, score, reason in results:
                             print(f"    {tag} (score: {score:.2f}) - {reason}")
                 else:
                     stats['failed'] += 1
-            except Exception as e:
-                print(f"Error processing {card['path'].name}: {e}", file=sys.stderr)
-                stats['failed'] += 1
+        
+        except Exception as e:
+            print(f"Error in hybrid processing: {e}", file=sys.stderr)
+            stats['failed'] = len(flashcards)
+        
+        elapsed = time.time() - start_time
+        print(f"\nTotal processing time: {elapsed:.1f}s ({elapsed/len(flashcards):.2f}s per card)")
     
     # Print summary
     print("\n" + "="*60)

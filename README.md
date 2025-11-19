@@ -45,7 +45,7 @@ uv run scripts/auto_tagger.py --strategy hybrid --threshold 0.4
 uv run scripts/auto_tagger.py --max-tags 2
 
 # Use different LLM endpoint
-uv run scripts/auto_tagger.py --llm-url http://localhost:8080/v1
+uv run scripts/auto_tagger.py --llm-url http://localhost:1234/v1
 ```
 
 # TODO

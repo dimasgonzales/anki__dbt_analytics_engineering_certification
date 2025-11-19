@@ -1,10 +1,12 @@
 ---
 uuid: ae30f94c-c7ae-55bd-8ecf-5378d08eac3e
 guid: lVU,U#}/LW
-tags:
-  - node_selection
 citations:
-  - https://docs.getdbt.com/reference/node-selection/exclude
+- https://docs.getdbt.com/reference/node-selection/exclude
+tags:
+- selectors
+- cli-commands
+- modularity
 ---
 
 <front>
