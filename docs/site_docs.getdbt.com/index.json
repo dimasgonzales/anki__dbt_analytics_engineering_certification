@@ -1,0 +1,1650 @@
+[
+  {
+    "url": "https://docs.getdbt.com/guides/refactoring-legacy-sql",
+    "local_path": "docs/site_docs.getdbt.com/modularity/rank_1.md",
+    "tags": [
+      "modularity"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/snapshots",
+    "local_path": "docs/site_docs.getdbt.com/snapshots/rank_1.md",
+    "tags": [
+      "snapshots"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/seeds",
+    "local_path": "docs/site_docs.getdbt.com/seeds/rank_1.md",
+    "tags": [
+      "seeds"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/materializations",
+    "local_path": "docs/site_docs.getdbt.com/materializations/rank_1.md",
+    "tags": [
+      "sql-performance",
+      "python-models",
+      "materializations"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/introduction",
+    "local_path": "docs/site_docs.getdbt.com/modularity/rank_2.md",
+    "tags": [
+      "seeds",
+      "modularity"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/snapshot_meta_column_names",
+    "local_path": "docs/site_docs.getdbt.com/snapshots/rank_2.md",
+    "tags": [
+      "snapshots"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/seed",
+    "local_path": "docs/site_docs.getdbt.com/seeds/rank_2.md",
+    "tags": [
+      "seeds"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/materializations/3-configuring-materializations",
+    "local_path": "docs/site_docs.getdbt.com/materializations/rank_2.md",
+    "tags": [
+      "materializations"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/on-the-importance-of-naming",
+    "local_path": "docs/site_docs.getdbt.com/modularity/rank_3.md",
+    "tags": [
+      "modularity"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/dimensions",
+    "local_path": "docs/site_docs.getdbt.com/snapshots/rank_3.md",
+    "tags": [
+      "snapshots"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/seed-configs",
+    "local_path": "docs/site_docs.getdbt.com/seeds/rank_3.md",
+    "tags": [
+      "grants",
+      "seeds"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/materializations/5-best-practices",
+    "local_path": "docs/site_docs.getdbt.com/materializations/rank_3.md",
+    "tags": [
+      "materializations"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/how-to-build-a-mature-dbt-project-from-scratch",
+    "local_path": "docs/site_docs.getdbt.com/modularity/rank_4.md",
+    "tags": [
+      "modularity"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/change-data-capture",
+    "local_path": "docs/site_docs.getdbt.com/snapshots/rank_4.md",
+    "tags": [
+      "snapshots"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/migrating-from-stored-procs",
+    "local_path": "docs/site_docs.getdbt.com/modularity/rank_5.md",
+    "tags": [
+      "modularity"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/incremental-strategy",
+    "local_path": "docs/site_docs.getdbt.com/snapshots/rank_5.md",
+    "tags": [
+      "snapshots",
+      "sql-performance"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/train-linear-dbt-bigframes",
+    "local_path": "docs/site_docs.getdbt.com/modularity/rank_6.md",
+    "tags": [
+      "modularity"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/create-new-materializations",
+    "local_path": "docs/site_docs.getdbt.com/materializations/rank_4.md",
+    "tags": [
+      "materializations"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Snapshots/snapshot-target-is-not-a-snapshot-table",
+    "local_path": "docs/site_docs.getdbt.com/snapshots/rank_6.md",
+    "tags": [
+      "snapshots"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/delimiter",
+    "local_path": "docs/site_docs.getdbt.com/seeds/rank_4.md",
+    "tags": [
+      "seeds"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/authors/jialuo-chen",
+    "local_path": "docs/site_docs.getdbt.com/modularity/rank_7.md",
+    "tags": [
+      "modularity"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/unique_key",
+    "local_path": "docs/site_docs.getdbt.com/snapshots/rank_7.md",
+    "tags": [
+      "snapshots",
+      "test-types"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/materializations/1-guide-overview",
+    "local_path": "docs/site_docs.getdbt.com/materializations/rank_5.md",
+    "tags": [
+      "materializations"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/project-configs/seed-paths",
+    "local_path": "docs/site_docs.getdbt.com/seeds/rank_5.md",
+    "tags": [
+      "seeds"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/materializations/2-available-materializations",
+    "local_path": "docs/site_docs.getdbt.com/materializations/rank_6.md",
+    "tags": [
+      "materializations"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/data-tests",
+    "local_path": "docs/site_docs.getdbt.com/snapshots/rank_8.md",
+    "tags": [
+      "compiled-code",
+      "dag-failures",
+      "test-config",
+      "snapshots",
+      "test-types"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/jinja-macros",
+    "local_path": "docs/site_docs.getdbt.com/modularity/rank_8.md",
+    "tags": [
+      "jinja-macros",
+      "modularity"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Seeds/load-raw-data-with-seed",
+    "local_path": "docs/site_docs.getdbt.com/seeds/rank_6.md",
+    "tags": [
+      "seeds"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/materialized",
+    "local_path": "docs/site_docs.getdbt.com/materializations/rank_7.md",
+    "tags": [
+      "materializations"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/incremental-models",
+    "local_path": "docs/site_docs.getdbt.com/snapshots/rank_9.md",
+    "tags": [
+      "snapshots",
+      "state-concepts",
+      "materializations"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Seeds/seed-datatypes",
+    "local_path": "docs/site_docs.getdbt.com/seeds/rank_7.md",
+    "tags": [
+      "seeds"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog",
+    "local_path": "docs/site_docs.getdbt.com/modularity/rank_9.md",
+    "tags": [
+      "modularity"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/managing-surrogate-keys",
+    "local_path": "docs/site_docs.getdbt.com/snapshots/rank_10.md",
+    "tags": [
+      "snapshots"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/core/connect-data-platform/materialize-setup",
+    "local_path": "docs/site_docs.getdbt.com/materializations/rank_9.md",
+    "tags": [
+      "materializations"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/moving-spreadsheet-data",
+    "local_path": "docs/site_docs.getdbt.com/seeds/rank_8.md",
+    "tags": [
+      "seeds"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/using-jinja",
+    "local_path": "docs/site_docs.getdbt.com/jinja-macros/rank_2.md",
+    "tags": [
+      "jinja-macros"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/materializations/4-incremental-models",
+    "local_path": "docs/site_docs.getdbt.com/materializations/rank_10.md",
+    "tags": [
+      "materializations"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/sql-reference/inner-join",
+    "local_path": "docs/site_docs.getdbt.com/modularity/rank_10.md",
+    "tags": [
+      "modularity"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Seeds/full-refresh-seed",
+    "local_path": "docs/site_docs.getdbt.com/seeds/rank_9.md",
+    "tags": [
+      "seeds"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions",
+    "local_path": "docs/site_docs.getdbt.com/jinja-macros/rank_3.md",
+    "tags": [
+      "jinja-macros",
+      "descriptions"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/optimize-dbt-models-on-databricks",
+    "local_path": "docs/site_docs.getdbt.com/sql-performance/rank_1.md",
+    "tags": [
+      "sql-performance"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/redshift-configurations-dbt-model-optimizations",
+    "local_path": "docs/site_docs.getdbt.com/sql-performance/rank_3.md",
+    "tags": [
+      "sql-performance"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-commands",
+    "local_path": "docs/site_docs.getdbt.com/cli-commands/rank_1.md",
+    "tags": [
+      "dbt-clone",
+      "cli-commands"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/global-configs/command-line-options",
+    "local_path": "docs/site_docs.getdbt.com/cli-commands/rank_2.md",
+    "tags": [
+      "cli-commands"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt_project.yml",
+    "local_path": "docs/site_docs.getdbt.com/project-config/rank_1.md",
+    "tags": [
+      "packages",
+      "project-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros",
+    "local_path": "docs/site_docs.getdbt.com/jinja-macros/rank_4.md",
+    "tags": [
+      "jinja-macros"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/model-configs",
+    "local_path": "docs/site_docs.getdbt.com/project-config/rank_2.md",
+    "tags": [
+      "project-config",
+      "grants"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/best-practice-workflows",
+    "local_path": "docs/site_docs.getdbt.com/sql-performance/rank_4.md",
+    "tags": [
+      "sql-performance",
+      "state-concepts"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/run",
+    "local_path": "docs/site_docs.getdbt.com/cli-commands/rank_3.md",
+    "tags": [
+      "cli-commands"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/cloud/configure-cloud-cli",
+    "local_path": "docs/site_docs.getdbt.com/cli-commands/rank_4.md",
+    "tags": [
+      "cli-commands"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/project-configs/config-version",
+    "local_path": "docs/site_docs.getdbt.com/project-config/rank_3.md",
+    "tags": [
+      "project-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Jinja/which-jinja-docs",
+    "local_path": "docs/site_docs.getdbt.com/jinja-macros/rank_5.md",
+    "tags": [
+      "jinja-macros"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/sql-comprehension-technologies",
+    "local_path": "docs/site_docs.getdbt.com/sql-performance/rank_6.md",
+    "tags": [
+      "sql-performance"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/running-a-dbt-project/run-your-dbt-projects",
+    "local_path": "docs/site_docs.getdbt.com/cli-commands/rank_5.md",
+    "tags": [
+      "cli-commands"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/run_query",
+    "local_path": "docs/site_docs.getdbt.com/jinja-macros/rank_6.md",
+    "tags": [
+      "jinja-macros"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/projects",
+    "local_path": "docs/site_docs.getdbt.com/project-config/rank_4.md",
+    "tags": [
+      "project-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/debug-method",
+    "local_path": "docs/site_docs.getdbt.com/jinja-macros/rank_7.md",
+    "tags": [
+      "jinja-macros"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/how-we-shaved-90-minutes-off-model",
+    "local_path": "docs/site_docs.getdbt.com/sql-performance/rank_7.md",
+    "tags": [
+      "sql-performance"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/run-operation",
+    "local_path": "docs/site_docs.getdbt.com/cli-commands/rank_6.md",
+    "tags": [
+      "cli-commands"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/builtins",
+    "local_path": "docs/site_docs.getdbt.com/jinja-macros/rank_8.md",
+    "tags": [
+      "jinja-macros"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/dbt-project-yml-context",
+    "local_path": "docs/site_docs.getdbt.com/project-config/rank_5.md",
+    "tags": [
+      "project-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/return",
+    "local_path": "docs/site_docs.getdbt.com/jinja-macros/rank_9.md",
+    "tags": [
+      "jinja-macros"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/source-configs",
+    "local_path": "docs/site_docs.getdbt.com/project-config/rank_6.md",
+    "tags": [
+      "project-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/cmd-docs",
+    "local_path": "docs/site_docs.getdbt.com/cli-commands/rank_7.md",
+    "tags": [
+      "dbt-clone",
+      "docs-generation",
+      "cli-commands"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/postgres-configs",
+    "local_path": "docs/site_docs.getdbt.com/sql-performance/rank_8.md",
+    "tags": [
+      "sql-performance"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/category/project-configs",
+    "local_path": "docs/site_docs.getdbt.com/project-config/rank_7.md",
+    "tags": [
+      "project-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/programmatic-invocations",
+    "local_path": "docs/site_docs.getdbt.com/cli-commands/rank_8.md",
+    "tags": [
+      "cli-commands"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/how-we-style/4-how-we-style-our-jinja",
+    "local_path": "docs/site_docs.getdbt.com/jinja-macros/rank_10.md",
+    "tags": [
+      "jinja-macros",
+      "yaml-compilation"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/configs-and-properties",
+    "local_path": "docs/site_docs.getdbt.com/project-config/rank_8.md",
+    "tags": [
+      "project-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/announcing-materialized-views",
+    "local_path": "docs/site_docs.getdbt.com/sql-performance/rank_9.md",
+    "tags": [
+      "sql-performance"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/category/list-of-commands",
+    "local_path": "docs/site_docs.getdbt.com/cli-commands/rank_9.md",
+    "tags": [
+      "dbt-clone",
+      "cli-commands"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/scaling-data-pipelines-fintech",
+    "local_path": "docs/site_docs.getdbt.com/sql-performance/rank_10.md",
+    "tags": [
+      "sql-performance"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/source",
+    "local_path": "docs/site_docs.getdbt.com/sources/rank_1.md",
+    "tags": [
+      "sources"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/packages",
+    "local_path": "docs/site_docs.getdbt.com/packages/rank_1.md",
+    "tags": [
+      "packages"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/project-configs/version",
+    "local_path": "docs/site_docs.getdbt.com/project-config/rank_9.md",
+    "tags": [
+      "project-config",
+      "versioning"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/cloud/cloud-cli-installation",
+    "local_path": "docs/site_docs.getdbt.com/cli-commands/rank_10.md",
+    "tags": [
+      "cli-commands"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/sources",
+    "local_path": "docs/site_docs.getdbt.com/sources/rank_2.md",
+    "tags": [
+      "state-concepts",
+      "sources"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/deps",
+    "local_path": "docs/site_docs.getdbt.com/packages/rank_2.md",
+    "tags": [
+      "packages"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/global-configs/project-flags",
+    "local_path": "docs/site_docs.getdbt.com/project-config/rank_10.md",
+    "tags": [
+      "project-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/source",
+    "local_path": "docs/site_docs.getdbt.com/sources/rank_3.md",
+    "tags": [
+      "sources"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/project-configs/packages-install-path",
+    "local_path": "docs/site_docs.getdbt.com/packages/rank_3.md",
+    "tags": [
+      "packages"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/python-models",
+    "local_path": "docs/site_docs.getdbt.com/python-models/rank_1.md",
+    "tags": [
+      "python-models"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/grants",
+    "local_path": "docs/site_docs.getdbt.com/grants/rank_1.md",
+    "tags": [
+      "model-access",
+      "grants"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-properties/identifier",
+    "local_path": "docs/site_docs.getdbt.com/sources/rank_4.md",
+    "tags": [
+      "sources"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/mesh/govern/project-dependencies",
+    "local_path": "docs/site_docs.getdbt.com/packages/rank_4.md",
+    "tags": [
+      "packages",
+      "deployment-jobs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/dbt-python-bigframes",
+    "local_path": "docs/site_docs.getdbt.com/python-models/rank_2.md",
+    "tags": [
+      "python-models"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/models",
+    "local_path": "docs/site_docs.getdbt.com/python-models/rank_3.md",
+    "tags": [
+      "python-models"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/configuring-grants",
+    "local_path": "docs/site_docs.getdbt.com/grants/rank_2.md",
+    "tags": [
+      "grants"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-schema-job-sources",
+    "local_path": "docs/site_docs.getdbt.com/sources/rank_5.md",
+    "tags": [
+      "sources"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Project_ref/define-private-packages",
+    "local_path": "docs/site_docs.getdbt.com/packages/rank_5.md",
+    "tags": [
+      "packages"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/polyglot-dbt-python-dataframes-sql",
+    "local_path": "docs/site_docs.getdbt.com/python-models/rank_4.md",
+    "tags": [
+      "python-models"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-properties/description",
+    "local_path": "docs/site_docs.getdbt.com/sources/rank_6.md",
+    "tags": [
+      "descriptions",
+      "sources"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/building-packages",
+    "local_path": "docs/site_docs.getdbt.com/packages/rank_6.md",
+    "tags": [
+      "packages"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Core/install-python-compatibility",
+    "local_path": "docs/site_docs.getdbt.com/python-models/rank_5.md",
+    "tags": [
+      "python-models"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/fusion/supported-features",
+    "local_path": "docs/site_docs.getdbt.com/python-models/rank_7.md",
+    "tags": [
+      "python-models"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/trino-configs",
+    "local_path": "docs/site_docs.getdbt.com/grants/rank_4.md",
+    "tags": [
+      "grants"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/artifacts/sources-json",
+    "local_path": "docs/site_docs.getdbt.com/sources/rank_7.md",
+    "tags": [
+      "sources"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Troubleshooting/runtime-packages.yml",
+    "local_path": "docs/site_docs.getdbt.com/packages/rank_8.md",
+    "tags": [
+      "packages"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/dbt-python-snowpark",
+    "local_path": "docs/site_docs.getdbt.com/python-models/rank_8.md",
+    "tags": [
+      "python-models"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/teradata-configs",
+    "local_path": "docs/site_docs.getdbt.com/grants/rank_5.md",
+    "tags": [
+      "grants"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/node-selection/syntax",
+    "local_path": "docs/site_docs.getdbt.com/sources/rank_8.md",
+    "tags": [
+      "docs-generation",
+      "selectors",
+      "sources"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-versions/core-upgrade/upgrading-to-v1.7",
+    "local_path": "docs/site_docs.getdbt.com/packages/rank_9.md",
+    "tags": [
+      "packages"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/node-selection/methods",
+    "local_path": "docs/site_docs.getdbt.com/grants/rank_6.md",
+    "tags": [
+      "model-access",
+      "exposures",
+      "grants",
+      "selectors",
+      "test-types"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-properties/quoting",
+    "local_path": "docs/site_docs.getdbt.com/sources/rank_9.md",
+    "tags": [
+      "sources"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/sql-models",
+    "local_path": "docs/site_docs.getdbt.com/python-models/rank_9.md",
+    "tags": [
+      "compiled-code",
+      "python-models",
+      "error-logs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/how-we-structure/5-the-rest-of-the-project",
+    "local_path": "docs/site_docs.getdbt.com/packages/rank_10.md",
+    "tags": [
+      "packages",
+      "descriptions"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/snapshot-configs",
+    "local_path": "docs/site_docs.getdbt.com/grants/rank_7.md",
+    "tags": [
+      "grants"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/contract",
+    "local_path": "docs/site_docs.getdbt.com/contracts/rank_1.md",
+    "tags": [
+      "contracts"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/how-we-style/3-how-we-style-our-python",
+    "local_path": "docs/site_docs.getdbt.com/python-models/rank_10.md",
+    "tags": [
+      "python-models"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/source-properties",
+    "local_path": "docs/site_docs.getdbt.com/sources/rank_10.md",
+    "tags": [
+      "sources"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/group",
+    "local_path": "docs/site_docs.getdbt.com/grants/rank_8.md",
+    "tags": [
+      "model-access",
+      "grants"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/mesh/govern/model-contracts",
+    "local_path": "docs/site_docs.getdbt.com/contracts/rank_2.md",
+    "tags": [
+      "model-access",
+      "state-concepts",
+      "contracts"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-properties/versions",
+    "local_path": "docs/site_docs.getdbt.com/versioning/rank_1.md",
+    "tags": [
+      "contracts",
+      "versioning"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-versions/core",
+    "local_path": "docs/site_docs.getdbt.com/versioning/rank_2.md",
+    "tags": [
+      "versioning"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/on-run-end-context",
+    "local_path": "docs/site_docs.getdbt.com/grants/rank_10.md",
+    "tags": [
+      "grants"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/mesh/govern/model-access",
+    "local_path": "docs/site_docs.getdbt.com/model-access/rank_1.md",
+    "tags": [
+      "model-access"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/mesh/govern/model-versions",
+    "local_path": "docs/site_docs.getdbt.com/versioning/rank_3.md",
+    "tags": [
+      "contracts",
+      "versioning"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro",
+    "local_path": "docs/site_docs.getdbt.com/contracts/rank_3.md",
+    "tags": [
+      "contracts"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/global-configs/logs",
+    "local_path": "docs/site_docs.getdbt.com/error-logs/rank_1.md",
+    "tags": [
+      "error-logs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/how-we-mesh/mesh-5-faqs",
+    "local_path": "docs/site_docs.getdbt.com/contracts/rank_5.md",
+    "tags": [
+      "model-access",
+      "contracts"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/access",
+    "local_path": "docs/site_docs.getdbt.com/model-access/rank_2.md",
+    "tags": [
+      "model-access"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/version",
+    "local_path": "docs/site_docs.getdbt.com/versioning/rank_5.md",
+    "tags": [
+      "versioning"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/events-logging",
+    "local_path": "docs/site_docs.getdbt.com/error-logs/rank_2.md",
+    "tags": [
+      "error-logs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/debug-errors",
+    "local_path": "docs/site_docs.getdbt.com/error-logs/rank_3.md",
+    "tags": [
+      "dag-failures",
+      "compiled-code",
+      "error-logs",
+      "yaml-compilation"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-properties/constraints",
+    "local_path": "docs/site_docs.getdbt.com/contracts/rank_6.md",
+    "tags": [
+      "test-types",
+      "contracts"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/model",
+    "local_path": "docs/site_docs.getdbt.com/model-access/rank_4.md",
+    "tags": [
+      "model-access"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-properties/latest_version",
+    "local_path": "docs/site_docs.getdbt.com/versioning/rank_6.md",
+    "tags": [
+      "versioning"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/demystifying-event-streams",
+    "local_path": "docs/site_docs.getdbt.com/contracts/rank_7.md",
+    "tags": [
+      "contracts"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/deploy/hybrid-projects",
+    "local_path": "docs/site_docs.getdbt.com/model-access/rank_6.md",
+    "tags": [
+      "model-access"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/mesh-qs",
+    "local_path": "docs/site_docs.getdbt.com/contracts/rank_8.md",
+    "tags": [
+      "contracts"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/dbt_version",
+    "local_path": "docs/site_docs.getdbt.com/versioning/rank_7.md",
+    "tags": [
+      "versioning"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/log",
+    "local_path": "docs/site_docs.getdbt.com/error-logs/rank_4.md",
+    "tags": [
+      "error-logs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/model-properties",
+    "local_path": "docs/site_docs.getdbt.com/model-access/rank_8.md",
+    "tags": [
+      "model-access"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-versions/upgrade-dbt-version-in-cloud",
+    "local_path": "docs/site_docs.getdbt.com/versioning/rank_8.md",
+    "tags": [
+      "versioning"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/athena-configs",
+    "local_path": "docs/site_docs.getdbt.com/contracts/rank_10.md",
+    "tags": [
+      "contracts"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/cloud/manage-access/audit-log",
+    "local_path": "docs/site_docs.getdbt.com/error-logs/rank_5.md",
+    "tags": [
+      "error-logs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-properties/unit-testing-versions",
+    "local_path": "docs/site_docs.getdbt.com/versioning/rank_9.md",
+    "tags": [
+      "versioning"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/compile",
+    "local_path": "docs/site_docs.getdbt.com/compiled-code/rank_1.md",
+    "tags": [
+      "compiled-code"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Troubleshooting/could-not-parse-project",
+    "local_path": "docs/site_docs.getdbt.com/yaml-compilation/rank_1.md",
+    "tags": [
+      "yaml-compilation"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/show",
+    "local_path": "docs/site_docs.getdbt.com/compiled-code/rank_3.md",
+    "tags": [
+      "compiled-code"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/debug",
+    "local_path": "docs/site_docs.getdbt.com/error-logs/rank_6.md",
+    "tags": [
+      "error-logs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/lint-format",
+    "local_path": "docs/site_docs.getdbt.com/yaml-compilation/rank_3.md",
+    "tags": [
+      "yaml-compilation"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/cloud/git/version-control-basics",
+    "local_path": "docs/site_docs.getdbt.com/versioning/rank_10.md",
+    "tags": [
+      "dbt-clone",
+      "versioning"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/target",
+    "local_path": "docs/site_docs.getdbt.com/compiled-code/rank_4.md",
+    "tags": [
+      "compiled-code"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/print",
+    "local_path": "docs/site_docs.getdbt.com/error-logs/rank_7.md",
+    "tags": [
+      "error-logs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/deploy/deploy-jobs",
+    "local_path": "docs/site_docs.getdbt.com/deployment-jobs/rank_1.md",
+    "tags": [
+      "deployment-jobs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/analyses",
+    "local_path": "docs/site_docs.getdbt.com/compiled-code/rank_5.md",
+    "tags": [
+      "compiled-code"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/severity",
+    "local_path": "docs/site_docs.getdbt.com/error-logs/rank_8.md",
+    "tags": [
+      "error-logs",
+      "test-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/generating-dynamic-docs-dbt",
+    "local_path": "docs/site_docs.getdbt.com/yaml-compilation/rank_4.md",
+    "tags": [
+      "docs-generation",
+      "descriptions",
+      "yaml-compilation"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/deploy/deploy-environments",
+    "local_path": "docs/site_docs.getdbt.com/deployment-jobs/rank_2.md",
+    "tags": [
+      "deployment-jobs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/parse",
+    "local_path": "docs/site_docs.getdbt.com/compiled-code/rank_7.md",
+    "tags": [
+      "compiled-code"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/deploy/deployments",
+    "local_path": "docs/site_docs.getdbt.com/deployment-jobs/rank_3.md",
+    "tags": [
+      "deployment-jobs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/how-we-style/2-how-we-style-our-sql",
+    "local_path": "docs/site_docs.getdbt.com/yaml-compilation/rank_5.md",
+    "tags": [
+      "yaml-compilation"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/global-configs/warnings",
+    "local_path": "docs/site_docs.getdbt.com/error-logs/rank_9.md",
+    "tags": [
+      "error-logs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/ide-user-interface",
+    "local_path": "docs/site_docs.getdbt.com/dag-failures/rank_2.md",
+    "tags": [
+      "dag-failures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/bigquery-configs",
+    "local_path": "docs/site_docs.getdbt.com/compiled-code/rank_8.md",
+    "tags": [
+      "compiled-code"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-cloud-environments",
+    "local_path": "docs/site_docs.getdbt.com/deployment-jobs/rank_4.md",
+    "tags": [
+      "deployment-jobs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/clone",
+    "local_path": "docs/site_docs.getdbt.com/dbt-clone/rank_1.md",
+    "tags": [
+      "dbt-clone"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/deploy/jobs",
+    "local_path": "docs/site_docs.getdbt.com/deployment-jobs/rank_5.md",
+    "tags": [
+      "deployment-jobs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-versions/dbt-cloud-release-notes",
+    "local_path": "docs/site_docs.getdbt.com/dag-failures/rank_3.md",
+    "tags": [
+      "dag-failures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/use-dbt-semantic-layer/deploy-sl",
+    "local_path": "docs/site_docs.getdbt.com/deployment-jobs/rank_6.md",
+    "tags": [
+      "deployment-jobs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/artifacts/run-results-json",
+    "local_path": "docs/site_docs.getdbt.com/compiled-code/rank_10.md",
+    "tags": [
+      "compiled-code"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/environments-in-dbt",
+    "local_path": "docs/site_docs.getdbt.com/deployment-jobs/rank_7.md",
+    "tags": [
+      "deployment-jobs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/clone-incremental-models",
+    "local_path": "docs/site_docs.getdbt.com/dbt-clone/rank_2.md",
+    "tags": [
+      "dbt-clone"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/cloud/manage-access/environment-permissions",
+    "local_path": "docs/site_docs.getdbt.com/deployment-jobs/rank_9.md",
+    "tags": [
+      "deployment-jobs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/to-defer-or-to-clone",
+    "local_path": "docs/site_docs.getdbt.com/dbt-clone/rank_3.md",
+    "tags": [
+      "dbt-clone"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/azure-synapse-analytics",
+    "local_path": "docs/site_docs.getdbt.com/dag-failures/rank_5.md",
+    "tags": [
+      "dag-failures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/node-selection/test-selection-examples",
+    "local_path": "docs/site_docs.getdbt.com/test-types/rank_1.md",
+    "tags": [
+      "selectors",
+      "test-types"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/core-to-cloud-1",
+    "local_path": "docs/site_docs.getdbt.com/deployment-jobs/rank_10.md",
+    "tags": [
+      "deployment-jobs"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/cloud/git/import-a-project-by-git-url",
+    "local_path": "docs/site_docs.getdbt.com/dbt-clone/rank_5.md",
+    "tags": [
+      "dbt-clone"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-properties/data-tests",
+    "local_path": "docs/site_docs.getdbt.com/test-types/rank_3.md",
+    "tags": [
+      "test-types",
+      "test-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/manual-install",
+    "local_path": "docs/site_docs.getdbt.com/dag-failures/rank_6.md",
+    "tags": [
+      "dag-failures",
+      "descriptions"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/data-test-configs",
+    "local_path": "docs/site_docs.getdbt.com/test-config/rank_2.md",
+    "tags": [
+      "test-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/node-selection/state-selection",
+    "local_path": "docs/site_docs.getdbt.com/dbt-clone/rank_7.md",
+    "tags": [
+      "dbt-clone"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/databricks",
+    "local_path": "docs/site_docs.getdbt.com/dag-failures/rank_7.md",
+    "tags": [
+      "dag-failures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Tests/available-tests",
+    "local_path": "docs/site_docs.getdbt.com/test-types/rank_4.md",
+    "tags": [
+      "test-types"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/writing-custom-generic-tests",
+    "local_path": "docs/site_docs.getdbt.com/test-config/rank_5.md",
+    "tags": [
+      "test-types",
+      "test-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Tests/uniqueness-two-columns",
+    "local_path": "docs/site_docs.getdbt.com/test-types/rank_5.md",
+    "tags": [
+      "test-types"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/node-selection/defer",
+    "local_path": "docs/site_docs.getdbt.com/dbt-clone/rank_9.md",
+    "tags": [
+      "dbt-clone"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/bigquery",
+    "local_path": "docs/site_docs.getdbt.com/dag-failures/rank_8.md",
+    "tags": [
+      "dag-failures",
+      "descriptions"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Tests/custom-test-thresholds",
+    "local_path": "docs/site_docs.getdbt.com/test-config/rank_6.md",
+    "tags": [
+      "test-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/build",
+    "local_path": "docs/site_docs.getdbt.com/test-types/rank_10.md",
+    "tags": [
+      "selectors",
+      "test-types"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/documentation",
+    "local_path": "docs/site_docs.getdbt.com/docs-generation/rank_2.md",
+    "tags": [
+      "docs-generation",
+      "state-concepts",
+      "descriptions"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/store_failures",
+    "local_path": "docs/site_docs.getdbt.com/test-config/rank_7.md",
+    "tags": [
+      "test-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/starburst-galaxy",
+    "local_path": "docs/site_docs.getdbt.com/dag-failures/rank_9.md",
+    "tags": [
+      "dag-failures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/doc",
+    "local_path": "docs/site_docs.getdbt.com/descriptions/rank_2.md",
+    "tags": [
+      "descriptions"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/define-configs",
+    "local_path": "docs/site_docs.getdbt.com/test-config/rank_8.md",
+    "tags": [
+      "test-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/explore/build-and-view-your-docs",
+    "local_path": "docs/site_docs.getdbt.com/docs-generation/rank_4.md",
+    "tags": [
+      "docs-generation"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/dbt-cloud-changelog-2021",
+    "local_path": "docs/site_docs.getdbt.com/dag-failures/rank_10.md",
+    "tags": [
+      "dag-failures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Docs/long-descriptions",
+    "local_path": "docs/site_docs.getdbt.com/descriptions/rank_4.md",
+    "tags": [
+      "descriptions"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/sql-reference/comments",
+    "local_path": "docs/site_docs.getdbt.com/descriptions/rank_7.md",
+    "tags": [
+      "descriptions"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/set-up-ci",
+    "local_path": "docs/site_docs.getdbt.com/test-config/rank_9.md",
+    "tags": [
+      "test-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/sql-surrogate-keys",
+    "local_path": "docs/site_docs.getdbt.com/docs-generation/rank_5.md",
+    "tags": [
+      "docs-generation"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/exposure-properties",
+    "local_path": "docs/site_docs.getdbt.com/exposures/rank_1.md",
+    "tags": [
+      "exposures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/star-sql-love-letter",
+    "local_path": "docs/site_docs.getdbt.com/docs-generation/rank_7.md",
+    "tags": [
+      "docs-generation"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/explore/column-level-lineage",
+    "local_path": "docs/site_docs.getdbt.com/lineage/rank_1.md",
+    "tags": [
+      "lineage"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/exposures",
+    "local_path": "docs/site_docs.getdbt.com/exposures/rank_2.md",
+    "tags": [
+      "exposures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/custom-schemas",
+    "local_path": "docs/site_docs.getdbt.com/docs-generation/rank_8.md",
+    "tags": [
+      "docs-generation"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/dbt-tips",
+    "local_path": "docs/site_docs.getdbt.com/test-config/rank_10.md",
+    "tags": [
+      "test-config"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/core/connect-data-platform/about-core-connections",
+    "local_path": "docs/site_docs.getdbt.com/docs-generation/rank_9.md",
+    "tags": [
+      "docs-generation"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/explore/explore-projects",
+    "local_path": "docs/site_docs.getdbt.com/lineage/rank_2.md",
+    "tags": [
+      "docs-generation",
+      "lineage"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-schema-job-exposures",
+    "local_path": "docs/site_docs.getdbt.com/exposures/rank_3.md",
+    "tags": [
+      "exposures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/fusion/new-concepts",
+    "local_path": "docs/site_docs.getdbt.com/state-concepts/rank_1.md",
+    "tags": [
+      "state-concepts"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/node-selection/graph-operators",
+    "local_path": "docs/site_docs.getdbt.com/selectors/rank_3.md",
+    "tags": [
+      "selectors"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-schema-job-exposure",
+    "local_path": "docs/site_docs.getdbt.com/exposures/rank_4.md",
+    "tags": [
+      "exposures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/incremental-models-overview",
+    "local_path": "docs/site_docs.getdbt.com/state-concepts/rank_4.md",
+    "tags": [
+      "state-concepts"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/explore/explore-multiple-projects",
+    "local_path": "docs/site_docs.getdbt.com/lineage/rank_3.md",
+    "tags": [
+      "lineage"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/deploy/job-commands",
+    "local_path": "docs/site_docs.getdbt.com/selectors/rank_4.md",
+    "tags": [
+      "selectors"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-schema-environment-applied-exposures",
+    "local_path": "docs/site_docs.getdbt.com/exposures/rank_6.md",
+    "tags": [
+      "exposures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/dbt-airflow-spiritual-alignment",
+    "local_path": "docs/site_docs.getdbt.com/state-concepts/rank_5.md",
+    "tags": [
+      "state-concepts"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/explorer-quickstart",
+    "local_path": "docs/site_docs.getdbt.com/lineage/rank_4.md",
+    "tags": [
+      "lineage"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/fusion/about-fusion",
+    "local_path": "docs/site_docs.getdbt.com/state-concepts/rank_6.md",
+    "tags": [
+      "state-concepts"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/explore/data-tile",
+    "local_path": "docs/site_docs.getdbt.com/exposures/rank_7.md",
+    "tags": [
+      "exposures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/cloud-integrations/orchestrate-exposures",
+    "local_path": "docs/site_docs.getdbt.com/exposures/rank_8.md",
+    "tags": [
+      "exposures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/node-selection/set-operators",
+    "local_path": "docs/site_docs.getdbt.com/selectors/rank_5.md",
+    "tags": [
+      "selectors"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+    "local_path": "docs/site_docs.getdbt.com/state-concepts/rank_9.md",
+    "tags": [
+      "state-concepts"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-schema-environment-applied-lineage",
+    "local_path": "docs/site_docs.getdbt.com/lineage/rank_5.md",
+    "tags": [
+      "lineage"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-use-cases-and-examples",
+    "local_path": "docs/site_docs.getdbt.com/lineage/rank_6.md",
+    "tags": [
+      "lineage"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/node-selection/yaml-selectors",
+    "local_path": "docs/site_docs.getdbt.com/selectors/rank_6.md",
+    "tags": [
+      "selectors"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/cloud-integrations/downstream-exposures",
+    "local_path": "docs/site_docs.getdbt.com/exposures/rank_9.md",
+    "tags": [
+      "exposures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/deploy/state-aware-interface",
+    "local_path": "docs/site_docs.getdbt.com/lineage/rank_7.md",
+    "tags": [
+      "lineage"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/explore/view-downstream-exposures",
+    "local_path": "docs/site_docs.getdbt.com/exposures/rank_10.md",
+    "tags": [
+      "exposures"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/selected_resources",
+    "local_path": "docs/site_docs.getdbt.com/selectors/rank_9.md",
+    "tags": [
+      "selectors"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/view-documentation",
+    "local_path": "docs/site_docs.getdbt.com/lineage/rank_8.md",
+    "tags": [
+      "lineage"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/node-selection/putting-it-together",
+    "local_path": "docs/site_docs.getdbt.com/selectors/rank_10.md",
+    "tags": [
+      "selectors"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/dbt-explorer",
+    "local_path": "docs/site_docs.getdbt.com/lineage/rank_9.md",
+    "tags": [
+      "lineage"
+    ]
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/deploy/run-visibility",
+    "local_path": "docs/site_docs.getdbt.com/lineage/rank_10.md",
+    "tags": [
+      "lineage"
+    ]
+  }
+]

@@ -1,0 +1,441 @@
+# Source: https://docs.getdbt.com/docs/build/documentation
+
+About documentation | dbt Developer Hub
+
+[Skip to main content](#__docusaurus_skipToContent_fallback)
+
+[✨ Live virtual event - Smarter pipelines, 29% more efficient: How the dbt Fusion engine optimizes data work on December 3rd!](https://www.getdbt.com/resources/webinars/how-the-dbt-fusion-engine-optimizes-data-work)
+
+[![dbt Logo](/img/dbt-logo.svg?v=2)](/)
+
+[Docs](#)
+
+* [Product docs](/docs/introduction)
+* [References](/reference/references-overview)
+* [Best practices](/best-practices)
+* [Developer blog](/blog)
+
+[Guides](/guides)[APIs](/docs/dbt-cloud-apis/overview)
+
+[Help](#)
+
+* [Release notes](/docs/dbt-versions/dbt-cloud-release-notes)
+* [FAQs](/docs/faqs)
+* [Support and billing](/docs/dbt-support)
+* [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements)
+* [Courses](https://learn.getdbt.com)
+
+[Community](#)
+
+* [Join the dbt Community](/community/join)
+* [Become a contributor](/community/contribute)
+* [Community forum](/community/forum)
+* [Events](/community/events)
+* [Spotlight](/community/spotlight)
+
+[Account](#)
+
+* [Log in to dbt](https://cloud.getdbt.com/)
+* [Create a free account](https://www.getdbt.com/signup)
+
+[Install VS Code extension](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt)
+
+[dbt platform (Latest)](#)
+
+* dbt platform (Latest)
+* dbt Fusion engine
+* Core v1.11 Beta
+* Core v1.10 (Compatible)
+* Core v1.9 (Extended)
+
+Search`⌘``K`
+
+[![dbt Logo](/img/dbt-logo.svg?v=2)](/)
+
+* About
+* [What is dbt?](/docs/introduction)
+* [dbt Fusion engine](/docs/fusion)
+* [About the dbt platform](/docs/cloud/about-cloud/dbt-cloud-features)
+* [Supported data platforms](/docs/supported-data-platforms)
+* Get started
+* [Get started with dbt](/docs/get-started-dbt)
+* [Set up dbt](/docs/about-setup)
+* Build and develop
+* [Develop with dbt](/docs/cloud/about-develop-dbt)
+* [Build dbt projects](/docs/build/projects)
+
+  + [About dbt projects](/docs/build/projects)
+  + [dbt tips and tricks](/docs/build/dbt-tips)
+  + [Build your DAG](/docs/build/models)
+
+    - [Models](/docs/build/models)
+    - [Tests](/docs/build/data-tests)
+    - [Documentation](/docs/build/documentation)
+
+      * [About documentation](/docs/build/documentation)
+      * [View documentation](/docs/build/view-documentation)
+    - [Snapshots](/docs/build/snapshots)
+    - [Seeds](/docs/build/seeds)
+    - [Jinja and macros](/docs/build/jinja-macros)
+    - [User-defined functions](/docs/build/udfs)
+    - [Sources](/docs/build/sources)
+    - [Exposures](/docs/build/exposures)
+    - [Groups](/docs/build/groups)
+    - [Analyses](/docs/build/analyses)
+  + [Build your metrics](/docs/build/build-metrics-intro)
+  + [Enhance your models](/docs/build/enhance-your-models)
+  + [Enhance your code](/docs/build/enhance-your-code)
+  + [Organize your outputs](/docs/build/organize-your-outputs)
+  + [Optimize development](/docs/build/empty-flag)
+* [Build dbt Mesh](/docs/mesh/about-mesh)
+* Deploy and explore
+* [Deploy dbt](/docs/deploy/deployments)
+* [Explore your data](/docs/explore/explore-your-data)
+* [Use the dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl)
+* dbt AI
+* [Copilot](/docs/cloud/dbt-copilot)
+* [dbt MCP](/docs/dbt-ai/about-mcp)
+* Additional tools
+* [dbt integrations](/docs/cloud-integrations/overview)
+* [Cost management](/docs/cloud/cost-management)
+* Release information
+* [Available dbt versions](/docs/dbt-versions/about-versions)
+* [dbt release notes](/docs/dbt-versions/dbt-cloud-release-notes)
+
+* [Build dbt projects](/docs/build/projects)
+* [Build your DAG](/docs/build/models)
+* Documentation
+
+Copy page
+
+On this page
+
+About documentation
+===================
+
+Good documentation for your dbt models will help downstream consumers discover and understand the datasets you curate for them.
+dbt provides a way to generate documentation for your dbt project and render it as a website.
+
+Tip
+
+Use [dbt Copilot](/docs/cloud/dbt-copilot), available for dbt Enterprise and Enterprise+ accounts, to generate documentation in the Studio IDE only.
+
+Related documentation[​](#related-documentation "Direct link to Related documentation")
+---------------------------------------------------------------------------------------
+
+* [Declaring properties](/reference/configs-and-properties)
+* [`dbt docs` command](/reference/commands/cmd-docs)
+* [`doc` Jinja function](/reference/dbt-jinja-functions/doc)
+* If you're new to dbt, we recommend that you check out our [quickstart guide](/guides) to build your first dbt project, complete with documentation.
+
+Assumed knowledge[​](#assumed-knowledge "Direct link to Assumed knowledge")
+---------------------------------------------------------------------------
+
+* [Data tests](/docs/build/data-tests)
+
+Overview[​](#overview "Direct link to Overview")
+------------------------------------------------
+
+dbt provides a scalable way to [generate](#generating-documentation) documentation for your dbt project using descriptions and commands. The documentation for your project includes:
+
+* **Information about your project**: including model code, a DAG of your project, any tests you've added to a column, and more.
+* **Information about your data warehouseA data warehouse is a data management system used for data storage and computing that allows for analytics activities such as transforming and sharing data.**: including column data types, and tableIn simplest terms, a table is the direct storage of data in rows and columns. Think excel sheet with raw values in each of the cells. sizes. This information is generated by running queries against the information schema.
+* Importantly, dbt also provides a way to add **descriptions** to models, columns, sources, and more, to further enhance your documentation.
+
+The following sections describe how to [add descriptions](#adding-descriptions-to-your-project) to your project, [generate documentation](#generating-documentation), how to use [docs blocks](#using-docs-blocks), and set a [custom overview](#setting-a-custom-overview) for your documentation.
+
+Adding descriptions to your project[​](#adding-descriptions-to-your-project "Direct link to Adding descriptions to your project")
+---------------------------------------------------------------------------------------------------------------------------------
+
+Before generating documentation, add [descriptions](/reference/resource-properties/description) to your project resources. Add the `description:` key to the same YAML files where you declare [data tests](/docs/build/data-tests). For example:
+
+models/<filename>.yml
+
+```
+models:  
+  - name: events  
+    description: This table contains clickstream events from the marketing website  
+  
+    columns:  
+      - name: event_id  
+        description: This is a unique identifier for the event  
+        data_tests:  
+          - unique  
+          - not_null  
+  
+      - name: user-id  
+        quote: true  
+        description: The user who performed the event  
+        data_tests:  
+          - not_null
+```
+
+### FAQs[​](#faqs "Direct link to FAQs")
+
+Are there any example dbt documentation sites?
+
+Yes!
+
+* **Quickstart Tutorial:** You can build your own example dbt project in the [quickstart guide](/docs/get-started-dbt)
+* **Jaffle Shop:** A demonstration project (closely related to the tutorial) for a fictional e-commerce store ([main source code](https://github.com/dbt-labs/jaffle-shop) and [source code using duckdb](https://github.com/dbt-labs/jaffle_shop_duckdb))
+* **GitLab:** Gitlab's internal dbt project is open source and is a great example of how to use dbt at scale ([source code](https://gitlab.com/gitlab-data/analytics/-/tree/master/transform/snowflake-dbt))
+* **dummy-dbt:** A containerized dbt project that populates the Sakila database in Postgres and populates dbt seeds, models, snapshots, and tests. The project can be used for testing and experimentation purposes ([source code](https://github.com/gmyrianthous/dbt-dummy))
+* **Google Analytics 4:** A demonstration project that transforms the Google Analytics 4 BigQuery exports to various models ([source code](https://github.com/stacktonic-com/stacktonic-dbt-example-project), [docs](https://stacktonic.com/article/google-analytics-big-query-and-dbt-a-dbt-example-project))
+* **Make Open Data:** A production-grade ELT with tests, documentation, and CI/CD (GHA) about French open data (housing, demography, geography, etc). It can be used to learn with voluminous and ambiguous data. Contributions are welcome ([source code](https://github.com/make-open-data/make-open-data), [docs](https://make-open-data.fr/))
+
+If you have an example project to add to this list, suggest an edit by clicking **Edit this page** below.
+
+Do I need to add a YAML entry for column for it to appear in the docs site?
+
+Fortunately, no!
+
+dbt will introspect your warehouse to generate a list of columns in each relation, and match it with the list of columns in your `.yml` files. As such, any undocumented columns will still appear in your documentation!
+
+How do I write long-form explanations in my descriptions?
+
+If you need more than a sentence to explain a model, you can:
+
+1. Split your description over multiple lines using `>`. Interior line breaks are removed and Markdown can be used. This method is recommended for simple, single-paragraph descriptions:
+
+```
+  version: 2  
+  
+  models:  
+  - name: customers  
+    description: >  
+      Lorem ipsum **dolor** sit amet, consectetur adipisicing elit, sed do eiusmod  
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,  
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo  
+      consequat.
+```
+
+2. Split your description over multiple lines using `|`. Interior line breaks are maintained and Markdown can be used. This method is recommended for more complex descriptions:
+
+```
+  version: 2  
+  
+  models:  
+  - name: customers  
+    description: |  
+      ### Lorem ipsum  
+  
+      * dolor sit amet, consectetur adipisicing elit, sed do eiusmod  
+      * tempor incididunt ut labore et dolore magna aliqua.
+```
+
+3. Use a [docs block](/docs/build/documentation#using-docs-blocks) to write the description in a separate Markdown file.
+
+How do I access documentation in dbt Catalog?
+
+If you're using dbt to deploy your project and have a [Starter, Enterprise, or Enterprise+ plan](https://www.getdbt.com/pricing/), you can use Catalog to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their lineageData lineage provides a holistic view of how data moves through an organization, where it’s transformed and consumed. to gain a better understanding of its latest production state.
+
+Access Catalog in dbt by clicking the **Explore** link in the navigation. You can have up to 5 read-only users access the documentation for your project.
+
+dbt developer plan and dbt Core users can use [dbt Docs](/docs/explore/build-and-view-your-docs#dbt-docs), which generates basic documentation but it doesn't offer the same speed, metadata, or visibility as Catalog.
+
+Can I document things other than models, like sources, seeds, and snapshots?
+
+Yes! You can document almost everything in your project using the `description:` key. Check out the reference docs on [descriptions](/reference/resource-properties/description) for more info!
+
+Generating documentation[​](#generating-documentation "Direct link to Generating documentation")
+------------------------------------------------------------------------------------------------
+
+Generate documentation for your project by following these steps:
+
+1. Run the `dbt docs generate` [command](/reference/commands/cmd-docs#dbt-docs-generate) to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files, respectively.
+2. Ensure you've created the models with `dbt run` or `dbt build` to view the documentation for all columns, not just those described in your project.
+3. Run the `dbt docs serve` [command](/reference/commands/cmd-docs#dbt-docs-serve) if you're developing locally to use these `.json` files to populate a local website.
+
+dbt provides two complementary ways to [view documentation](/docs/build/view-documentation), and your descriptions, after it's generated:
+
+* [**dbt Docs**:](/docs/build/view-documentation#dbt-docs) A static documentation site with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). Available for dbt Core or dbt Developer plans.
+* [**Catalog**](/docs/explore/explore-projects): Builds upon dbt Docs to provide a dynamic, real-time interface with enhanced metadata, customizable views, deeper project insights, and collaboration tools. Available on dbt [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing).
+
+See [View documentation](/docs/build/view-documentation) to get the most out of your dbt project's documentation.
+
+Using docs blocks[​](#using-docs-blocks "Direct link to Using docs blocks")
+---------------------------------------------------------------------------
+
+Docs blocks provide a robust method for documenting models and other resources using Jinja and markdown. Docs block files can contain arbitrary markdown, but they must be uniquely named.
+
+### Syntax[​](#syntax "Direct link to Syntax")
+
+To declare a docs block, use the Jinja `docs` tag. The name of a docs block can't start with a digit and may contain:
+
+* Uppercase and lowercase letters (A-Z, a-z)
+* Digits (0-9)
+* Underscores (\_)
+
+events.md
+
+```
+{% docs table_events %}  
+  
+This table contains clickstream events from the marketing website.  
+  
+The events in this table are recorded by Snowplow and piped into the warehouse on an hourly basis. The following pages of the marketing site are tracked:  
+ - /  
+ - /about  
+ - /team  
+ - /contact-us  
+  
+{% enddocs %}
+```
+
+In this example, a docs block named `table_events` is defined with some descriptive markdown contents. There is nothing significant about the name `table_events` — docs blocks can be named however you like, as long as the name only contains alphanumeric and underscore characters and doesn't start with a numeric character.
+
+### Placement[​](#placement "Direct link to Placement")
+
+Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)) — you can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
+
+### Usage[​](#usage "Direct link to Usage")
+
+To use a docs block, reference it from your `schema.yml` file with the [doc()](/reference/dbt-jinja-functions/doc) function in place of a markdown string. Using the examples above, the `table_events` docs can be included in the `schema.yml` file as shown here:
+
+schema.yml
+
+```
+models:  
+  - name: events  
+    description: '{{ doc("table_events") }}'  
+  
+    columns:  
+      - name: event_id  
+        description: This is a unique identifier for the event  
+        data_tests:  
+            - unique  
+            - not_null
+```
+
+In the resulting documentation, `'{{ doc("table_events") }}'` will be expanded to the markdown defined in the `table_events` docs block.
+
+Setting a custom overview[​](#setting-a-custom-overview "Direct link to Setting a custom overview")
+---------------------------------------------------------------------------------------------------
+
+*Currently available for dbt Docs only.*
+
+The "overview" shown in the dbt Docs website can be overridden by supplying your own docs block called `__overview__`.
+
+* By default, dbt supplies an overview with helpful information about the docs site itself.
+* Depending on your needs, it may be a good idea to override this docs block with specific information about your company style guide, links to reports, or information about who to contact for help.
+* To override the default overview, create a docs block that looks like this:
+
+models/overview.md
+
+```
+{% docs __overview__ %}  
+# Monthly Recurring Revenue (MRR) playbook.  
+This dbt project is a worked example to demonstrate how to model subscription  
+revenue. **Check out the full write-up [here](https://blog.getdbt.com/modeling-subscription-revenue/),  
+as well as the repo for this project [here](https://github.com/dbt-labs/mrr-playbook/).**  
+...  
+  
+{% enddocs %}
+```
+
+### Custom project-level overviews[​](#custom-project-level-overviews "Direct link to Custom project-level overviews")
+
+*Currently available for dbt Docs only.*
+
+You can set different overviews for each dbt project/package included in your documentation site
+by creating a docs block named `__[project_name]__`.
+
+For example, in order to define
+custom overview pages that appear when a viewer navigates inside the `dbt_utils` or `snowplow` package:
+
+models/overview.md
+
+```
+{% docs __dbt_utils__ %}  
+# Utility macros  
+Our dbt project heavily uses this suite of utility macros, especially:  
+- `surrogate_key`  
+- `test_equality`  
+- `pivot`  
+{% enddocs %}  
+  
+{% docs __snowplow__ %}  
+# Snowplow sessionization  
+Our organization uses this package of transformations to roll Snowplow events  
+up to page views and sessions.  
+{% enddocs %}
+```
+
+Was this page helpful?
+----------------------
+
+YesNo
+
+[Privacy policy](https://www.getdbt.com/cloud/privacy-policy)[Create a GitHub issue](https://github.com/dbt-labs/docs.getdbt.com/issues)
+
+This site is protected by reCAPTCHA and the Google [Privacy Policy](https://policies.google.com/privacy) and [Terms of Service](https://policies.google.com/terms) apply.
+
+0
+
+[Edit this page](https://github.com/dbt-labs/docs.getdbt.com/edit/current/website/docs/docs/build/documentation.md)
+
+Last updated on **Nov 19, 2025**
+
+[Previous
+
+Unit tests](/docs/build/unit-tests)[Next
+
+View documentation](/docs/build/view-documentation)
+
+* [Related documentation](#related-documentation)
+* [Assumed knowledge](#assumed-knowledge)
+* [Overview](#overview)
+* [Adding descriptions to your project](#adding-descriptions-to-your-project)
+  + [FAQs](#faqs)
+* [Generating documentation](#generating-documentation)
+* [Using docs blocks](#using-docs-blocks)
+  + [Syntax](#syntax)
+  + [Placement](#placement)
+  + [Usage](#usage)
+* [Setting a custom overview](#setting-a-custom-overview)
+  + [Custom project-level overviews](#custom-project-level-overviews)
+
+[Edit this page](https://github.com/dbt-labs/docs.getdbt.com/edit/current/website/docs/docs/build/documentation.md)
+
+Get started
+
+Start building with dbt.
+------------------------
+
+The free dbt VS Code extension is the best way to develop locally with the dbt Fusion Engine.
+
+[Install free extension](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt)
+[Request your demo](https://www.getdbt.com/contact)
+
+[![dbt Labs](/img/dbt-logo-light.svg?v=2)](/)
+
+##### Resources
+
+[VS Code Extension](/docs/about-dbt-extension)
+[Resource Hub](https://www.getdbt.com/resources)
+[dbt Learn](https://www.getdbt.com/dbt-learn)
+[Certification](https://www.getdbt.com/dbt-certification)
+[Developer Blog](/blog)
+
+##### Community
+
+[Join the Community](/community/join)
+[Become a Contributor](/community/contribute)
+[Open Source dbt Packages](https://hub.getdbt.com/)
+[Community Forum](/community/forum)
+
+##### Support
+
+[Contact Support](/docs/dbt-support)
+[Professional Services](https://www.getdbt.com/services)
+[Find a Partner](https://www.getdbt.com/partner-directory)
+[System Status](https://status.getdbt.com/)
+
+##### Connect with Us
+
+© 2025 dbt Labs, Inc. All Rights Reserved.
+
+[Terms of Service](https://www.getdbt.com/terms-of-use/)
+[Privacy Policy](https://www.getdbt.com/cloud/privacy-policy/)
+[Security](https://www.getdbt.com/security/)
+Cookie Settings
