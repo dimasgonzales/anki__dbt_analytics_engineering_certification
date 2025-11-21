@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
 from typing import Any
 
-from openai import AsyncOpenAI
-from outlines import Generator, models, types
+from google import genai
+from google.genai import types as genai_types
 from pydantic import BaseModel, Field
 
 
@@ -24,16 +25,69 @@ class BatchPrediction(BaseModel):
     cards: list[CardPrediction] = Field(default_factory=list)
 
 
-async def generate_tag_batch(prompt: str, llm_url: str, model_name: str) -> BatchPrediction:
-    """Call an OpenAI-compatible endpoint via Outlines to obtain structured tag predictions."""
-
-    client = AsyncOpenAI(api_key="not-needed", base_url=llm_url)
-    async_model = models.AsyncOpenAI(client, model_name=model_name)
-    schema = types.json_schema(BatchPrediction)
-    generator = Generator(async_model, schema)
-
-    raw_response = await generator(prompt)
-    return _parse_batch_prediction(raw_response)
+async def generate_tag_batch(prompt: str, model_name: str, api_key: str | None = None) -> BatchPrediction:
+    """Call Google Gemini API to obtain structured tag predictions."""
+    
+    api_key = api_key or os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        raise ValueError("Gemini API key required")
+    
+    client = genai.Client(api_key=api_key)
+    
+    # Build the prompt with JSON schema instructions
+    schema_prompt = prompt + "\n\nRespond ONLY with valid JSON matching this schema:\n" + json.dumps({
+        "type": "object",
+        "properties": {
+            "cards": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "card_index": {"type": "integer", "minimum": 1},
+                        "tags": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "tag": {"type": "string"},
+                                    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+                                    "reason": {"type": "string"}
+                                },
+                                "required": ["tag", "confidence", "reason"]
+                            }
+                        }
+                    },
+                    "required": ["card_index", "tags"]
+                }
+            }
+        },
+        "required": ["cards"]
+    }, indent=2)
+    
+    contents = [
+        genai_types.Content(
+            role="user",
+            parts=[genai_types.Part.from_text(text=schema_prompt)],
+        ),
+    ]
+    
+    config = genai_types.GenerateContentConfig(
+        temperature=0.3,
+        response_mime_type="application/json",
+    )
+    
+    # Collect streaming response
+    response_text = ""
+    stream = await client.aio.models.generate_content_stream(
+        model=model_name,
+        contents=contents,
+        config=config,
+    )
+    async for chunk in stream:
+        if chunk.text:
+            response_text += chunk.text
+    
+    return _parse_batch_prediction(response_text)
 
 
 def _parse_batch_prediction(raw: Any) -> BatchPrediction:

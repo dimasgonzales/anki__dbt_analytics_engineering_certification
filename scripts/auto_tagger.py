@@ -2,9 +2,9 @@
 # /// script
 # dependencies = [
 #   "pyyaml>=6.0.1",
-#   "openai>=1.0.0",
-#   "outlines>=0.0.42",
+#   "google-genai>=0.2.0",
 #   "pydantic>=2.7.0",
+#   "python-dotenv>=1.0.0",
 # ]
 # ///
 """
@@ -19,6 +19,7 @@ Supports three strategies:
 import argparse
 import asyncio
 import json
+import os
 import re
 import sys
 import time
@@ -26,7 +27,11 @@ from pathlib import Path
 from typing import Any
 
 import yaml
+from dotenv import load_dotenv
 from pydantic import ValidationError
+
+# Load environment variables from .env file
+load_dotenv()
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
@@ -124,11 +129,11 @@ async def llm_score_tags_batch(
     flashcards: list[dict[str, Any]],
     tags: list[dict[str, Any]],
     tag_list: str,
-    llm_url: str,
     *,
     max_tags: int = 3,
     retry_count: int = 3,
     model_name: str | None = None,
+    api_key: str | None = None,
 ) -> dict[Path, list[tuple[str, float, str]]]:
     """Score tags for a single batch using structured LLM output."""
 
@@ -158,8 +163,8 @@ Instructions:
         try:
             structured = await generate_tag_batch(
                 prompt,
-                llm_url=llm_url,
-                model_name=model_name or "qwen/qwen3-coder-30b",
+                model_name=model_name or "gemini-flash-lite-latest",
+                api_key=api_key,
             )
 
             output: dict[Path, list[tuple[str, float, str]]] = {}
@@ -190,13 +195,13 @@ Instructions:
 async def llm_score_tags(
     flashcards: list[dict[str, Any]],
     tags: list[dict[str, Any]],
-    llm_url: str,
     *,
     max_tags: int = 3,
     batch_size: int = 10,
     max_concurrent: int = 3,
     model_name: str | None = None,
     retry_count: int = 3,
+    api_key: str | None = None,
 ) -> dict[Path, list[tuple[str, float, str]]]:
     """
     Score tags using LLM with parallel batch processing.
@@ -225,10 +230,10 @@ async def llm_score_tags(
                 batch,
                 tags,
                 tag_list,
-                llm_url,
                 max_tags=max_tags,
                 retry_count=retry_count,
                 model_name=model_name,
+                api_key=api_key,
             )
             elapsed = time.time() - start_time
             print(f"Batch {batch_idx+1}/{len(batches)} completed in {elapsed:.1f}s ({elapsed/len(batch):.2f}s per card)")
@@ -250,11 +255,11 @@ async def llm_score_tags(
 async def hybrid_score_tags(
     flashcard: dict[str, Any],
     tags: list[dict[str, Any]],
-    llm_url: str,
     threshold: float,
     max_tags: int = 3,
     batch_size: int = 10,
     model_name: str | None = None,
+    api_key: str | None = None,
 ) -> tuple[list[tuple[str, float, str]], str]:
     """
     Hybrid approach: keyword first, LLM fallback for low confidence.
@@ -272,11 +277,11 @@ async def hybrid_score_tags(
     llm_results = await llm_score_tags(
         [flashcard],
         tags,
-        llm_url,
         max_tags=max_tags,
         batch_size=1,
         max_concurrent=1,
         model_name=model_name,
+        api_key=api_key,
     )
     return llm_results.get(flashcard['path'], []), "llm"
 
@@ -286,28 +291,80 @@ def update_flashcard_tags(
     tags: list[str],
     dry_run: bool = False
 ) -> None:
-    """Add or update tags field in flashcard frontmatter."""
-    content = card_path.read_text()
+    """Remove existing tags and add new ones to flashcard frontmatter."""
+    with open(card_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+
+    new_lines = []
+    in_frontmatter = False
+    in_tags = False
+    frontmatter_count = 0
+
+    # First pass: remove existing tags
+    for line in lines:
+        stripped = line.strip()
+        
+        # Detect frontmatter delimiters
+        if stripped == '---':
+            frontmatter_count += 1
+            if frontmatter_count == 1:
+                in_frontmatter = True
+            elif frontmatter_count == 2:
+                in_frontmatter = False
+                in_tags = False
+            
+            new_lines.append(line)
+            continue
+
+        if in_frontmatter:
+            # Check for start of tags section
+            if stripped.startswith('tags:'):
+                in_tags = True
+                continue  # Skip the 'tags:' line
+
+            if in_tags:
+                # Skip indented lines (list items) or empty lines in tags section
+                if line.startswith((' ', '\t')) or stripped == '':
+                    continue
+                else:
+                    # Found a line that is not indented and not empty
+                    # This means we are out of the tags section
+                    in_tags = False
+                    new_lines.append(line)
+            else:
+                # Not in tags section, keep the line
+                new_lines.append(line)
+        else:
+            # Not in frontmatter, keep everything
+            new_lines.append(line)
+
+    # Second pass: add new tags after frontmatter start
+    final_lines = []
+    frontmatter_count = 0
+    tags_added = False
     
-    # Extract frontmatter and body
-    match = re.match(r'^---\n(.*?)\n---\n(.*)$', content, re.DOTALL)
-    if not match:
-        raise ValueError(f"Invalid flashcard format: {card_path}")
-    
-    frontmatter = yaml.safe_load(match.group(1))
-    body = match.group(2)
-    
-    # Update or add tags
-    frontmatter['tags'] = tags
-    
-    # Reconstruct file
-    new_content = f"---\n{yaml.dump(frontmatter, default_flow_style=False, sort_keys=False)}---\n{body}"
+    for line in new_lines:
+        stripped = line.strip()
+        
+        if stripped == '---':
+            frontmatter_count += 1
+            final_lines.append(line)
+            
+            # Add tags after first frontmatter delimiter
+            if frontmatter_count == 1 and tags and not tags_added:
+                final_lines.append('tags:\n')
+                for tag in tags:
+                    final_lines.append(f'  - {tag}\n')
+                tags_added = True
+        else:
+            final_lines.append(line)
     
     if dry_run:
         print(f"\n[DRY RUN] Would update {card_path.name}:")
         print(f"  Tags: {tags}")
     else:
-        card_path.write_text(new_content)
+        with open(card_path, 'w', encoding='utf-8') as f:
+            f.writelines(final_lines)
 
 
 def main():
@@ -362,19 +419,26 @@ def main():
         help='Path to tags.json (default: tags.json)'
     )
     parser.add_argument(
-        '--llm-url',
-        type=str,
-        default='http://127.0.0.1:1234/v1',
-        help='OpenAI-compatible API base URL (default: http://127.0.0.1:1234/v1)'
-    )
-    parser.add_argument(
         '--llm-model',
         type=str,
-        default='qwen/qwen3-coder-30b',
-        help='LLM model name to use for llm/hybrid strategies'
+        default='gemini-flash-lite-latest',
+        help='Gemini model name to use for llm/hybrid strategies (default: gemini-flash-lite-latest)'
+    )
+    parser.add_argument(
+        '--gemini-api-key',
+        type=str,
+        default=None,
+        help='Gemini API key (defaults to GEMINI_API_KEY environment variable)'
     )
     
     args = parser.parse_args()
+    
+    # Get API key from args or environment
+    api_key = args.gemini_api_key or os.environ.get('GEMINI_API_KEY')
+    if args.strategy in ('llm', 'hybrid') and not api_key:
+        print("Error: Gemini API key required for llm/hybrid strategies", file=sys.stderr)
+        print("Set GEMINI_API_KEY environment variable or use --gemini-api-key", file=sys.stderr)
+        return 1
     
     # Load tags
     if not args.tags_file.exists():
@@ -385,7 +449,7 @@ def main():
     print(f"Loaded {len(tags)} tags from {args.tags_file}")
     
     if args.strategy in ('llm', 'hybrid'):
-        print(f"LLM endpoint: {args.llm_url}")
+        print(f"LLM model: {args.llm_model}")
         print(f"Batch size: {args.batch_size}, Max concurrent: {args.max_concurrent}")
     
     # Find all flashcard files
@@ -442,11 +506,11 @@ def main():
             results = asyncio.run(llm_score_tags(
                 flashcards,
                 tags,
-                args.llm_url,
                 max_tags=args.max_tags,
                 batch_size=args.batch_size,
                 max_concurrent=args.max_concurrent,
                 model_name=args.llm_model,
+                api_key=api_key,
             ))
             
             for card in flashcards:
@@ -483,11 +547,11 @@ def main():
                     hybrid_score_tags(
                         card,
                         tags,
-                        args.llm_url,
                         args.threshold,
                         args.max_tags,
                         args.batch_size,
                         model_name=args.llm_model,
+                        api_key=api_key,
                     )
                 )
             return await asyncio.gather(*tasks, return_exceptions=True)

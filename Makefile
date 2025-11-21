@@ -1,4 +1,3 @@
-
 purge:
 	@echo "Removing existing Markdown files from deck/..."
 	@find deck -type f -name "*.md" -delete
@@ -11,7 +10,7 @@ extract-dbt-deck: purge
 
 
 extract: purge extract-dbt-deck
-	echo "Orchestating markdown extraction from anki deck..."
+	@echo "Orchestrating markdown extraction from anki deck..."
 
 auto-tag:
 	@echo "Auto-tagging flashcards..."
