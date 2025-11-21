@@ -1,0 +1,460 @@
+# Source: https://docs.getdbt.com/docs/cloud/configure-cloud-cli
+
+Configure and use the dbt CLI | dbt Developer Hub
+
+[Skip to main content](#__docusaurus_skipToContent_fallback)
+
+[✨ Live virtual event - Smarter pipelines, 29% more efficient: How the dbt Fusion engine optimizes data work on December 3rd!](https://www.getdbt.com/resources/webinars/how-the-dbt-fusion-engine-optimizes-data-work)
+
+[![dbt Logo](/img/dbt-logo.svg?v=2)![dbt Logo](/img/dbt-logo-light.svg?v=2)](/)
+
+[Docs](#)
+
+* [Product docs](/docs/introduction)
+* [References](/reference/references-overview)
+* [Best practices](/best-practices)
+* [Developer blog](/blog)
+
+[Guides](/guides)[APIs](/docs/dbt-cloud-apis/overview)
+
+[Help](#)
+
+* [Release notes](/docs/dbt-versions/dbt-cloud-release-notes)
+* [FAQs](/docs/faqs)
+* [Support and billing](/docs/dbt-support)
+* [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements)
+* [Courses](https://learn.getdbt.com)
+
+[Community](#)
+
+* [Join the dbt Community](/community/join)
+* [Become a contributor](/community/contribute)
+* [Community forum](/community/forum)
+* [Events](/community/events)
+* [Spotlight](/community/spotlight)
+
+[Account](#)
+
+* [Log in to dbt](https://cloud.getdbt.com/)
+* [Create a free account](https://www.getdbt.com/signup)
+
+[Install VS Code extension](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt)
+
+[v](#) 
+
+* dbt platform (Latest)
+* dbt Fusion engine
+* Core v1.11 Beta
+* Core v1.10 (Compatible)
+* Core v1.9 (Extended)
+
+Search
+
+[![dbt Logo](/img/dbt-logo.svg?v=2)![dbt Logo](/img/dbt-logo-light.svg?v=2)](/)
+
+* About
+* [What is dbt?](/docs/introduction)
+* [dbt Fusion engine](/docs/fusion)
+* [About the dbt platform](/docs/cloud/about-cloud/dbt-cloud-features)
+* [Supported data platforms](/docs/supported-data-platforms)
+* Get started
+* [Get started with dbt](/docs/get-started-dbt)
+* [Set up dbt](/docs/about-setup)
+* Build and develop
+* [Develop with dbt](/docs/cloud/about-develop-dbt)
+
+  + [Develop with dbt](/docs/cloud/about-develop-dbt)
+  + [About dbt LSP](/docs/about-dbt-lsp)
+  + [Defer in dbt](/docs/cloud/about-cloud-develop-defer)
+  + [dbt VS Code extension](/docs/about-dbt-extension)
+  + [dbt CLI](/docs/cloud/cloud-cli-installation)
+
+    - [Installation](/docs/cloud/cloud-cli-installation)
+    - [Configuration and usage](/docs/cloud/configure-cloud-cli)
+  + [dbt Studio IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
+  + [dbt Canvas](/docs/cloud/canvas)
+* [Build dbt projects](/docs/build/projects)
+* [Build dbt Mesh](/docs/mesh/about-mesh)
+* Deploy and explore
+* [Deploy dbt](/docs/deploy/deployments)
+* [Explore your data](/docs/explore/explore-your-data)
+* [Use the dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl)
+* dbt AI
+* [Copilot](/docs/cloud/dbt-copilot)
+* [dbt MCP](/docs/dbt-ai/about-mcp)
+* Additional tools
+* [dbt integrations](/docs/cloud-integrations/overview)
+* [Cost management](/docs/cloud/cost-management)
+* Release information
+* [Available dbt versions](/docs/dbt-versions/about-versions)
+* [dbt release notes](/docs/dbt-versions/dbt-cloud-release-notes)
+
+* [Develop with dbt](/docs/cloud/about-develop-dbt)
+* [dbt CLI](/docs/cloud/cloud-cli-installation)
+* Configuration and usage
+
+Copy page
+
+On this page
+
+Configure and use the dbt CLI
+=============================
+
+Learn how to configure the Cloud CLI for your dbt project to run dbt commands, like `dbt environment show` to view your dbt configuration or `dbt compile` to compile your project and validate models and tests. You'll also benefit from:
+
+* Secure credential storage in the dbt platform.
+* [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment.
+* Speedier, lower-cost builds.
+* Support for Mesh ([cross-project ref](/docs/mesh/govern/project-dependencies)), and more.
+
+Prerequisites[​](#prerequisites "Direct link to Prerequisites")
+---------------------------------------------------------------
+
+* You must set up a project in dbt.
+  + **Note** — If you're using the Cloud CLI, you can connect to your [data platform](/docs/cloud/connect-data-platform/about-connections) directly in the dbt interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file.
+* You must have your [personal development credentials](/docs/dbt-cloud-environments#set-developer-credentials) set for that project. The dbt CLI will use these credentials, stored securely in dbt, to communicate with your data platform.
+* You must be on dbt version 1.5 or higher. Refer to [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to upgrade.
+
+Configure the dbt CLI[​](#configure-the-dbt-cli "Direct link to Configure the dbt CLI")
+---------------------------------------------------------------------------------------
+
+Once you install the Cloud CLI, you need to configure it to connect to a dbt project.
+
+1. In dbt, select the project you want to configure your Cloud CLI with. The project must already have a [development environment](/docs/dbt-cloud-environments#create-a-development-environment) set up.
+2. From the main menu, go to **CLI**.
+3. In the **Configure Cloud authentication** section, click **Download CLI configuration file** to download your `dbt_cloud.yml` credentials file.
+
+   Region URLs to download credentials
+
+   You can also download the credentials from the links provided based on your region:
+
+   * North America: <https://cloud.getdbt.com/cloud-cli>
+   * EMEA: <https://emea.dbt.com/cloud-cli>
+   * APAC: <https://au.dbt.com/cloud-cli>
+   * North American Cell 1: `https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli`
+   * Single-tenant: `https://YOUR_ACCESS_URL/cloud-cli`
+4. Save the `dbt_cloud.yml` file in the `.dbt` directory, which stores your Cloud CLI configuration.
+
+   * Mac or Linux: `~/.dbt/dbt_cloud.yml`
+   * Windows: `C:\Users\yourusername\.dbt\dbt_cloud.yml`
+
+   The config file looks like this:
+
+   ```
+   version: "1"  
+   context:  
+     active-project: "<project id from the list below>"  
+     active-host: "<active host from the list>"  
+     defer-env-id: "<optional defer environment id>"  
+   projects:  
+     - project-name: "<project-name>"  
+       project-id: "<project-id>"  
+       account-name: "<account-name>"  
+       account-id: "<account-id>"  
+       account-host: "<account-host>" # for example, "cloud.getdbt.com"  
+       token-name: "<pat-name>"  
+       token-value: "<pat-value>"  
+     
+     - project-name: "<project-name>"  
+       project-id: "<project-id>"  
+       account-name: "<account-name>"  
+       account-id: "<account-id>"  
+       account-host: "<account-host>" # for example, "cloud.getdbt.com"  
+       token-name: "<pat-name>"  
+       token-value: "<pat-value>"
+   ```
+
+   Store the config file in a safe place as it contains API keys. Check out the [FAQs](#faqs) to learn how to create a `.dbt` directory and move the `dbt_cloud.yml` file. If you have multiple copies and your file has a numerical addendum (for example, `dbt_cloud(2).yml`), remove the additional text from the filename.
+5. After downloading the config file and creating your directory, navigate to a project in your terminal:
+
+   ```
+   cd ~/dbt-projects/jaffle_shop
+   ```
+6. In your `dbt_project.yml` file, ensure you have or include a `dbt-cloud` section with a `project-id` field. The `project-id` field contains the dbt project ID you want to use.
+
+   ```
+   # dbt_project.yml  
+   name:  
+   version:  
+   # Your project configs...  
+     
+   dbt-cloud:   
+       project-id: PROJECT_ID
+   ```
+
+   * To find your project ID, select **Develop** in the dbt navigation menu. You can use the URL to find the project ID. For example, in `https://YOUR_ACCESS_URL/develop/26228/projects/123456`, the project ID is `123456`.
+7. You should now be able to [use the Cloud CLI](#use-the-dbt-cloud-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment) to view your dbt configuration details or `dbt compile` to compile models in your dbt project.
+
+With your repo recloned, you can add, edit, and sync files with your repo.
+
+Set environment variables[​](#set-environment-variables "Direct link to Set environment variables")
+---------------------------------------------------------------------------------------------------
+
+To set environment variables in the dbt CLI for your dbt project:
+
+1. From dbt, click on your account name in the left side menu and select **Account settings**.
+2. Under the **Your profile** section, select **Credentials**.
+3. Click on your project and scroll to the **Environment variables** section.
+4. Click **Edit** on the lower right and then set the user-level environment variables.
+
+Use the dbt CLI[​](#use-the-dbt-cli "Direct link to Use the dbt CLI")
+---------------------------------------------------------------------
+
+The Cloud CLI uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment) command to view your dbt configuration details. With the Cloud CLI, you can:
+
+* Run [multiple invocations in parallel](/reference/dbt-commands) and ensure [safe parallelism](/reference/dbt-commands#parallel-execution), which is currently not guaranteed by `dbt-core`.
+* Automatically defers build artifacts to your Cloud project's production environment.
+* Supports [project dependencies](/docs/mesh/govern/project-dependencies), which allows you to depend on another project using the metadata service in dbt.
+  + Project dependencies instantly connect to and reference (or `ref`) public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
+
+Use the `--help` flag
+
+As a tip, most command-line tools have a `--help` flag to show available commands and arguments. Use the `--help` flag with dbt in two ways:
+
+* `dbt --help`: Lists the commands available for dbt
+* `dbt run --help`: Lists the flags available for the `run` command
+
+Lint SQL files[​](#lint-sql-files "Direct link to Lint SQL files")
+------------------------------------------------------------------
+
+From the dbt CLI, you can invoke [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. Many of the same flags that you can pass to SQLFluff are available from the dbt CLI.
+
+The available SQLFluff commands are:
+
+* `lint` — Lint SQL files by passing a list of files or from standard input (stdin).
+* `fix` — Fix SQL files.
+* `format` — Autoformat SQL files.
+
+To lint SQL files, run the command as follows:
+
+```
+dbt sqlfluff lint [PATHS]... [flags]
+```
+
+When no path is set, dbt lints all SQL files in the current project. To lint a specific SQL file or a directory, set `PATHS` to the path of the SQL file(s) or directory of files. To lint multiple files or directories, pass multiple `PATHS` flags.
+
+To show detailed information on all the dbt supported commands and flags, run the `dbt sqlfluff -h` command.
+
+#### Considerations[​](#considerations "Direct link to Considerations")
+
+When running `dbt sqlfluff` from the Cloud CLI, the following are important behaviors to consider:
+
+* dbt reads the `.sqlfluff` file, if it exists, for any custom configurations you might have.
+* For continuous integration/continuous development (CI/CD) workflows, your project must have a `dbt_cloud.yml` file and you have successfully run commands from within this dbt project.
+* An SQLFluff command will return an exit code of 0 if it ran with any file violations. This dbt behavior differs from SQLFluff behavior, where a linting violation returns a non-zero exit code. dbt Labs plans on addressing this in a later release.
+
+Considerations[​](#considerations-1 "Direct link to Considerations")
+--------------------------------------------------------------------
+
+The Cloud CLI doesn't currently support relative paths in the [`packages.yml` file](/docs/build/packages). Instead, use the [Studio IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), which supports relative paths in this scenario.
+
+Here's an example of a [local package](/docs/build/packages#local-packages) configuration in the `packages.yml` that won't work with the Cloud CLI:
+
+```
+# repository_root/my_dbt_project_in_a_subdirectory/packages.yml  
+  
+packages:  
+  - local: ../shared_macros
+```
+
+In this example, `../shared_macros` is a relative path that tells dbt to look for:
+
+* `..` — Go one directory up (to `repository_root`).
+* `/shared_macros` — Find the `shared_macros` folder in the root directory.
+
+To work around this limitation, use the [Studio IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), which fully supports relative paths in `packages.yml`.
+
+FAQs[​](#faqs "Direct link to FAQs")
+------------------------------------
+
+How to create a .dbt directory and move your file
+
+If you've never had a `.dbt` directory, you should perform the following recommended steps to create one. If you already have a `.dbt` directory, move the `dbt_cloud.yml` file into it. Some information about the `.dbt` directory:
+
+* A `.dbt` directory is a hidden folder in the root of your filesystem. It's used to store your dbt configuration files. The `.` prefix is used to create a hidden folder, which means it's not visible in Finder or File Explorer by default.
+* To view hidden files and folders, press Command + Shift + G on macOS or Ctrl + Shift + G on Windows. This opens the "Go to Folder" dialog where you can search for the `.dbt` directory.
+
+* Create a .dbt directory
+* Move the dbt\_cloud.yml file
+
+1. Clone your dbt project repository locally.
+2. Use the `mkdir` command followed by the name of the folder you want to create.
+
+* If using macOS, add the `~` prefix to create a `.dbt` folder in the root of your filesystem:
+
+```
+mkdir ~/.dbt # macOS  
+mkdir %USERPROFILE%\.dbt # Windows
+```
+
+You can move the `dbt_cloud.yml` file into the `.dbt` directory using the `mv` command or by dragging and dropping the file into the `.dbt` directory by opening the Downloads folder using the "Go to Folder" dialog and then using drag-and-drop in the UI.
+
+To move the file using the terminal, use the `mv/move` command. This command moves the `dbt_cloud.yml` from the `Downloads` folder to the `.dbt` folder. If your `dbt_cloud.yml` file is located elsewhere, adjust the path accordingly.
+
+#### Mac or Linux[​](#mac-or-linux "Direct link to Mac or Linux")
+
+In your command line, use the `mv` command to move your `dbt_cloud.yml` file into the `.dbt` directory. If you've just downloaded the `dbt_cloud.yml` file and it's in your Downloads folder, the command might look something like this:
+
+```
+mv ~/Downloads/dbt_cloud.yml ~/.dbt/dbt_cloud.yml
+```
+
+#### Windows[​](#windows "Direct link to Windows")
+
+In your command line, use the move command. Assuming your file is in the Downloads folder, the command might look like this:
+
+```
+move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
+```
+
+How to skip artifacts from being downloaded
+
+By default, [all artifacts](/reference/artifacts/dbt-artifacts) are downloaded when you execute dbt commands from the Cloud CLI. To skip these files from being downloaded, add `--download-artifacts=false` to the command you want to run. This can help improve run-time performance but might break workflows that depend on assets like the [manifest](/reference/artifacts/manifest-json).
+
+I'm getting a "Session occupied" error in dbt CLI?
+
+If you're receiving a `Session occupied` error in the Cloud CLI or if you're experiencing a long-running session, you can use the `dbt invocation list` command in a separate terminal window to view the status of your active session. This helps debug the issue and identify the arguments that are causing the long-running session.
+
+To cancel an active session, use the `Ctrl + Z` shortcut.
+
+To learn more about the `dbt invocation` command, see the [dbt invocation command reference](/reference/commands/invocation).
+
+Alternatively, you can reattach to your existing session with `dbt reattach` and then press `Control-C` and choose to cancel the invocation.
+
+Was this page helpful?
+----------------------
+
+YesNo
+
+[Privacy policy](https://www.getdbt.com/cloud/privacy-policy)[Create a GitHub issue](https://github.com/dbt-labs/docs.getdbt.com/issues)
+
+This site is protected by reCAPTCHA and the Google [Privacy Policy](https://policies.google.com/privacy) and [Terms of Service](https://policies.google.com/terms) apply.
+
+0
+
+[Edit this page](https://github.com/dbt-labs/docs.getdbt.com/edit/current/website/docs/docs/cloud/configure-cloud-cli.md)
+
+Last updated on **Nov 19, 2025**
+
+[Previous
+
+Installation](/docs/cloud/cloud-cli-installation)
+
+* [Prerequisites](#prerequisites)
+* [Configure the dbt CLI](#configure-the-dbt-cli)
+* [Set environment variables](#set-environment-variables)
+* [Use the dbt CLI](#use-the-dbt-cli)
+* [Lint SQL files](#lint-sql-files)
+* [Considerations](#considerations-1)
+* [FAQs](#faqs)
+
+[Edit this page](https://github.com/dbt-labs/docs.getdbt.com/edit/current/website/docs/docs/cloud/configure-cloud-cli.md)
+
+Get started
+
+Start building with dbt.
+------------------------
+
+The free dbt VS Code extension is the best way to develop locally with the dbt Fusion Engine.
+
+[Install free extension](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt)
+[Request your demo](https://www.getdbt.com/contact)
+
+[![dbt Labs](/img/dbt-logo-light.svg?v=2)](/)
+
+##### Resources
+
+[VS Code Extension](/docs/about-dbt-extension)
+[Resource Hub](https://www.getdbt.com/resources)
+[dbt Learn](https://www.getdbt.com/dbt-learn)
+[Certification](https://www.getdbt.com/dbt-certification)
+[Developer Blog](/blog)
+
+##### Community
+
+[Join the Community](/community/join)
+[Become a Contributor](/community/contribute)
+[Open Source dbt Packages](https://hub.getdbt.com/)
+[Community Forum](/community/forum)
+
+##### Support
+
+[Contact Support](/docs/dbt-support)
+[Professional Services](https://www.getdbt.com/services)
+[Find a Partner](https://www.getdbt.com/partner-directory)
+[System Status](https://status.getdbt.com/)
+
+##### Connect with Us
+
+© 2025 dbt Labs, Inc. All Rights Reserved.
+
+[Terms of Service](https://www.getdbt.com/terms-of-use/)
+[Privacy Policy](https://www.getdbt.com/cloud/privacy-policy/)
+[Security](https://www.getdbt.com/security/)
+Cookie Settings
+
+
+
+
+![dbt Labs](https://cdn.cookielaw.org/logos/4a2cde9e-5f84-44b2-bdbb-6a93354d1c72/e1199e19-1935-49fa-a4e2-bf7f9d08cee6/783d7c83-af8c-4032-901b-b3ec48982078/dbt-logo.png)
+
+Privacy Preference Center
+-------------------------
+
+When you visit any website, it may store or retrieve information on your browser, mostly in the form of cookies. This information might be about you, your preferences or your device and is mostly used to make the site work as you expect it to. The information does not usually directly identify you, but it can give you a more personalized web experience. Because we respect your right to privacy, you can choose not to allow some types of cookies. Click on the different category headings to find out more and change our default settings. However, blocking some types of cookies may impact your experience of the site and the services we are able to offer.
+  
+[More information](https://www.getdbt.com/cloud/privacy-policy/)
+
+Allow All
+
+### Manage Consent Preferences
+
+#### Strictly Necessary Cookies
+
+Always Active
+
+Strictly necessary cookies are necessary for the site to function properly and cannot be switched off in our systems. These cookies are usually only set in response to actions made by you that amount to a request for services, such as setting your privacy preferences, logging in, or filling in forms. You can set your browser to block or alert you about these cookies, but blocking these cookies will prevent the site from functioning properly. These cookies typically do not store personal data.
+
+#### Performance Cookies
+
+Always Active
+
+Performance cookies allow us to count visits and traffic sources so we can measure and improve the performance of our sites. These cookies help us understand how our sites are being used, such as which sites are the most and least popular and how people navigate around the sites. The information collected in these cookies are aggregated, meaning that the do not relate to you personally. Opting out of these cookies will prevent us from knowing when you have visited our site and will prevent us from monitoring site performance. In some cases, these cookies may be sent to our third party service providers to help us manage these analytics.
+
+#### Targeting Cookies
+
+Always Active
+
+Targeting cookies may be set through our site by our advertising partners. They may be used by those companies to build a profile of your interests and show you relevant advertisements on other sites. These cookies do not store directly personal information, but are based on uniquely identifying your browser and device. If you do not allow these cookies, you will experience less targeted advertising.
+
+#### Functional Cookies
+
+Always Active
+
+Functional cookies enable our sites to provide enhanced functionality and personalization. They may be set by us or by third party service providers whose services we have added to our sites. If you reject these cookies, then some or all of these services may not function properly.
+
+Back Button
+
+### Cookie List
+
+Search Icon
+
+Filter Icon
+
+Clear
+
+checkbox label label
+
+Apply Cancel
+
+Consent Leg.Interest
+
+checkbox label label
+
+checkbox label label
+
+checkbox label label
+
+Confirm My Choices
+
+[![Powered by Onetrust](https://cdn.cookielaw.org/logos/static/powered_by_logo.svg "Powered by OneTrust Opens in a new Tab")](https://www.onetrust.com/products/cookie-consent/)
