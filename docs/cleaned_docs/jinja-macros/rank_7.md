@@ -1,0 +1,44 @@
+Copy page
+
+On this page
+
+About debug macro
+=================
+
+Development environment only
+
+The `debug` macro is only intended to be used in a development context with dbt. Do not deploy code to production that uses the `debug` macro.
+
+The `{{ debug() }}` macro will open an iPython debugger in the context of a compiled dbt macro. The `DBT_MACRO_DEBUGGING` environment value must be set to use the debugger.
+
+Usage[​](#usage "Direct link to Usage")
+---------------------------------------
+
+my\_macro.sql
+
+```
+{% macro my_macro() %}  
+  
+  {% set something_complex = my_complicated_macro() %}  
+    
+  {{ debug() }}  
+  
+{% endmacro %}
+```
+
+When dbt hits the `debug()` line, you'll see something like:
+
+```
+$ DBT_MACRO_DEBUGGING=write dbt compile  
+Running with dbt=1.0  
+> /var/folders/31/mrzqbbtd3rn4hmgbhrtkfyxm0000gn/T/dbt-macro-compiled-cxvhhgu7.py(14)root()  
+     13         environment.call(context, (undefined(name='debug') if l_0_debug is missing else l_0_debug)),  
+---> 14         environment.call(context, (undefined(name='source') if l_0_source is missing else l_0_source), 'src', 'seedtable'),  
+     15     )  
+  
+ipdb> l 9,12  
+      9     l_0_debug = resolve('debug')  
+     10     l_0_source = resolve('source')  
+     11     pass  
+     12     yield '%s\nselect * from %s' % (
+```
