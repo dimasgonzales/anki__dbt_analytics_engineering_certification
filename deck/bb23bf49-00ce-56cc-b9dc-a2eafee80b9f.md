@@ -1,12 +1,12 @@
 ---
-uuid: bb23bf49-00ce-56cc-b9dc-a2eafee80b9f
-guid: C+vAz]PJg!
-citations:
-- https://docs.getdbt.com/reference/commands/snapshot
 tags:
-- cli-commands
-- snapshots
-- materializations
+  - selectors
+  - cli-commands
+citations:
+  - https://docs.getdbt.com/reference/commands/snapshot
+guid: C+vAz]PJg!
+source: apkg
+uuid: bb23bf49-00ce-56cc-b9dc-a2eafee80b9f
 ---
 
 <front>

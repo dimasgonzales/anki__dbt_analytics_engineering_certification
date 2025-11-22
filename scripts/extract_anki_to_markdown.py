@@ -271,18 +271,19 @@ def build_note_markdown(note: Dict[str, Any], note_uuid: str) -> str:
     
     parts: List[str] = []
     
-    # Add frontmatter
+    # Add frontmatter (sorted alphabetically for stable diffs)
     parts.append("---")
-    parts.append(f"uuid: {note_uuid}")
-    parts.append(f"guid: {guid}")
-    if tags:
-        parts.append("tags:")
-        for tag in tags:
-            parts.append(f"  - {tag}")
     if citations:
         parts.append("citations:")
         for url in citations:
             parts.append(f"  - {url}")
+    parts.append(f"guid: {guid}")
+    parts.append("source: apkg")
+    if tags:
+        parts.append("tags:")
+        for tag in tags:
+            parts.append(f"  - {tag}")
+    parts.append(f"uuid: {note_uuid}")
     parts.append("---")
     parts.append("")
     
