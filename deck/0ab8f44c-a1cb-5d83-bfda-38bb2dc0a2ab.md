@@ -1,8 +1,8 @@
 ---
 tags:
-  - exposures
-  - descriptions
-  - sources
+- descriptions
+- exposures
+- sources
 citations:
 - cleaned_docs/exposures/rank_3.md
 guid: 698052df2d

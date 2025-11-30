@@ -1,8 +1,8 @@
 ---
 tags:
-  - python-models
-  - snapshots
-  - modularity
+- modularity
+- python-models
+- snapshots
 citations:
 - cleaned_docs/error-logs/rank_2.md
 guid: 2e09257181

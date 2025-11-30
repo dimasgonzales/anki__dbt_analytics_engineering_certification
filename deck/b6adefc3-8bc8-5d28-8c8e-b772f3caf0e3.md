@@ -1,8 +1,8 @@
 ---
 tags:
-  - dag-failures
-  - python-models
-  - compiled-code
+- compiled-code
+- dag-failures
+- python-models
 citations:
 - cleaned_docs/python-models/rank_1.md
 guid: 6579eac895

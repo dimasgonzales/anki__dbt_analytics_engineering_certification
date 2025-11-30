@@ -1,8 +1,8 @@
 ---
 tags:
-  - seeds
-  - snapshots
-  - modularity
+- modularity
+- seeds
+- snapshots
 citations:
   - https://docs.getdbt.com/reference/dbt-jinja-functions/adapter
 guid: LNbCu:E4is

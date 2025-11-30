@@ -1,8 +1,8 @@
 ---
 tags:
-  - deployment-jobs
-  - lineage
-  - modularity
+- deployment-jobs
+- lineage
+- modularity
 citations:
 - cleaned_docs/cli-commands/rank_4.md
 guid: cb3ad01538

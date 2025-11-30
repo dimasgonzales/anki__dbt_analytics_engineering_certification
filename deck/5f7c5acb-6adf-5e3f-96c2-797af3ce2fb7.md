@@ -1,8 +1,8 @@
 ---
 tags:
-  - snapshots
-  - sources
-  - materializations
+- materializations
+- snapshots
+- sources
 citations:
 - cleaned_docs/modularity/rank_2.md
 guid: 8e1c054822

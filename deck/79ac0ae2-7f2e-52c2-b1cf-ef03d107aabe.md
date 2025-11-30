@@ -1,8 +1,8 @@
 ---
 tags:
-  - materializations
-  - snapshots
-  - test-config
+- materializations
+- snapshots
+- test-config
 citations:
 - cleaned_docs/snapshots/rank_7.md
 guid: 8dfa3fb3d9

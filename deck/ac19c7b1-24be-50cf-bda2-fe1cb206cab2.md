@@ -1,8 +1,8 @@
 ---
 tags:
-  - modularity
-  - dag-failures
-  - seeds
+- dag-failures
+- modularity
+- seeds
 citations:
 - cleaned_docs/error-logs/rank_3.md
 guid: be77b38df5

@@ -1,8 +1,8 @@
 ---
 tags:
-  - model-access
-  - modularity
-  - seeds
+- model-access
+- modularity
+- seeds
 citations:
 - cleaned_docs/contracts/rank_3.md
 guid: 1f6348a68c

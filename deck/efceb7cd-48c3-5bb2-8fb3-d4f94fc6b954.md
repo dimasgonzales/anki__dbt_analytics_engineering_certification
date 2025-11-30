@@ -1,8 +1,8 @@
 ---
 tags:
-  - cli-commands
-  - compiled-code
-  - selectors
+- cli-commands
+- compiled-code
+- selectors
 citations:
   - https://docs.getdbt.com/reference/node-selection/methods
 guid: bZ`r/hy8t=

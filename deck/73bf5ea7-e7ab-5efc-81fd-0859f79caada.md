@@ -1,8 +1,8 @@
 ---
 tags:
-  - yaml-compilation
-  - materializations
-  - cli-commands
+- cli-commands
+- materializations
+- yaml-compilation
 citations:
 - cleaned_docs/model-access/rank_8.md
 guid: 723d065cd0

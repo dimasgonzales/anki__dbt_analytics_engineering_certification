@@ -1,8 +1,8 @@
 ---
 tags:
-  - seeds
-  - python-models
-  - compiled-code
+- compiled-code
+- python-models
+- seeds
 citations:
 - cleaned_docs/lineage/rank_9.md
 guid: 2793bbb9e1

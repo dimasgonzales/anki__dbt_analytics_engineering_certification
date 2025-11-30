@@ -1,8 +1,8 @@
 ---
 tags:
-  - modularity
-  - exposures
-  - lineage
+- exposures
+- lineage
+- modularity
 citations:
 - cleaned_docs/exposures/rank_3.md
 guid: eb985f7ace

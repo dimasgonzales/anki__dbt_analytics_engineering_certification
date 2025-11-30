@@ -1,8 +1,8 @@
 ---
 tags:
-  - test-config
-  - yaml-compilation
-  - compiled-code
+- compiled-code
+- test-config
+- yaml-compilation
 citations:
 - cleaned_docs/cli-commands/rank_2.md
 guid: 140a2b36ff

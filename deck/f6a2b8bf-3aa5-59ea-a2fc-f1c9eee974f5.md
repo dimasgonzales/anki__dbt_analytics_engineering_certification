@@ -1,8 +1,8 @@
 ---
 tags:
-  - exposures
-  - seeds
-  - modularity
+- exposures
+- modularity
+- seeds
 citations:
 - cleaned_docs/exposures/rank_9.md
 guid: f21c501bd5

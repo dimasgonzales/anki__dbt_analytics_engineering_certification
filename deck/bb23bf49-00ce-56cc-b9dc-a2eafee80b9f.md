@@ -1,7 +1,7 @@
 ---
 tags:
-  - selectors
-  - cli-commands
+- cli-commands
+- selectors
 citations:
   - https://docs.getdbt.com/reference/commands/snapshot
 guid: C+vAz]PJg!

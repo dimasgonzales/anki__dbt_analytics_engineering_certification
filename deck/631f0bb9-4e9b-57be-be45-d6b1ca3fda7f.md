@@ -1,8 +1,8 @@
 ---
 tags:
-  - modularity
-  - sql-performance
-  - test-types
+- modularity
+- sql-performance
+- test-types
 citations:
 - cleaned_docs/docs-generation/rank_5.md
 guid: f70b5c9a90

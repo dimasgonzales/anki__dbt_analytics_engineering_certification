@@ -1,8 +1,8 @@
 ---
 tags:
-  - selectors
-  - cli-commands
-  - compiled-code
+- cli-commands
+- compiled-code
+- selectors
 citations:
 - cleaned_docs/test-types/rank_1.md
 guid: 9d982183f4

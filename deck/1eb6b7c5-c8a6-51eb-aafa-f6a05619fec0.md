@@ -1,8 +1,8 @@
 ---
 tags:
-  - jinja-macros
-  - python-models
-  - docs-generation
+- docs-generation
+- jinja-macros
+- python-models
 citations:
 - cleaned_docs/jinja-macros/rank_9.md
 guid: e491540a24

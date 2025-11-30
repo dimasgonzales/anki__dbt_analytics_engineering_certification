@@ -1,8 +1,8 @@
 ---
 tags:
-  - docs-generation
-  - lineage
-  - test-types
+- docs-generation
+- lineage
+- test-types
 citations:
 - cleaned_docs/test-types/rank_5.md
 guid: 737138baaf

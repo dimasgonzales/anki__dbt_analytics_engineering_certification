@@ -1,8 +1,8 @@
 ---
 tags:
-  - compiled-code
-  - descriptions
-  - python-models
+- compiled-code
+- descriptions
+- python-models
 citations:
 - cleaned_docs/materializations/rank_4.md
 guid: 352a834e84

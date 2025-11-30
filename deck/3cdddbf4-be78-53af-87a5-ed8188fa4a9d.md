@@ -1,8 +1,8 @@
 ---
 tags:
-  - contracts
-  - cli-commands
-  - descriptions
+- cli-commands
+- contracts
+- descriptions
 citations:
 - cleaned_docs/contracts/rank_6.md
 guid: 8ffb3d366a

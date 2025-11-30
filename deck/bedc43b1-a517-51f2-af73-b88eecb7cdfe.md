@@ -1,8 +1,8 @@
 ---
 tags:
-  - compiled-code
-  - state-concepts
-  - cli-commands
+- cli-commands
+- compiled-code
+- state-concepts
 citations:
 - cleaned_docs/dbt-clone/rank_7.md
 guid: 1c94d6ff00

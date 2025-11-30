@@ -1,7 +1,8 @@
 ---
 tags:
-  - jinja-macros
-  - modularity
+- jinja-macros
+- modularity
+- project-config
 citations:
 - cleaned_docs/jinja-macros/index.md
 guid: 97f31a5ddd

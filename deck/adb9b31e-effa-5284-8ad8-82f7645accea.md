@@ -1,8 +1,8 @@
 ---
 tags:
-  - lineage
-  - modularity
-  - seeds
+- lineage
+- modularity
+- seeds
 citations:
 - cleaned_docs/exposures/rank_2.md
 guid: 4d1a516697

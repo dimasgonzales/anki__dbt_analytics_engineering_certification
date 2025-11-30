@@ -1,8 +1,8 @@
 ---
 tags:
-  - snapshots
-  - project-config
-  - materializations
+- project-config
+- snapshots
+- yaml-compilation
 citations:
 - cleaned_docs/grants/rank_7.md
 guid: ca4aa01595

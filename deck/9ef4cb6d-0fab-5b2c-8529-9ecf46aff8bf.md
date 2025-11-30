@@ -1,8 +1,8 @@
 ---
 tags:
-  - seeds
-  - jinja-macros
-  - cli-commands
+- cli-commands
+- jinja-macros
+- seeds
 citations:
 - cleaned_docs/seeds/rank_3.md
 guid: f2cb750930

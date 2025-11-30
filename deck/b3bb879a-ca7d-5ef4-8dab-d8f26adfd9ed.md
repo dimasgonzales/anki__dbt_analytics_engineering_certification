@@ -1,8 +1,8 @@
 ---
 tags:
-  - state-concepts
-  - selectors
-  - cli-commands
+- cli-commands
+- selectors
+- state-concepts
 citations:
 - cleaned_docs/grants/rank_6.md
 guid: 4004aa9f67

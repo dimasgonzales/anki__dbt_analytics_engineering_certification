@@ -1,8 +1,8 @@
 ---
 tags:
-  - test-config
-  - dbt-clone
-  - project-config
+- dbt-clone
+- project-config
+- test-config
 citations:
 - cleaned_docs/test-config/rank_2.md
 guid: 313aed1557

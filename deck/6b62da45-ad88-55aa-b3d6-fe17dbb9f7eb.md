@@ -1,7 +1,7 @@
 ---
 tags:
-  - versioning
-  - dag-failures
+- dag-failures
+- versioning
 citations:
 - cleaned_docs/versioning/rank_2.md
 guid: 313f701ec5

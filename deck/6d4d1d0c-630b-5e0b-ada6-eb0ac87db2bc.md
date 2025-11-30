@@ -1,8 +1,8 @@
 ---
 tags:
-  - deployment-jobs
-  - lineage
-  - yaml-compilation
+- deployment-jobs
+- lineage
+- yaml-compilation
 citations:
 - cleaned_docs/dbt-clone/rank_3.md
 guid: d578480f37

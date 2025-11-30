@@ -1,8 +1,8 @@
 ---
 tags:
-  - cli-commands
-  - project-config
-  - selectors
+- cli-commands
+- project-config
+- selectors
 citations:
 - cleaned_docs/project-config/rank_7.md
 guid: 359019d817

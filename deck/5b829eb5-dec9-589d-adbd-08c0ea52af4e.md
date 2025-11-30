@@ -1,7 +1,7 @@
 ---
 tags:
-  - project-config
-  - sources
+- project-config
+- sources
 citations:
 - cleaned_docs/python-models/rank_9.md
 guid: 1f5bd196b7

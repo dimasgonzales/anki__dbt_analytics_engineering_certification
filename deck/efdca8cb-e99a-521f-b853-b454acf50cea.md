@@ -1,8 +1,8 @@
 ---
 tags:
-  - docs-generation
-  - compiled-code
-  - state-concepts
+- compiled-code
+- docs-generation
+- state-concepts
 citations:
 - cleaned_docs/cli-commands/rank_7.md
 guid: 0fb2cdc80e

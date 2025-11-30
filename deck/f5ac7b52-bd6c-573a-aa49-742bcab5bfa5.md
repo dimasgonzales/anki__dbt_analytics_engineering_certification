@@ -1,8 +1,8 @@
 ---
 tags:
-  - yaml-compilation
-  - error-logs
-  - compiled-code
+- compiled-code
+- error-logs
+- yaml-compilation
 citations:
 - cleaned_docs/sources/rank_7.md
 guid: fed2947c1c

@@ -1,8 +1,8 @@
 ---
 tags:
-  - seeds
-  - docs-generation
-  - modularity
+- docs-generation
+- modularity
+- seeds
 citations:
 - cleaned_docs/python-models/rank_8.md
 guid: 4122eb8c1f

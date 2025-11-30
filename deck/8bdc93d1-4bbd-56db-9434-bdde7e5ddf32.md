@@ -1,8 +1,8 @@
 ---
 tags:
-  - project-config
-  - contracts
-  - sources
+- contracts
+- project-config
+- sources
 citations:
 - cleaned_docs/project-config/rank_1.md
 guid: 59a7f2af9c

@@ -1,6 +1,6 @@
 ---
 tags:
-  - jinja-macros
+- jinja-macros
 citations:
 - cleaned_docs/packages/rank_6.md
 guid: c899969a7b

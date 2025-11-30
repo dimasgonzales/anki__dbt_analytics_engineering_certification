@@ -1,8 +1,8 @@
 ---
 tags:
-  - lineage
-  - exposures
-  - sources
+- exposures
+- lineage
+- sources
 citations:
 - cleaned_docs/lineage/rank_4.md
 guid: 3ecdd3a1d3

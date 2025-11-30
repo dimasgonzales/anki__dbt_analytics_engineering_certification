@@ -1,7 +1,7 @@
 ---
 tags:
-  - selectors
-  - jinja-macros
+- jinja-macros
+- selectors
 citations:
 - cleaned_docs/selectors/rank_6.md
 guid: b21886ea8c

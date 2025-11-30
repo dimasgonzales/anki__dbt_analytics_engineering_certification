@@ -1,8 +1,8 @@
 ---
 tags:
-  - selectors
-  - compiled-code
-  - modularity
+- compiled-code
+- modularity
+- selectors
 citations:
   - https://docs.getdbt.com/reference/node-selection/exclude
 guid: lVU,U#}/LW

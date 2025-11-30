@@ -1,8 +1,8 @@
 ---
 tags:
-  - materializations
-  - packages
-  - modularity
+- materializations
+- modularity
+- packages
 citations:
 - cleaned_docs/docs-generation/rank_7.md
 guid: 1a1365c5d7

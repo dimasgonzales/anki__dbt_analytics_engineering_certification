@@ -1,8 +1,8 @@
 ---
 tags:
-  - descriptions
-  - seeds
-  - contracts
+- contracts
+- descriptions
+- seeds
 citations:
 - cleaned_docs/descriptions/rank_2.md
 guid: 657dc3fc1f

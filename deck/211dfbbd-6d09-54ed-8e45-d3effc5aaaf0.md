@@ -1,8 +1,8 @@
 ---
 tags:
-  - compiled-code
-  - state-concepts
-  - modularity
+- compiled-code
+- modularity
+- state-concepts
 citations:
 - cleaned_docs/jinja-macros/rank_6.md
 guid: 84e6aeb217

@@ -1,8 +1,8 @@
 ---
 tags:
-  - seeds
-  - packages
-  - error-logs
+- error-logs
+- packages
+- seeds
 citations:
 - cleaned_docs/docs-generation/rank_7.md
 guid: c4fa88cb36

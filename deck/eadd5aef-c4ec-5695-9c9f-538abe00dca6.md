@@ -1,8 +1,8 @@
 ---
 tags:
-  - seeds
-  - modularity
-  - deployment-jobs
+- deployment-jobs
+- modularity
+- seeds
 citations:
 - cleaned_docs/seeds/index.md
 guid: d6af3936dd

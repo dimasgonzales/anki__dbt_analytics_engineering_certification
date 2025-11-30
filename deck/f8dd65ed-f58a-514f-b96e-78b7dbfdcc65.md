@@ -1,8 +1,8 @@
 ---
 tags:
-  - sources
-  - descriptions
-  - exposures
+- descriptions
+- exposures
+- sources
 citations:
 - cleaned_docs/lineage/rank_6.md
 guid: 0f67d6e5b6

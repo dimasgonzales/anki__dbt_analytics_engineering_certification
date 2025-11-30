@@ -1,8 +1,8 @@
 ---
 tags:
-  - yaml-compilation
-  - error-logs
-  - compiled-code
+- compiled-code
+- error-logs
+- yaml-compilation
 citations:
 - cleaned_docs/jinja-macros/rank_6.md
 guid: 014e1c0c1d

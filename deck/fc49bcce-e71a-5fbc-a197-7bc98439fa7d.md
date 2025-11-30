@@ -1,8 +1,8 @@
 ---
 tags:
-  - docs-generation
-  - descriptions
-  - compiled-code
+- compiled-code
+- descriptions
+- docs-generation
 citations:
 - cleaned_docs/packages/rank_9.md
 guid: 835a0fc5a6

@@ -1,8 +1,8 @@
 ---
 tags:
-  - packages
-  - cli-commands
-  - versioning
+- cli-commands
+- packages
+- versioning
 citations:
 - cleaned_docs/packages/rank_1.md
 guid: a0f0d81aa3

@@ -1,8 +1,8 @@
 ---
 tags:
-  - descriptions
-  - project-config
-  - error-logs
+- descriptions
+- error-logs
+- project-config
 citations:
 - cleaned_docs/project-config/rank_7.md
 guid: 6d4461d1b5

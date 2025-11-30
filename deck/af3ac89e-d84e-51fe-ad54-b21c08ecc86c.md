@@ -1,8 +1,8 @@
 ---
 tags:
-  - exposures
-  - snapshots
-  - materializations
+- exposures
+- materializations
+- snapshots
 citations:
 - cleaned_docs/modularity/rank_1.md
 guid: ba2647c918

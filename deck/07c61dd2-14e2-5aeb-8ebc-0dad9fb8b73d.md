@@ -1,8 +1,8 @@
 ---
 tags:
-  - materializations
-  - grants
-  - contracts
+- contracts
+- grants
+- materializations
 citations:
 - cleaned_docs/grants/rank_2.md
 guid: 5a5994a405

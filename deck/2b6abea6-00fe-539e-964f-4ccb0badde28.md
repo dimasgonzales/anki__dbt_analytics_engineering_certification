@@ -1,8 +1,8 @@
 ---
 tags:
-  - deployment-jobs
-  - lineage
-  - cli-commands
+- cli-commands
+- deployment-jobs
+- lineage
 citations:
 - cleaned_docs/deployment-jobs/rank_2.md
 guid: 9148741cb7

@@ -1,8 +1,8 @@
 ---
 tags:
-  - sources
-  - snapshots
-  - modularity
+- modularity
+- snapshots
+- sources
 citations:
 - cleaned_docs/sources/rank_10.md
 guid: eca3d1396f

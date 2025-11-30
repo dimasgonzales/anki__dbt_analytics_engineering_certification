@@ -1,8 +1,8 @@
 ---
 tags:
-  - dag-failures
-  - compiled-code
-  - test-types
+- compiled-code
+- dag-failures
+- test-types
 citations:
 - cleaned_docs/test-types/rank_1.md
 guid: dc10605b22

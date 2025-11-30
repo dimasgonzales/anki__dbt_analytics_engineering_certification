@@ -1,8 +1,8 @@
 ---
 tags:
-  - yaml-compilation
-  - project-config
-  - modularity
+- modularity
+- project-config
+- yaml-compilation
 citations:
 - cleaned_docs/yaml-compilation/rank_1.md
 guid: 3017dbf5d7

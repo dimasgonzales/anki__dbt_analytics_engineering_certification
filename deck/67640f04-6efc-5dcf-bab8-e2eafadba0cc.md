@@ -1,8 +1,8 @@
 ---
 tags:
-  - project-config
-  - sources
-  - materializations
+- materializations
+- project-config
+- sources
 citations:
 - cleaned_docs/sources/rank_10.md
 guid: c73ae837fe

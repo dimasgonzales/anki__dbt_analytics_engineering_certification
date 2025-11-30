@@ -1,8 +1,8 @@
 ---
 tags:
-  - exposures
-  - cli-commands
-  - seeds
+- cli-commands
+- exposures
+- seeds
 citations:
 - cleaned_docs/exposures/rank_1.md
 guid: 88154c03d4

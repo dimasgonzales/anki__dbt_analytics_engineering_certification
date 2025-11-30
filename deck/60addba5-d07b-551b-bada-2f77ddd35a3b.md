@@ -1,8 +1,8 @@
 ---
 tags:
-  - test-config
-  - yaml-compilation
-  - seeds
+- seeds
+- test-config
+- yaml-compilation
 citations:
 - cleaned_docs/seeds/rank_4.md
 guid: dbab72566f

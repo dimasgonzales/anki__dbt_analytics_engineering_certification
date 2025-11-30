@@ -1,8 +1,8 @@
 ---
 tags:
-  - compiled-code
-  - modularity
-  - sql-performance
+- compiled-code
+- modularity
+- sql-performance
 citations:
 - cleaned_docs/error-logs/rank_9.md
 guid: 8eccc44586

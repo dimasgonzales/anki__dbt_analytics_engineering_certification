@@ -1,8 +1,8 @@
 ---
 tags:
-  - deployment-jobs
-  - materializations
-  - error-logs
+- deployment-jobs
+- error-logs
+- materializations
 citations:
 - cleaned_docs/jinja-macros/rank_7.md
 guid: 0a2d4cb3f6

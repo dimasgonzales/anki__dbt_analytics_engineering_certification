@@ -1,8 +1,8 @@
 ---
 tags:
-  - python-models
-  - test-config
-  - jinja-macros
+- jinja-macros
+- python-models
+- test-config
 citations:
 - cleaned_docs/python-models/rank_4.md
 guid: bd315e6fb7

@@ -1,8 +1,8 @@
 ---
 tags:
-  - lineage
-  - sources
-  - test-config
+- lineage
+- sources
+- test-config
 citations:
 - cleaned_docs/exposures/rank_3.md
 guid: 9f0c7d572a

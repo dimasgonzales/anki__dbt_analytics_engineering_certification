@@ -1,8 +1,8 @@
 ---
 tags:
-  - sources
-  - deployment-jobs
-  - compiled-code
+- compiled-code
+- deployment-jobs
+- sources
 citations:
 - cleaned_docs/selectors/rank_4.md
 guid: 2e5e1cc5c9
