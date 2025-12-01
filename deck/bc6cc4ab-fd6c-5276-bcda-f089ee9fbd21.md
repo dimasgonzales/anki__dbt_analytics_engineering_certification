@@ -1,5 +1,6 @@
 ---
 tags:
+- card_type/scenario
 - error-logs
 - packages
 - seeds

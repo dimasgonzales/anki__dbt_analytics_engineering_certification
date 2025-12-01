@@ -1,5 +1,6 @@
 ---
 tags:
+- card_type/factual
 - descriptions
 - error-logs
 - project-config

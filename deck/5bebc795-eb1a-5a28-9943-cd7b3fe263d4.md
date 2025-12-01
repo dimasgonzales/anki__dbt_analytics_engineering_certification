@@ -1,5 +1,6 @@
 ---
 tags:
+- card_type/scenario
 - compiled-code
 - test-config
 - yaml-compilation

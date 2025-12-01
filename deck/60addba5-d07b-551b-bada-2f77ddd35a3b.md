@@ -1,5 +1,6 @@
 ---
 tags:
+- card_type/factual
 - seeds
 - test-config
 - yaml-compilation

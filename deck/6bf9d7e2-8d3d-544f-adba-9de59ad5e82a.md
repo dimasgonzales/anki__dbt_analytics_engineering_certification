@@ -1,5 +1,6 @@
 ---
 tags:
+- card_type/factual
 - jinja-macros
 citations:
 - cleaned_docs/packages/rank_6.md

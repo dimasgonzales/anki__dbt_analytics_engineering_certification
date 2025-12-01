@@ -1,5 +1,6 @@
 ---
 tags:
+- card_type/scenario
 - materializations
 - project-config
 - sources

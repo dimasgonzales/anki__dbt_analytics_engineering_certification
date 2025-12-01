@@ -1,5 +1,6 @@
 ---
 tags:
+- card_type/factual
 - cli-commands
 - selectors
 citations:

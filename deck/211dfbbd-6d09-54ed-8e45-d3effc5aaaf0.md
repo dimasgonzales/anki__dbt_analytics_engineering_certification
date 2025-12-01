@@ -1,5 +1,6 @@
 ---
 tags:
+- card_type/scenario
 - compiled-code
 - modularity
 - state-concepts

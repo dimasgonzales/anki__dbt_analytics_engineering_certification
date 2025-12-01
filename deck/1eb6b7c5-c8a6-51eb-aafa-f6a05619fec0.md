@@ -1,5 +1,6 @@
 ---
 tags:
+- card_type/factual
 - docs-generation
 - jinja-macros
 - python-models

@@ -1,5 +1,6 @@
 ---
 tags:
+- card_type/scenario
 - cli-commands
 - selectors
 - state-concepts

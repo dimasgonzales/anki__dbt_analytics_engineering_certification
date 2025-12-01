@@ -1,5 +1,6 @@
 ---
 tags:
+- card_type/factual
 - project-config
 - sources
 citations:

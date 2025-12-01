@@ -1,5 +1,6 @@
 ---
 tags:
+- card_type/factual
 - docs-generation
 - sources
 - state-concepts

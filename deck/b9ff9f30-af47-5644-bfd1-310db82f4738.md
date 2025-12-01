@@ -1,5 +1,6 @@
 ---
 tags:
+- card_type/factual
 - compiled-code
 - descriptions
 - docs-generation
