@@ -1,12 +1,14 @@
 ---
-uuid: fb8b17ff-eca6-513e-9cdc-512f0ee8de86
-guid: LNbCu:E4is
-citations:
-- https://docs.getdbt.com/reference/dbt-jinja-functions/adapter
 tags:
-- compiled-code
-- jinja-macros
-- sql-performance
+- card_type/scenario
+- development/modularity
+- development/seeds
+- development/snapshots
+citations:
+  - https://docs.getdbt.com/reference/dbt-jinja-functions/adapter
+guid: LNbCu:E4is
+source: apkg
+uuid: fb8b17ff-eca6-513e-9cdc-512f0ee8de86
 ---
 
 <front>

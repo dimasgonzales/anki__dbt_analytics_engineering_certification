@@ -1,7 +1,17 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#     "rich",
+# ]
+# ///
+
 import json
 import os
 import sys
 from collections import defaultdict
+from rich.console import Console
+from rich.table import Table
+from rich import box
 
 def get_project_root():
     """
@@ -40,159 +50,181 @@ def load_valid_tags(root_dir):
             
     return valid_tags, parent_to_children
 
-def parse_tags_from_file(file_path):
+def parse_card_data(file_path):
+    """Extract tags and card_type from frontmatter."""
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
         
-    # Extract frontmatter
-    if not content.startswith('---'):
-        return []
-        
-    parts = content.split('---', 2)
-    if len(parts) < 3:
-        return []
-        
-    frontmatter = parts[1]
-    lines = frontmatter.split('\n')
-    
     tags = []
-    in_tags_section = False
+    card_type = "Unknown"
     
-    for line in lines:
-        stripped_line = line.strip()
-        
-        if not stripped_line:
-            continue
+    # Extract frontmatter
+    if content.startswith('---'):
+        parts = content.split('---', 2)
+        if len(parts) >= 3:
+            frontmatter = parts[1]
+            lines = frontmatter.split('\n')
             
-        if stripped_line.startswith('tags:'):
-            in_tags_section = True
-            continue
+            in_tags_section = False
             
-        if in_tags_section:
-            # Check if this line is a list item (starts with -)
-            if stripped_line.startswith('-'):
-                tag = stripped_line.lstrip('- ').strip()
-                tags.append(tag)
-            # Check if we've moved to a new key (e.g. "other_key:")
-            elif ':' in stripped_line:
-                in_tags_section = False
+            for line in lines:
+                stripped_line = line.strip()
+                if not stripped_line:
+                    continue
                 
-    return tags
-
-def calculate_hierarchical_stats(parent_to_children, tag_to_cards, total_cards):
-    """Calculate parent and child level statistics."""
-    parent_stats = {}
-    
-    for parent, children in parent_to_children.items():
-        # Collect all cards tagged with any child of this parent
-        parent_cards = set()
-        child_stats = {}
-        
-        for child in children:
-            child_cards = tag_to_cards.get(child, set())
-            parent_cards.update(child_cards)
-            child_stats[child] = {
-                'count': len(child_cards),
-                'percentage': (len(child_cards) / total_cards * 100) if total_cards > 0 else 0
-            }
-        
-        parent_stats[parent] = {
-            'count': len(parent_cards),
-            'percentage': (len(parent_cards) / total_cards * 100) if total_cards > 0 else 0,
-            'children': child_stats
-        }
-    
-    return parent_stats
-
-def print_hierarchical_tree(parent_stats, parent_to_children, total_cards):
-    """Print hierarchical tree of tag coverage."""
-    print("\n" + "="*60)
-    print("TAG COVERAGE BY HIERARCHY")
-    print("="*60)
-    
-    # Sort parents alphabetically
-    for parent in sorted(parent_to_children.keys()):
-        stats = parent_stats[parent]
-        print(f"\n{parent}: {stats['count']}/{total_cards} cards ({stats['percentage']:.1f}%)")
-        
-        # Sort children alphabetically
-        for child in sorted(parent_to_children[parent]):
-            child_stats = stats['children'][child]
-            print(f"  - {child}: {child_stats['count']}/{total_cards} cards ({child_stats['percentage']:.1f}%)")
+                # Extract Tags
+                if stripped_line.startswith('tags:'):
+                    in_tags_section = True
+                    continue
+                    
+                if in_tags_section:
+                    if stripped_line.startswith('-'):
+                        tag = stripped_line.lstrip('- ').strip()
+                        tags.append(tag)
+                        # Check for card_type tag
+                        if tag.startswith('card_type/'):
+                            # Extract type, e.g., "factual" from "card_type/factual"
+                            # Capitalize to match "Factual"/"Scenario" convention if desired, 
+                            # or keep as is. The previous script used "Factual"/"Scenario" (Title Case).
+                            # Let's title case it to be safe and consistent with previous output.
+                            ctype = tag.split('/', 1)[1]
+                            card_type = ctype.title() 
+                    elif ':' in stripped_line:
+                        in_tags_section = False
+                        
+    return tags, card_type
 
 def main():
+    console = Console()
     root_dir = get_project_root()
     deck_dir = os.path.join(root_dir, 'deck')
     
-    valid_tags, parent_to_children = load_valid_tags(root_dir)
-    found_tags = set()
-    tag_to_cards = defaultdict(set)
-    card_to_tags = {}
-    
     if not os.path.exists(deck_dir):
-        print(f"Error: deck directory not found at {deck_dir}")
+        console.print(f"[bold red]Error:[/bold red] deck directory not found at {deck_dir}")
         sys.exit(1)
-        
-    # Iterate over .md files
+
+    valid_tags, parent_to_children = load_valid_tags(root_dir)
+    
+    # Data Aggregation
+    # tag -> set of filenames
+    tag_to_cards = defaultdict(set)
+    # filename -> card_type
+    card_types = {}
+    
     total_cards = 0
+    untagged_cards = []
+    found_tags = set()
+    
+    # Iterate over .md files
     for filename in os.listdir(deck_dir):
         if filename.endswith('.md'):
             total_cards += 1
             file_path = os.path.join(deck_dir, filename)
-            file_tags = parse_tags_from_file(file_path)
-            found_tags.update(file_tags)
-            card_to_tags[filename] = file_tags
+            file_tags, card_type = parse_card_data(file_path)
             
-            # Track which cards have each tag
+            card_types[filename] = card_type
+            found_tags.update(file_tags)
+            
+            if not file_tags:
+                untagged_cards.append(filename)
+            
             for tag in file_tags:
                 tag_to_cards[tag].add(filename)
+
+    # --- Visualization ---
     
-    # Count untagged cards and collect their filenames
-    untagged_cards = sorted([filename for filename, tags in card_to_tags.items() if len(tags) == 0])
-    untagged_count = len(untagged_cards)
+    console.print("\n[bold blue]Anki Sandbox - Tag Coverage[/bold blue]\n")
     
-    # Identify undefined tags
-    undefined_tags = sorted(list(found_tags - valid_tags))
+    # Create Main Table
+    table = Table(box=box.SIMPLE_HEAD)
+    table.add_column("Tag", style="cyan", no_wrap=True)
+    table.add_column("Total", justify="right", style="white")
+    table.add_column("% Deck", justify="right", style="green")
+    table.add_column("Factual", justify="right", style="blue")
+    table.add_column("Scenario", justify="right", style="magenta")
+
+    def get_stats(filenames):
+        count = len(filenames)
+        factual = sum(1 for f in filenames if card_types.get(f) == 'Factual')
+        scenario = sum(1 for f in filenames if card_types.get(f) == 'Scenario')
+        return count, factual, scenario
+
+    def fmt_pct(val, total):
+        if not val or not total: return "-"
+        pct = (val / total) * 100
+        return f"{val} ({pct:.0f}%)"
     
-    # Calculate hierarchical statistics
-    parent_stats = calculate_hierarchical_stats(parent_to_children, tag_to_cards, total_cards)
-    
-    # Print hierarchical tree
-    print_hierarchical_tree(parent_stats, parent_to_children, total_cards)
-    
-    # Print untagged cards
-    print(f"\n" + "="*60)
-    print(f"UNTAGGED CARDS: {untagged_count}/{total_cards} cards ({(untagged_count/total_cards*100) if total_cards > 0 else 0:.1f}%)")
-    print("="*60)
-    if untagged_cards:
-        for card in untagged_cards:
-            print(f"  - deck/{card}")
-    
-    # Calculate overall coverage
-    # Coverage = (valid tags that appear in at least one file) / (total valid tags)
-    used_valid_tags = found_tags.intersection(valid_tags)
-    
-    if len(valid_tags) > 0:
-        coverage_pct = (len(used_valid_tags) / len(valid_tags)) * 100
-    else:
-        coverage_pct = 0.0
-    
-    # List unused tags
-    unused_tags = sorted(list(valid_tags - found_tags))
-    if unused_tags:
-        print(f"\nUNUSED VALID TAGS: {len(unused_tags)}/{len(valid_tags)}")
-        for tag in unused_tags:
-            print(f"  - {tag}")
+    def fmt_deck_pct(val, total_deck):
+        if not val or not total_deck: return "-"
+        pct = (val / total_deck) * 100
+        return f"{pct:.1f}%"
+
+    # Sort parents
+    for parent in sorted(parent_to_children.keys()):
+        # Aggregate Parent Stats
+        parent_cards = set()
+        for child in parent_to_children[parent]:
+            parent_cards.update(tag_to_cards.get(child, set()))
+            
+        p_count, p_factual, p_scenario = get_stats(parent_cards)
         
-    # Output undefined tags
-    if undefined_tags:
-        print(f"\nUNDEFINED TAGS (not in tags.json): {len(undefined_tags)}")
-        for tag in undefined_tags:
-            print(f"  - {tag}")
+        # Add Parent Row
+        table.add_row(
+            f"[bold]{parent}[/bold]",
+            str(p_count),
+            fmt_deck_pct(p_count, total_cards),
+            fmt_pct(p_factual, p_count),
+            fmt_pct(p_scenario, p_count)
+        )
+        
+        # Sort children
+        for child in sorted(parent_to_children[parent]):
+            child_cards = tag_to_cards.get(child, set())
+            if child_cards:
+                c_count, c_factual, c_scenario = get_stats(child_cards)
+                
+                table.add_row(
+                    f"  {child}",
+                    str(c_count),
+                    fmt_deck_pct(c_count, total_cards),
+                    fmt_pct(c_factual, c_count),
+                    fmt_pct(c_scenario, c_count)
+                )
+            else:
+                table.add_row(f"  [dim]{child}[/dim]", "0", "-", "-", "-")
+        
+        # Add empty row for spacing
+        table.add_row("", "", "", "", "")
+
+    console.print(table)
     
-    print(f"\n" + "="*60)
-    print(f"OVERALL TAG COVERAGE: {len(used_valid_tags)}/{len(valid_tags)} tags used ({coverage_pct:.1f}%)")
-    print("="*60)
+    # Summary Section
+    console.print("\n[bold]Summary Statistics[/bold]")
+    summary_table = Table(box=box.SIMPLE, show_header=False)
+    summary_table.add_column("Metric", style="cyan")
+    summary_table.add_column("Value", style="white")
+    
+    used_valid_tags = found_tags.intersection(valid_tags)
+    coverage_pct = (len(used_valid_tags) / len(valid_tags) * 100) if valid_tags else 0
+    
+    summary_table.add_row("Total Cards", str(total_cards))
+    summary_table.add_row("Untagged Cards", f"{len(untagged_cards)} ({len(untagged_cards)/total_cards*100:.1f}%)" if total_cards else "0")
+    summary_table.add_row("Tag Coverage", f"{len(used_valid_tags)}/{len(valid_tags)} ({coverage_pct:.1f}%)")
+    
+    console.print(summary_table)
+    
+    # Untagged Cards List
+    if untagged_cards:
+        console.print(f"\n[bold red]Untagged Cards ({len(untagged_cards)}):[/bold red]")
+        for card in untagged_cards:
+            console.print(f"  - deck/{card}")
+
+    # Undefined Tags
+    undefined_tags = sorted([t for t in (found_tags - valid_tags) if not t.startswith('card_type/')])
+    if undefined_tags:
+        console.print(f"\n[bold red]Undefined Tags ({len(undefined_tags)}):[/bold red]")
+        for tag in undefined_tags:
+            console.print(f"  - {tag}")
 
 if __name__ == "__main__":
     main()

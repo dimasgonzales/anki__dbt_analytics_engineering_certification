@@ -1,12 +1,14 @@
 ---
-uuid: ae30f94c-c7ae-55bd-8ecf-5378d08eac3e
-guid: lVU,U#}/LW
-citations:
-- https://docs.getdbt.com/reference/node-selection/exclude
 tags:
-- selectors
-- cli-commands
-- modularity
+- card_type/scenario
+- debugging/compiled-code
+- development/modularity
+- state/selectors
+citations:
+  - https://docs.getdbt.com/reference/node-selection/exclude
+guid: lVU,U#}/LW
+source: apkg
+uuid: ae30f94c-c7ae-55bd-8ecf-5378d08eac3e
 ---
 
 <front>
