@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 # /// script
 # dependencies = [
-#   "pyyaml>=6.0.1",
-#   "google-genai>=0.2.0",
-#   "pydantic>=2.7.0",
-#   "python-dotenv>=1.0.0",
+#   "google-genai",
+#   "openai>=1.0.0",
+#   "pydantic",
+#   "python-dotenv",
+#   "pyyaml",
 # ]
 # ///
 """
@@ -54,11 +55,21 @@ def load_flashcard(card_path: Path) -> dict[str, Any]:
     content = card_path.read_text()
     
     # Extract YAML frontmatter
-    match = re.match(r'^---\n(.*?)\n---\n(.*)$', content, re.DOTALL)
+    # Extract YAML frontmatter
+    # Fix regex to handle empty frontmatter or no newline before closing ---
+    match = re.match(r'^---\n(.*?)---\n(.*)$', content, re.DOTALL)
     if not match:
         raise ValueError(f"Invalid flashcard format: {card_path}")
     
-    frontmatter = yaml.safe_load(match.group(1))
+    try:
+        frontmatter = yaml.safe_load(match.group(1))
+    except yaml.YAMLError as e:
+        print(f"Warning: YAML error in {card_path}: {e}", file=sys.stderr)
+        frontmatter = {}
+        
+    if frontmatter is None:
+        frontmatter = {}
+        
     body = match.group(2)
     
     # Extract front and back sections
@@ -77,12 +88,13 @@ def load_flashcard(card_path: Path) -> dict[str, Any]:
 def keyword_score_tags(
     flashcard: dict[str, Any],
     tags: list[dict[str, Any]],
+    child_to_full_tag: dict[str, str],
     max_tags: int = 3
 ) -> list[tuple[str, float, str]]:
     """
     Score tags based on keyword matching.
     
-    Returns list of (child_tag, score, reason) tuples sorted by score descending.
+    Returns list of (full_tag, score, reason) tuples sorted by score descending.
     Normalizes scores by keyword count to avoid bias toward tags with more keywords.
     """
     content = (flashcard['front'] + ' ' + flashcard['back']).lower()
@@ -90,6 +102,7 @@ def keyword_score_tags(
     
     for tag in tags:
         child_tag = tag['child_tag']
+        full_tag = child_to_full_tag.get(child_tag, child_tag)
         keywords = tag['keywords']
         
         # Count keyword matches
@@ -101,7 +114,7 @@ def keyword_score_tags(
             normalized_score = (matches / len(keywords)) + (matches * 0.1)
             matched_kws = [kw for kw in keywords if kw.lower() in content]
             reason = f"Keywords: {', '.join(matched_kws[:3])}"
-            scores.append((child_tag, normalized_score, reason))
+            scores.append((full_tag, normalized_score, reason))
     
     # Sort by score descending and return top N
     scores.sort(key=lambda x: x[1], reverse=True)
@@ -129,12 +142,14 @@ async def llm_score_tags_batch(
     flashcards: list[dict[str, Any]],
     tags: list[dict[str, Any]],
     tag_list: str,
+    child_to_full_tag: dict[str, str],
+    tag_principles: dict[str, list[dict]] | None = None,
     *,
     max_tags: int = 3,
     retry_count: int = 3,
     model_name: str | None = None,
     api_key: str | None = None,
-) -> dict[Path, list[tuple[str, float, str]]]:
+) -> dict[Path, dict[str, Any]]:
     """Score tags for a single batch using structured LLM output."""
 
     cards_text = []
@@ -145,10 +160,21 @@ async def llm_score_tags_batch(
             f"Answer: {card['back']}\n"
         )
 
-    prompt = f"""You are a dbt Analytics Engineering expert. Assign up to {max_tags} child_tags to each flashcard.
+    principles_text = ""
+    if tag_principles:
+        principles_text = "\nKey Principles per Tag:\n"
+        for tag, principles in tag_principles.items():
+            p_list = [f"- {p['principle']}" for p in principles]
+            principles_text += f"{tag}:\n" + "\n".join(p_list) + "\n"
+
+    prompt = f"""You are a dbt Analytics Engineering expert. 
+1. Assign up to {max_tags} child_tags to each flashcard.
+2. If a tag has associated Key Principles, identify which principle this card tests (principle_ref).
 
 Available tags:
 {tag_list}
+
+{principles_text}
 
 Flashcards:
 {''.join(cards_text)}
@@ -163,20 +189,25 @@ Instructions:
         try:
             structured = await generate_tag_batch(
                 prompt,
-                model_name=model_name or "gemini-flash-lite-latest",
+                model_name=model_name,
                 api_key=api_key,
             )
 
-            output: dict[Path, list[tuple[str, float, str]]] = {}
+            output: dict[Path, dict[str, Any]] = {}
             for card_result in structured.cards:
                 idx = card_result.card_index - 1
                 if 0 <= idx < len(flashcards):
                     card_path = flashcards[idx]['path']
-                    tag_tuples = [
-                        (tag.tag, float(tag.confidence), tag.reason)
-                        for tag in card_result.tags[:max_tags]
-                    ]
-                    output[card_path] = tag_tuples
+                    tag_tuples = []
+                    for tag in card_result.tags[:max_tags]:
+                        full_tag = child_to_full_tag.get(tag.tag, tag.tag)
+                        tag_tuples.append(
+                            (full_tag, float(tag.confidence), tag.reason, tag.principle_ref)
+                        )
+                    
+                    output[card_path] = {
+                        "tags": tag_tuples
+                    }
 
             return output
 
@@ -195,6 +226,7 @@ Instructions:
 async def llm_score_tags(
     flashcards: list[dict[str, Any]],
     tags: list[dict[str, Any]],
+    child_to_full_tag: dict[str, str],
     *,
     max_tags: int = 3,
     batch_size: int = 10,
@@ -202,12 +234,13 @@ async def llm_score_tags(
     model_name: str | None = None,
     retry_count: int = 3,
     api_key: str | None = None,
-) -> dict[Path, list[tuple[str, float, str]]]:
+    tag_principles: dict[str, list[dict]] | None = None,
+) -> dict[Path, dict[str, Any]]:
     """
     Score tags using LLM with parallel batch processing.
     
     Processes multiple batches concurrently for better throughput.
-    Returns dict mapping card_path -> list of (child_tag, score, reason) tuples.
+    Returns dict mapping card_path -> {'tags': [...]}.
     """
     # Build tag list once (shared across all batches)
     tag_descriptions = []
@@ -230,6 +263,8 @@ async def llm_score_tags(
                 batch,
                 tags,
                 tag_list,
+                child_to_full_tag,
+                tag_principles=tag_principles,
                 max_tags=max_tags,
                 retry_count=retry_count,
                 model_name=model_name,
@@ -255,6 +290,7 @@ async def llm_score_tags(
 async def hybrid_score_tags(
     flashcard: dict[str, Any],
     tags: list[dict[str, Any]],
+    child_to_full_tag: dict[str, str],
     threshold: float,
     max_tags: int = 3,
     batch_size: int = 10,
@@ -265,9 +301,10 @@ async def hybrid_score_tags(
     Hybrid approach: keyword first, LLM fallback for low confidence.
     
     Returns (tag_list, strategy_used).
+    NOTE: Hybrid mode currently does NOT support classification (card_type).
     """
     # Try keyword matching first
-    keyword_results = keyword_score_tags(flashcard, tags, max_tags)
+    keyword_results = keyword_score_tags(flashcard, tags, child_to_full_tag, max_tags)
     
     # Check if we have confident results
     if keyword_results and keyword_results[0][1] >= threshold:
@@ -277,18 +314,22 @@ async def hybrid_score_tags(
     llm_results = await llm_score_tags(
         [flashcard],
         tags,
+        child_to_full_tag,
         max_tags=max_tags,
         batch_size=1,
         max_concurrent=1,
         model_name=model_name,
         api_key=api_key,
     )
-    return llm_results.get(flashcard['path'], []), "llm"
+    # Extract tags from new result structure
+    card_data = llm_results.get(flashcard['path'], {})
+    return card_data.get('tags', []), "llm"
 
 
 def update_flashcard_tags(
     card_path: Path,
     tags: list[str],
+    principle_ref: str | None = None,
     dry_run: bool = False
 ) -> None:
     """Remove existing tags and add new ones to flashcard frontmatter."""
@@ -321,13 +362,17 @@ def update_flashcard_tags(
             if stripped.startswith('tags:'):
                 in_tags = True
                 continue  # Skip the 'tags:' line
+            
+            # Check for existing principle_ref to replace
+            if stripped.startswith('principle_ref:'):
+                continue
 
             if in_tags:
-                # Skip indented lines (list items) or empty lines in tags section
-                if line.startswith((' ', '\t')) or stripped == '':
+                # Skip indented lines (list items) or lines starting with '-' (list items) or empty lines in tags section
+                if line.startswith((' ', '\t', '-')) or stripped == '':
                     continue
                 else:
-                    # Found a line that is not indented and not empty
+                    # Found a line that is not indented, not a list item, and not empty
                     # This means we are out of the tags section
                     in_tags = False
                     new_lines.append(line)
@@ -338,10 +383,10 @@ def update_flashcard_tags(
             # Not in frontmatter, keep everything
             new_lines.append(line)
 
-    # Second pass: add new tags after frontmatter start
+    # Second pass: add new tags and metadata after frontmatter start
     final_lines = []
     frontmatter_count = 0
-    tags_added = False
+    metadata_added = False
     
     for line in new_lines:
         stripped = line.strip()
@@ -350,17 +395,27 @@ def update_flashcard_tags(
             frontmatter_count += 1
             final_lines.append(line)
             
-            # Add tags after first frontmatter delimiter
-            if frontmatter_count == 1 and tags and not tags_added:
-                final_lines.append('tags:\n')
-                for tag in tags:
-                    final_lines.append(f'  - {tag}\n')
-                tags_added = True
+            # Add tags and metadata after first frontmatter delimiter
+            if frontmatter_count == 1 and not metadata_added:
+                if principle_ref:
+                    final_lines.append(f'principle_ref: "{principle_ref}"\n')
+                
+                if tags:
+                    # Deduplicate and sort tags
+                    unique_tags = sorted(list(set(tags)))
+                    
+                    # Use yaml.safe_dump to ensure correct formatting
+                    # We dump a dict {'tags': tags} and strip the braces/newlines to get the block style list
+                    tags_yaml = yaml.safe_dump({'tags': unique_tags}, default_flow_style=False, sort_keys=False)
+                    final_lines.append(tags_yaml)
+                
+                metadata_added = True
         else:
             final_lines.append(line)
     
     if dry_run:
         print(f"\n[DRY RUN] Would update {card_path.name}:")
+        if principle_ref: print(f"  Principle: {principle_ref}")
         print(f"  Tags: {tags}")
     else:
         with open(card_path, 'w', encoding='utf-8') as f:
@@ -402,9 +457,10 @@ def main():
         help='Maximum concurrent LLM batch requests (default: 3)'
     )
     parser.add_argument(
-        '--dry-run',
+        '--apply',
         action='store_true',
-        help='Preview changes without modifying files'
+        dest='no_dry_run',
+        help='Apply changes to files (default is dry-run)'
     )
     parser.add_argument(
         '--deck-dir',
@@ -419,25 +475,32 @@ def main():
         help='Path to tags.json (default: tags.json)'
     )
     parser.add_argument(
+        '--tag-principles-file',
+        type=Path,
+        default=Path('tag_principles.json'),
+        help='Path to tag_principles.json (default: tag_principles.json)'
+    )
+    parser.add_argument(
         '--llm-model',
         type=str,
-        default='gemini-flash-lite-latest',
-        help='Gemini model name to use for llm/hybrid strategies (default: gemini-flash-lite-latest)'
+        default='deepseek-chat',
+        help='LLM model name to use for llm/hybrid strategies (default: deepseek-chat)'
     )
     parser.add_argument(
         '--gemini-api-key',
         type=str,
         default=None,
-        help='Gemini API key (defaults to GEMINI_API_KEY environment variable)'
+        help='DeepSeek API key (defaults to DEEPSEEK_API_KEY environment variable)'
     )
     
     args = parser.parse_args()
+    args.dry_run = not args.no_dry_run
     
     # Get API key from args or environment
-    api_key = args.gemini_api_key or os.environ.get('GEMINI_API_KEY')
+    api_key = args.gemini_api_key or os.environ.get('DEEPSEEK_API_KEY')
     if args.strategy in ('llm', 'hybrid') and not api_key:
-        print("Error: Gemini API key required for llm/hybrid strategies", file=sys.stderr)
-        print("Set GEMINI_API_KEY environment variable or use --gemini-api-key", file=sys.stderr)
+        print("Error: DeepSeek API key required for llm/hybrid strategies", file=sys.stderr)
+        print("Set DEEPSEEK_API_KEY environment variable or use --gemini-api-key", file=sys.stderr)
         return 1
     
     # Load tags
@@ -447,10 +510,24 @@ def main():
     
     tags = load_tags(args.tags_file)
     print(f"Loaded {len(tags)} tags from {args.tags_file}")
+
+    # Load principles if available
+    tag_principles = None
+    if args.tag_principles_file.exists():
+        try:
+            with open(args.tag_principles_file) as f:
+                tag_principles = json.load(f)
+            print(f"Loaded principles for {len(tag_principles)} tags from {args.tag_principles_file}")
+        except Exception as e:
+            print(f"Warning: Failed to load principles: {e}", file=sys.stderr)
     
     if args.strategy in ('llm', 'hybrid'):
         print(f"LLM model: {args.llm_model}")
         print(f"Batch size: {args.batch_size}, Max concurrent: {args.max_concurrent}")
+    
+    # Create mappings for hierarchical tags
+    child_to_full_tag = {t['child_tag']: f"{t['parent_tag']}/{t['child_tag']}" for t in tags}
+    valid_full_tags = set(child_to_full_tag.values())
     
     # Find all flashcard files
     if not args.deck_dir.exists():
@@ -483,10 +560,10 @@ def main():
         print("Using keyword matching strategy...")
         for card in flashcards:
             try:
-                results = keyword_score_tags(card, tags, args.max_tags)
+                results = keyword_score_tags(card, tags, child_to_full_tag, args.max_tags)
                 if results:
                     tag_names = [r[0] for r in results]
-                    update_flashcard_tags(card['path'], tag_names, args.dry_run)
+                    update_flashcard_tags(card['path'], tag_names, dry_run=args.dry_run)
                     stats['tagged'] += 1
                     stats['keyword'] += 1
                     
@@ -506,31 +583,58 @@ def main():
             results = asyncio.run(llm_score_tags(
                 flashcards,
                 tags,
+                child_to_full_tag,
                 max_tags=args.max_tags,
                 batch_size=args.batch_size,
                 max_concurrent=args.max_concurrent,
                 model_name=args.llm_model,
                 api_key=api_key,
+                tag_principles=tag_principles,
             ))
             
             for card in flashcards:
-                card_results = results.get(card['path'], [])
-                if card_results:
-                    tag_names = [r[0] for r in card_results]
-                    update_flashcard_tags(card['path'], tag_names, args.dry_run)
+                card_data = results.get(card['path'])
+                if card_data:
+                    tag_tuples = card_data.get('tags', [])
+                    
+                    # Find principle ref (take the first one found in tags, or None)
+                    principle_ref = None
+                    for t in tag_tuples:
+                        if len(t) > 3 and t[3]: # (tag, conf, reason, principle_ref)
+                            principle_ref = t[3]
+                            break
+
+                    tag_names = [r[0] for r in tag_tuples]
+                    # Filter out invalid tags
+                    tag_names = [t for t in tag_names if t in valid_full_tags]
+
+                    
+                    update_flashcard_tags(
+                        card['path'], 
+                        tag_names, 
+                        principle_ref=principle_ref, 
+                        dry_run=args.dry_run
+                    )
                     stats['tagged'] += 1
                     stats['llm'] += 1
                     
                     if args.dry_run:
                         print(f"\n[DRY RUN] Would update {card['path'].name}:")
+                        if principle_ref: print(f"  Principle: {principle_ref}")
                         print(f"  Tags: {tag_names}")
-                        for tag, conf, reason in card_results:
-                            print(f"    {tag} (conf: {conf:.2f}) - {reason}")
+                        for t in tag_tuples:
+                            # Handle variable tuple length for display
+                            tag, conf, reason = t[0], t[1], t[2]
+                            p_ref = t[3] if len(t) > 3 else None
+                            p_str = f" [Principle: {p_ref}]" if p_ref else ""
+                            print(f"    {tag} (conf: {conf:.2f}) - {reason}{p_str}")
                 else:
                     stats['failed'] += 1
         
         except Exception as e:
             print(f"Error processing flashcards: {e}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
             stats['failed'] = len(flashcards)
         
         elapsed = time.time() - start_time
@@ -547,6 +651,7 @@ def main():
                     hybrid_score_tags(
                         card,
                         tags,
+                        child_to_full_tag,
                         args.threshold,
                         args.max_tags,
                         args.batch_size,
@@ -569,7 +674,10 @@ def main():
                 
                 if results:
                     tag_names = [r[0] for r in results]
-                    update_flashcard_tags(card['path'], tag_names, args.dry_run)
+                    # Filter out invalid tags
+                    tag_names = [t for t in tag_names if t in valid_full_tags]
+
+                    update_flashcard_tags(card['path'], tag_names, dry_run=args.dry_run)
                     stats['tagged'] += 1
                     stats[strategy] += 1
                     
