@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- materializations
-- snapshots
-- test-config
+- development/materializations
+- development/snapshots
+- testing/test-config
 citations:
 - cleaned_docs/snapshots/rank_7.md
 guid: 8dfa3fb3d9

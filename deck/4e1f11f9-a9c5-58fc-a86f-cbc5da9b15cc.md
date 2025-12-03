@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- error-logs
-- modularity
-- seeds
+- debugging/error-logs
+- development/modularity
+- development/seeds
 citations:
 - cleaned_docs/modularity/index.md
 guid: 6d4a0aad69

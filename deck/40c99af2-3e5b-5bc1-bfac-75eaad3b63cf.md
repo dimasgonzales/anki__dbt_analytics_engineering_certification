@@ -1,8 +1,8 @@
 ---
 tags:
 - card_type/factual
-- jinja-macros
-- selectors
+- development/jinja-macros
+- state/selectors
 citations:
 - cleaned_docs/selectors/rank_6.md
 guid: b21886ea8c

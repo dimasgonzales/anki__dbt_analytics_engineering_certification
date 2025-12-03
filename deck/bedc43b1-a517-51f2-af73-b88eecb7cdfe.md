@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- cli-commands
-- compiled-code
-- state-concepts
+- debugging/compiled-code
+- development/cli-commands
+- state/state-concepts
 citations:
 - cleaned_docs/dbt-clone/rank_7.md
 guid: 1c94d6ff00

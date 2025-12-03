@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- exposures
-- lineage
-- modularity
+- development/modularity
+- documentation/exposures
+- documentation/lineage
 citations:
 - cleaned_docs/exposures/rank_3.md
 guid: eb985f7ace

@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- contracts
-- project-config
-- sources
+- development/project-config
+- development/sources
+- governance/contracts
 citations:
 - cleaned_docs/project-config/rank_1.md
 guid: 59a7f2af9c

@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- compiled-code
-- dag-failures
-- python-models
+- debugging/compiled-code
+- development/python-models
+- pipelines/dag-failures
 citations:
 - cleaned_docs/python-models/rank_1.md
 guid: 6579eac895

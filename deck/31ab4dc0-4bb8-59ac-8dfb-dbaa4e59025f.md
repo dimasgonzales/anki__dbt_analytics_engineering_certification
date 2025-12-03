@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- docs-generation
-- sources
-- state-concepts
+- development/sources
+- documentation/docs-generation
+- state/state-concepts
 citations:
 - cleaned_docs/docs-generation/rank_4.md
 guid: 0a8550af13

@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- descriptions
-- exposures
-- sources
+- development/sources
+- documentation/descriptions
+- documentation/exposures
 citations:
 - cleaned_docs/lineage/rank_6.md
 guid: 0f67d6e5b6

@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- materializations
-- modularity
-- packages
+- development/materializations
+- development/modularity
+- development/packages
 citations:
 - cleaned_docs/docs-generation/rank_7.md
 guid: 1a1365c5d7

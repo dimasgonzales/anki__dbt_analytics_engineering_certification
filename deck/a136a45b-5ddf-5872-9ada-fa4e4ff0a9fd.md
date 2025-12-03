@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- descriptions
-- modularity
-- yaml-compilation
+- debugging/yaml-compilation
+- development/modularity
+- documentation/descriptions
 citations:
 - cleaned_docs/sources/rank_6.md
 guid: 5d15ea4f74

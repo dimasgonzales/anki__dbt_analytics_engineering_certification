@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- contracts
-- descriptions
-- seeds
+- development/seeds
+- documentation/descriptions
+- governance/contracts
 citations:
 - cleaned_docs/descriptions/rank_2.md
 guid: 657dc3fc1f

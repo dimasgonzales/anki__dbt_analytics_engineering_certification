@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- jinja-macros
-- python-models
-- test-config
+- development/jinja-macros
+- development/python-models
+- testing/test-config
 citations:
 - cleaned_docs/python-models/rank_4.md
 guid: bd315e6fb7

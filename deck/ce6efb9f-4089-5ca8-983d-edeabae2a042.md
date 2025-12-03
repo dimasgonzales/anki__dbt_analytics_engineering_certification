@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- dbt-clone
-- project-config
-- test-config
+- development/project-config
+- pipelines/dbt-clone
+- testing/test-config
 citations:
 - cleaned_docs/test-config/rank_2.md
 guid: 313aed1557

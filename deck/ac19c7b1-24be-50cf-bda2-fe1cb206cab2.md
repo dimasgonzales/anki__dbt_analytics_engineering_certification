@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- dag-failures
-- modularity
-- seeds
+- development/modularity
+- development/seeds
+- pipelines/dag-failures
 citations:
 - cleaned_docs/error-logs/rank_3.md
 guid: be77b38df5

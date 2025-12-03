@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- modularity
-- seeds
-- snapshots
+- development/modularity
+- development/seeds
+- development/snapshots
 citations:
   - https://docs.getdbt.com/reference/dbt-jinja-functions/adapter
 guid: LNbCu:E4is

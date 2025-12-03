@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- cli-commands
-- project-config
-- selectors
+- development/cli-commands
+- development/project-config
+- state/selectors
 citations:
 - cleaned_docs/project-config/rank_7.md
 guid: 359019d817

@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- compiled-code
-- python-models
-- seeds
+- debugging/compiled-code
+- development/python-models
+- development/seeds
 citations:
 - cleaned_docs/lineage/rank_9.md
 guid: 2793bbb9e1

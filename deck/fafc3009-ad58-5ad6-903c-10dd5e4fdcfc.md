@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- lineage
-- sources
-- test-config
+- development/sources
+- documentation/lineage
+- testing/test-config
 citations:
 - cleaned_docs/exposures/rank_3.md
 guid: 9f0c7d572a

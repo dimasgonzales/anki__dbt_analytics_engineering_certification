@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- modularity
-- python-models
-- snapshots
+- development/modularity
+- development/python-models
+- development/snapshots
 citations:
 - cleaned_docs/error-logs/rank_2.md
 guid: 2e09257181

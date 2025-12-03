@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- cli-commands
-- compiled-code
-- selectors
+- debugging/compiled-code
+- development/cli-commands
+- state/selectors
 citations:
 - cleaned_docs/test-types/rank_1.md
 guid: 9d982183f4

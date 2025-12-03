@@ -1,8 +1,8 @@
 ---
 tags:
 - card_type/factual
-- cli-commands
-- selectors
+- development/cli-commands
+- state/selectors
 citations:
   - https://docs.getdbt.com/reference/commands/snapshot
 guid: C+vAz]PJg!

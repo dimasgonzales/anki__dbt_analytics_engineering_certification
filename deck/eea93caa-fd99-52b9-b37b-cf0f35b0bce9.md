@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- exposures
-- lineage
-- sources
+- development/sources
+- documentation/exposures
+- documentation/lineage
 citations:
 - cleaned_docs/lineage/rank_4.md
 guid: 3ecdd3a1d3

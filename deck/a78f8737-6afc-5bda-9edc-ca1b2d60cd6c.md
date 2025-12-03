@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- deployment-jobs
-- lineage
-- modularity
+- development/modularity
+- documentation/lineage
+- pipelines/deployment-jobs
 citations:
 - cleaned_docs/cli-commands/rank_4.md
 guid: cb3ad01538

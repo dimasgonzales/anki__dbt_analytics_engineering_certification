@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- cli-commands
-- deployment-jobs
-- lineage
+- development/cli-commands
+- documentation/lineage
+- pipelines/deployment-jobs
 citations:
 - cleaned_docs/deployment-jobs/rank_2.md
 guid: 9148741cb7

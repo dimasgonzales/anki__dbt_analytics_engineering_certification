@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- compiled-code
-- modularity
-- sql-performance
+- debugging/compiled-code
+- development/modularity
+- development/sql-performance
 citations:
 - cleaned_docs/error-logs/rank_9.md
 guid: 8eccc44586

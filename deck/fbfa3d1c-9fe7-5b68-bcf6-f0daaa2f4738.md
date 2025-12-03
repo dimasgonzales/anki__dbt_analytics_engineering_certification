@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- modularity
-- snapshots
-- sources
+- development/modularity
+- development/snapshots
+- development/sources
 citations:
 - cleaned_docs/sources/rank_10.md
 guid: eca3d1396f

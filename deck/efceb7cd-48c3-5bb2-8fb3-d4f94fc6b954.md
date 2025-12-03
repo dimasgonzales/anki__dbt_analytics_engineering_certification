@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- cli-commands
-- compiled-code
-- selectors
+- debugging/compiled-code
+- development/cli-commands
+- state/selectors
 citations:
   - https://docs.getdbt.com/reference/node-selection/methods
 guid: bZ`r/hy8t=

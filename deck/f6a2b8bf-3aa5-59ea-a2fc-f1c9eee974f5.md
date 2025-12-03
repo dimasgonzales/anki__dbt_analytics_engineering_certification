@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- exposures
-- modularity
-- seeds
+- development/modularity
+- development/seeds
+- documentation/exposures
 citations:
 - cleaned_docs/exposures/rank_9.md
 guid: f21c501bd5

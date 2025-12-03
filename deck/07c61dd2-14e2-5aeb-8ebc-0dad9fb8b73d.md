@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- contracts
-- grants
-- materializations
+- development/grants
+- development/materializations
+- governance/contracts
 citations:
 - cleaned_docs/grants/rank_2.md
 guid: 5a5994a405

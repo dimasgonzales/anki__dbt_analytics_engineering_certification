@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- docs-generation
-- jinja-macros
-- python-models
+- development/jinja-macros
+- development/python-models
+- documentation/docs-generation
 citations:
 - cleaned_docs/jinja-macros/rank_9.md
 guid: e491540a24

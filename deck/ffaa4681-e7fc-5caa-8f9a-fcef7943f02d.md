@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- cli-commands
-- packages
-- versioning
+- development/cli-commands
+- development/packages
+- governance/versioning
 citations:
 - cleaned_docs/packages/rank_1.md
 guid: a0f0d81aa3

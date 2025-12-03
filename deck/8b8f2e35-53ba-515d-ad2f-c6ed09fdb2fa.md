@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- project-config
-- snapshots
-- yaml-compilation
+- debugging/yaml-compilation
+- development/project-config
+- development/snapshots
 citations:
 - cleaned_docs/grants/rank_7.md
 guid: ca4aa01595

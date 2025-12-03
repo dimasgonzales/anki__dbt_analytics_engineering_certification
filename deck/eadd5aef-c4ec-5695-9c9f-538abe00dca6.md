@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- deployment-jobs
-- modularity
-- seeds
+- development/modularity
+- development/seeds
+- pipelines/deployment-jobs
 citations:
 - cleaned_docs/seeds/index.md
 guid: d6af3936dd

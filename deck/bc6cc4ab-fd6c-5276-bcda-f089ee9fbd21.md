@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- error-logs
-- packages
-- seeds
+- debugging/error-logs
+- development/packages
+- development/seeds
 citations:
 - cleaned_docs/docs-generation/rank_7.md
 guid: c4fa88cb36

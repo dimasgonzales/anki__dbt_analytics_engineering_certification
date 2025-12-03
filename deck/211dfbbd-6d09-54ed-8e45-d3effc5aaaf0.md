@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- compiled-code
-- modularity
-- state-concepts
+- debugging/compiled-code
+- development/modularity
+- state/state-concepts
 citations:
 - cleaned_docs/jinja-macros/rank_6.md
 guid: 84e6aeb217

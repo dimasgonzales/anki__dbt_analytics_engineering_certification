@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- compiled-code
-- dag-failures
-- test-types
+- debugging/compiled-code
+- pipelines/dag-failures
+- testing/test-types
 citations:
 - cleaned_docs/test-types/rank_1.md
 guid: dc10605b22

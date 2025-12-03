@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- deployment-jobs
-- lineage
-- yaml-compilation
+- debugging/yaml-compilation
+- documentation/lineage
+- pipelines/deployment-jobs
 citations:
 - cleaned_docs/dbt-clone/rank_3.md
 guid: d578480f37

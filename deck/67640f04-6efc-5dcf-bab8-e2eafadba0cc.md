@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- materializations
-- project-config
-- sources
+- development/materializations
+- development/project-config
+- development/sources
 citations:
 - cleaned_docs/sources/rank_10.md
 guid: c73ae837fe

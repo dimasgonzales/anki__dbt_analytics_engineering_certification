@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- cli-commands
-- exposures
-- seeds
+- development/cli-commands
+- development/seeds
+- documentation/exposures
 citations:
 - cleaned_docs/exposures/rank_1.md
 guid: 88154c03d4

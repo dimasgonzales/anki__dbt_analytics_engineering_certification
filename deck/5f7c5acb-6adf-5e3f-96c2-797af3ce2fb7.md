@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- materializations
-- snapshots
-- sources
+- development/materializations
+- development/snapshots
+- development/sources
 citations:
 - cleaned_docs/modularity/rank_2.md
 guid: 8e1c054822

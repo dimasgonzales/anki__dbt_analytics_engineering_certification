@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- exposures
-- materializations
-- snapshots
+- development/materializations
+- development/snapshots
+- documentation/exposures
 citations:
 - cleaned_docs/modularity/rank_1.md
 guid: ba2647c918

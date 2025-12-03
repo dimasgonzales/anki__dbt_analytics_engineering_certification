@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- modularity
-- project-config
-- yaml-compilation
+- debugging/yaml-compilation
+- development/modularity
+- development/project-config
 citations:
 - cleaned_docs/yaml-compilation/rank_1.md
 guid: 3017dbf5d7

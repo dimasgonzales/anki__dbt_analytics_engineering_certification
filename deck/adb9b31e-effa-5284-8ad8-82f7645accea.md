@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- lineage
-- modularity
-- seeds
+- development/modularity
+- development/seeds
+- documentation/lineage
 citations:
 - cleaned_docs/exposures/rank_2.md
 guid: 4d1a516697

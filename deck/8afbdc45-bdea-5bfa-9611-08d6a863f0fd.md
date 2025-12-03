@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- docs-generation
-- modularity
-- seeds
+- development/modularity
+- development/seeds
+- documentation/docs-generation
 citations:
 - cleaned_docs/python-models/rank_8.md
 guid: 4122eb8c1f

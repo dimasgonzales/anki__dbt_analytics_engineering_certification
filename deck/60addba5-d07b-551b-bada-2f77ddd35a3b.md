@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- seeds
-- test-config
-- yaml-compilation
+- debugging/yaml-compilation
+- development/seeds
+- testing/test-config
 citations:
 - cleaned_docs/seeds/rank_4.md
 guid: dbab72566f

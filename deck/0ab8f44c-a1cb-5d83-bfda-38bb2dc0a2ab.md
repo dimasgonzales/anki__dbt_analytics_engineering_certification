@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- descriptions
-- exposures
-- sources
+- development/sources
+- documentation/descriptions
+- documentation/exposures
 citations:
 - cleaned_docs/exposures/rank_3.md
 guid: 698052df2d

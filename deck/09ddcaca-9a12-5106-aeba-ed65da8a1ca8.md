@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- compiled-code
-- descriptions
-- python-models
+- debugging/compiled-code
+- development/python-models
+- documentation/descriptions
 citations:
 - cleaned_docs/materializations/rank_4.md
 guid: 352a834e84

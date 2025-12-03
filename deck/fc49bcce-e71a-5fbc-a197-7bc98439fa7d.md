@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- compiled-code
-- descriptions
-- docs-generation
+- debugging/compiled-code
+- documentation/descriptions
+- documentation/docs-generation
 citations:
 - cleaned_docs/packages/rank_9.md
 guid: 835a0fc5a6

@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- modularity
-- sql-performance
-- test-types
+- development/modularity
+- development/sql-performance
+- testing/test-types
 citations:
 - cleaned_docs/docs-generation/rank_5.md
 guid: f70b5c9a90

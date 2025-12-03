@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- cli-commands
-- jinja-macros
-- seeds
+- development/cli-commands
+- development/jinja-macros
+- development/seeds
 citations:
 - cleaned_docs/seeds/rank_3.md
 guid: f2cb750930

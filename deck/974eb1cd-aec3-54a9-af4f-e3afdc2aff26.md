@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- model-access
-- modularity
-- seeds
+- development/modularity
+- development/seeds
+- governance/model-access
 citations:
 - cleaned_docs/contracts/rank_3.md
 guid: 1f6348a68c

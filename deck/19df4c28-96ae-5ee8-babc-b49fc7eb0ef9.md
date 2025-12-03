@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- deployment-jobs
-- error-logs
-- materializations
+- debugging/error-logs
+- development/materializations
+- pipelines/deployment-jobs
 citations:
 - cleaned_docs/jinja-macros/rank_7.md
 guid: 0a2d4cb3f6

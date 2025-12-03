@@ -1,8 +1,8 @@
 ---
 tags:
 - card_type/factual
-- dag-failures
-- versioning
+- governance/versioning
+- pipelines/dag-failures
 citations:
 - cleaned_docs/versioning/rank_2.md
 guid: 313f701ec5

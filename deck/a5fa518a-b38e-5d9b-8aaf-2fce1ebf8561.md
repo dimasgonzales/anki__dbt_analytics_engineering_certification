@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- compiled-code
-- error-logs
-- yaml-compilation
+- debugging/compiled-code
+- debugging/error-logs
+- debugging/yaml-compilation
 citations:
 - cleaned_docs/jinja-macros/rank_6.md
 guid: 014e1c0c1d

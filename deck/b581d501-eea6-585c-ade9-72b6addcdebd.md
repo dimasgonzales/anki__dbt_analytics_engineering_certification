@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- jinja-macros
-- modularity
-- project-config
+- development/jinja-macros
+- development/modularity
+- development/project-config
 citations:
 - cleaned_docs/jinja-macros/index.md
 guid: 97f31a5ddd

@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- compiled-code
-- error-logs
-- yaml-compilation
+- debugging/compiled-code
+- debugging/error-logs
+- debugging/yaml-compilation
 citations:
 - cleaned_docs/sources/rank_7.md
 guid: fed2947c1c

@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- compiled-code
-- deployment-jobs
-- sources
+- debugging/compiled-code
+- development/sources
+- pipelines/deployment-jobs
 citations:
 - cleaned_docs/selectors/rank_4.md
 guid: 2e5e1cc5c9

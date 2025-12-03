@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- cli-commands
-- materializations
-- yaml-compilation
+- debugging/yaml-compilation
+- development/cli-commands
+- development/materializations
 citations:
 - cleaned_docs/model-access/rank_8.md
 guid: 723d065cd0

@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- cli-commands
-- selectors
-- state-concepts
+- development/cli-commands
+- state/selectors
+- state/state-concepts
 citations:
 - cleaned_docs/grants/rank_6.md
 guid: 4004aa9f67

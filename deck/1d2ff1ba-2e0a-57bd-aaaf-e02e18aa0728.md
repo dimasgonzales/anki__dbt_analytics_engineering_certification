@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- compiled-code
-- test-config
-- yaml-compilation
+- debugging/compiled-code
+- debugging/yaml-compilation
+- testing/test-config
 citations:
 - cleaned_docs/cli-commands/rank_2.md
 guid: 140a2b36ff

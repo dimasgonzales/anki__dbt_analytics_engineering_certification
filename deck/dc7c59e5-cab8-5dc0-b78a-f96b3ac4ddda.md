@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- deployment-jobs
-- project-config
-- yaml-compilation
+- debugging/yaml-compilation
+- development/project-config
+- pipelines/deployment-jobs
 citations:
 - cleaned_docs/deployment-jobs/rank_4.md
 guid: e1a6ea9004

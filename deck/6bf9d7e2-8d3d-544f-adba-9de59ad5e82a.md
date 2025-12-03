@@ -1,7 +1,7 @@
 ---
 tags:
 - card_type/factual
-- jinja-macros
+- development/jinja-macros
 citations:
 - cleaned_docs/packages/rank_6.md
 guid: c899969a7b

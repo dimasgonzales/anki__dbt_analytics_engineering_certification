@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/scenario
-- compiled-code
-- modularity
-- selectors
+- debugging/compiled-code
+- development/modularity
+- state/selectors
 citations:
   - https://docs.getdbt.com/reference/node-selection/exclude
 guid: lVU,U#}/LW

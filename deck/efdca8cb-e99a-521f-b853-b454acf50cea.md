@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- compiled-code
-- docs-generation
-- state-concepts
+- debugging/compiled-code
+- documentation/docs-generation
+- state/state-concepts
 citations:
 - cleaned_docs/cli-commands/rank_7.md
 guid: 0fb2cdc80e

@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- cli-commands
-- contracts
-- descriptions
+- development/cli-commands
+- documentation/descriptions
+- governance/contracts
 citations:
 - cleaned_docs/contracts/rank_6.md
 guid: 8ffb3d366a

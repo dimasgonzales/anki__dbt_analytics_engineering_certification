@@ -1,9 +1,9 @@
 ---
 tags:
 - card_type/factual
-- compiled-code
-- jinja-macros
-- materializations
+- debugging/compiled-code
+- development/jinja-macros
+- development/materializations
 citations:
 - cleaned_docs/sql-performance/rank_8.md
 guid: b4421fe4e4
