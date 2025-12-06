@@ -994,5 +994,21 @@
   {
     "url": "https://docs.getdbt.com/faqs/Warehouse/db-connection-dbt-compile",
     "local_path": "docs/site_docs.getdbt.com/web_cache/250a4ad41456421808d60f944f279a11.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/e8a26f9d8ee522cfc47e489e784544a2.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/guides",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/4c0e7501edf3f16a3c9f8d218c2155bf.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/project-variables",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/b7932864f56a00c997fbbda732fff20d.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-versions/core-upgrade/upgrading-to-v1.10",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/512bf6ca72cfb018970e0086b736ea8e.md"
   }
 ]
