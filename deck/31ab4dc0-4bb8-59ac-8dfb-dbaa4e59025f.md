@@ -9,6 +9,12 @@ citations:
 guid: 0a8550af13
 source: llm
 uuid: 31ab4dc0-4bb8-59ac-8dfb-dbaa4e59025f
+claim_meta:
+  verdict: SUPPORTED
+  explanation: "The reference text explicitly describes configuring project documentation in dbt Cloud by selecting a job under the Artifacts section in Project Settings, which directly supports the answer."
+  citation:
+    quote: "Under **Artifacts**, select the job that should generate docs when it runs and click **Save**."
+    is_quote_valid: true
 ---
 
 <front>

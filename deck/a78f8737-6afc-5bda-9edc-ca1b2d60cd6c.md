@@ -9,6 +9,12 @@ citations:
 guid: cb3ad01538
 source: llm
 uuid: a78f8737-6afc-5bda-9edc-ca1b2d60cd6c
+claim_meta:
+  verdict: NOT_FOUND
+  explanation: "The reference text does not mention 'Automatic Deferral' or specify how dbt Cloud CLI handles upstream dependencies by default. While it discusses a metadata service that allows referencing upstream models without local building, this is not explicitly linked to the CLI or the described mechanism."
+  citation:
+    quote: null
+    is_quote_valid: false
 ---
 
 <front>

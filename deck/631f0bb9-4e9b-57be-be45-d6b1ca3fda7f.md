@@ -9,6 +9,12 @@ citations:
 guid: f70b5c9a90
 source: llm
 uuid: 631f0bb9-4e9b-57be-be45-d6b1ca3fda7f
+claim_meta:
+  verdict: SUPPORTED
+  explanation: "The reference text explicitly supports both risks: it states that null values in concatenation often cause the entire result to be null, and it notes that ignoring nulls can lead to collisions where different inputs produce the same key. For example, it mentions that with certain concatenation methods, nulls propagate to null results, and that handling nulls improperly can result in identical keys from different value combinations."
+  citation:
+    quote: "If any value is null, then often the entire concatenated string is returned as null"
+    is_quote_valid: true
 ---
 
 <front>

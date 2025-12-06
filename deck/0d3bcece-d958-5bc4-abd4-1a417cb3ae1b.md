@@ -9,6 +9,12 @@ citations:
 guid: bd315e6fb7
 source: llm
 uuid: 0d3bcece-d958-5bc4-abd4-1a417cb3ae1b
+claim_meta:
+  verdict: SUPPORTED
+  explanation: "The reference text explicitly states that pandas DataFrames operate on a single node without distributed computing benefits, while native DataFrames like PySpark leverage parallel processing, supporting the performance differences described in the answer."
+  citation:
+    quote: "pandas runs \"single-node\" transformations, which cannot benefit from the parallelism and distributed computing offered by modern data warehouses."
+    is_quote_valid: true
 ---
 
 <front>

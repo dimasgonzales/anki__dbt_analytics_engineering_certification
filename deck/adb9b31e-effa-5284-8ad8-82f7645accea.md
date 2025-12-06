@@ -9,6 +9,12 @@ citations:
 guid: 4d1a516697
 source: llm
 uuid: adb9b31e-effa-5284-8ad8-82f7645accea
+claim_meta:
+  verdict: SUPPORTED
+  explanation: "The reference text explicitly supports the answer by showing that exposures define lineage connections using the `depends_on` list in YAML, as illustrated in the example."
+  citation:
+    quote: "depends_on:   - ref('fct_orders')   - ref('dim_customers')   - source('gsheets', 'goals')   - metric('count_orders')"
+    is_quote_valid: true
 ---
 
 <front>

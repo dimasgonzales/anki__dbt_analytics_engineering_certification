@@ -9,6 +9,12 @@ citations:
 guid: 9f0c7d572a
 source: llm
 uuid: fafc3009-ad58-5ad6-903c-10dd5e4fdcfc
+claim_meta:
+  verdict: NOT_FOUND
+  explanation: "The Reference Text discusses data health and freshness in the context of exposures, but does not mention the specific properties 'state' (pass/warn/error) and 'maxLoadedAt' timestamp for sources that the exposure depends on, as stated in the Answer."
+  citation:
+    quote: null
+    is_quote_valid: false
 ---
 
 <front>

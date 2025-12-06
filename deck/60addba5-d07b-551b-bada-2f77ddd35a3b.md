@@ -9,6 +9,12 @@ citations:
 guid: dbab72566f
 source: llm
 uuid: 60addba5-d07b-551b-bada-2f77ddd35a3b
+claim_meta:
+  verdict: NOT_FOUND
+  explanation: "The Reference Text discusses general errors and debugging in dbt_project.yml, such as unexpected keys and parsing issues, but does not mention the use of the '+' prefix for seeds configuration or address whether 'delimiter' requires it. Therefore, there is insufficient information to verify the answer."
+  citation:
+    quote: null
+    is_quote_valid: false
 ---
 
 <front>

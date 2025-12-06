@@ -9,6 +9,12 @@ citations:
 guid: eb985f7ace
 source: llm
 uuid: 6a4aaefc-8925-55fe-995c-dbb3cc52dd7d
+claim_meta:
+  verdict: NOT_FOUND
+  explanation: "The reference text confirms that exposures appear in the dbt DAG and discusses their role, but it does not provide details on how to configure dependencies for exposures, such as the use of the 'depends_on' key or specific syntax like 'ref()' and 'source()'."
+  citation:
+    quote: null
+    is_quote_valid: false
 ---
 
 <front>

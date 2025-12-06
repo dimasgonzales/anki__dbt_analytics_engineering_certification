@@ -9,6 +9,12 @@ citations:
 guid: 0fb2cdc80e
 source: llm
 uuid: efdca8cb-e99a-521f-b853-b454acf50cea
+claim_meta:
+  verdict: SUPPORTED
+  explanation: "The reference text explicitly states that the `--empty-catalog` flag skips database queries to populate `catalog.json`, making documentation generation faster and omitting database metadata such as column types and statistics, which directly supports the answer."
+  citation:
+    quote: "Use the `--empty-catalog` argument to skip running the database queries to populate `catalog.json`. ... It can speed up `docs generate` in development, as it means that your documentation will be missing information gleaned from database metadata (the full set of columns in each table, and statistics about those tables)."
+    is_quote_valid: false
 ---
 
 <front>

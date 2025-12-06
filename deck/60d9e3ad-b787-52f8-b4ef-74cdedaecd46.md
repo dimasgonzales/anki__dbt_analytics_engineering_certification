@@ -9,6 +9,12 @@ citations:
 guid: 2e5e1cc5c9
 source: llm
 uuid: 60d9e3ad-b787-52f8-b4ef-74cdedaecd46
+claim_meta:
+  verdict: NOT_FOUND
+  explanation: "The Reference Text discusses job commands and source freshness artifacts but does not mention the execution order of the 'Run source freshness' checkbox in dbt Cloud UI relative to other commands."
+  citation:
+    quote: null
+    is_quote_valid: false
 ---
 
 <front>

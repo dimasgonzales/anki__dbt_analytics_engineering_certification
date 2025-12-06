@@ -9,6 +9,12 @@ citations:
 guid: 97f31a5ddd
 source: llm
 uuid: b581d501-eea6-585c-ade9-72b6addcdebd
+claim_meta:
+  verdict: NOT_FOUND
+  explanation: "The reference text provides evidence supporting the syntax for defining macros, as shown in the macro example, but it does not contain any information about the file location or file type (.sql files in the macros/ directory) required to define custom macros."
+  citation:
+    quote: "{% macro generate_schema_name(custom_schema_name, node) -%} ... {%- endmacro %}"
+    is_quote_valid: false
 ---
 
 <front>

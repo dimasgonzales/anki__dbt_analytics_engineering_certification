@@ -9,6 +9,12 @@ citations:
 guid: 8eccc44586
 source: llm
 uuid: d9238dfa-fdea-5314-a84e-e155d4cbbce1
+claim_meta:
+  verdict: SUPPORTED
+  explanation: "The reference text explicitly defines when the `NoNodesForSelectionCriteria` warning occurs, directly matching the answer's description."
+  citation:
+    quote: "Some of the examples use `NoNodesForSelectionCriteria`, which is a specific warning that occurs when your `--select` flag doesn't match any nodes/resources in your dbt project"
+    is_quote_valid: true
 ---
 
 <front>

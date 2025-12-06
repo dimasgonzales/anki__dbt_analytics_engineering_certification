@@ -9,6 +9,12 @@ citations:
 guid: 3ecdd3a1d3
 source: llm
 uuid: eea93caa-fd99-52b9-b37b-cf0f35b0bce9
+claim_meta:
+  verdict: SUPPORTED
+  explanation: "The reference text explicitly supports the answer by stating that column-level lineage helps understand precisely how data is used in models, facilitating debugging, which aligns with tracing specific fields and impact analysis."
+  citation:
+    quote: "the column level relationships help you understand *precisely* how data is used in models — this makes debugging data issues a lot simpler!"
+    is_quote_valid: true
 ---
 
 <front>

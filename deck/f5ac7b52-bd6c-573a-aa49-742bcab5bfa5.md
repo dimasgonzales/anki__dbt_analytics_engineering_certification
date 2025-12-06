@@ -9,6 +9,12 @@ citations:
 guid: fed2947c1c
 source: llm
 uuid: f5ac7b52-bd6c-573a-aa49-742bcab5bfa5
+claim_meta:
+  verdict: NOT_FOUND
+  explanation: "The reference text does not mention `sources.json` or the specific statuses 'error' and 'runtime error', so there is insufficient information to verify the answer."
+  citation:
+    quote: null
+    is_quote_valid: false
 ---
 
 <front>

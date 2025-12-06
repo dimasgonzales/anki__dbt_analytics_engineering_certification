@@ -5,7 +5,7 @@ tags:
 - development/modularity
 - state/selectors
 citations:
-  - https://docs.getdbt.com/reference/node-selection/exclude
+  - docs/site_docs.getdbt.com/citations/docs_getdbt_com_reference_node_selection_exclude.md
 guid: lVU,U#}/LW
 source: apkg
 uuid: ae30f94c-c7ae-55bd-8ecf-5378d08eac3e

@@ -9,6 +9,12 @@ citations:
 guid: 698052df2d
 source: llm
 uuid: 0ab8f44c-a1cb-5d83-bfda-38bb2dc0a2ab
+claim_meta:
+  verdict: SUPPORTED
+  explanation: "The Reference Text confirms that the 'url' field is used to provide a link to the exposure for location, and the 'owner' property is required with 'name' or 'email' for contact, with examples including both, matching the Answer."
+  citation:
+    quote: "owner: name or email required; additional properties allowed"
+    is_quote_valid: false
 ---
 
 <front>

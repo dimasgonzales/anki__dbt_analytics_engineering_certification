@@ -9,6 +9,12 @@ citations:
 guid: e491540a24
 source: llm
 uuid: 1eb6b7c5-c8a6-51eb-aafa-f6a05619fec0
+claim_meta:
+  verdict: SUPPORTED
+  explanation: "The Reference Text provides evidence that the `return` function in dbt macros preserves Python data types, as shown in examples where it returns a list without converting to a string, allowing direct use in Jinja contexts. This supports the answer's claim that `return` preserves data types, while standard Jinja output implicitly converts to string."
+  citation:
+    quote: "getdata() returns a list!"
+    is_quote_valid: true
 ---
 
 <front>

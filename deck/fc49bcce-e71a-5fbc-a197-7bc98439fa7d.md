@@ -9,6 +9,12 @@ citations:
 guid: 835a0fc5a6
 source: llm
 uuid: fc49bcce-e71a-5fbc-a197-7bc98439fa7d
+claim_meta:
+  verdict: NOT_FOUND
+  explanation: "The reference text does not mention the 'dbt docs generate' command or its interaction with the '--select' flag, so it cannot be verified."
+  citation:
+    quote: null
+    is_quote_valid: false
 ---
 
 <front>

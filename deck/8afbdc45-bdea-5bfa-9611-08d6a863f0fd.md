@@ -9,6 +9,12 @@ citations:
 guid: 4122eb8c1f
 source: llm
 uuid: 8afbdc45-bdea-5bfa-9611-08d6a863f0fd
+claim_meta:
+  verdict: SUPPORTED
+  explanation: "The answer accurately describes the primary use case for `dbt seed` as small, static reference data like country codes, which benefits from version control, and correctly advises against using it for large or dynamic datasets. This aligns with the reference text, which states seeds are for business-specific logic and not for raw data or large files, and recommends other tools for such cases."
+  citation:
+    quote: "Seeds should **not** be used to load raw data (for example, large CSV exports from a production database). Since seeds are version controlled, they are best suited to files that contain business-specific logic, for example a list of country codes or user IDs of employees."
+    is_quote_valid: true
 ---
 
 <front>

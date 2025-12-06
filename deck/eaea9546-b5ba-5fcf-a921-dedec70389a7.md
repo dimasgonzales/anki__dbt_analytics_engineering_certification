@@ -9,6 +9,12 @@ citations:
 guid: 6d4461d1b5
 source: llm
 uuid: eaea9546-b5ba-5fcf-a921-dedec70389a7
+claim_meta:
+  verdict: NOT_FOUND
+  explanation: "The reference text does not contain sufficient information to verify the function of the query-comment configuration. While query-comment is mentioned, the text only states it accepts a dictionary input without describing its purpose or how it controls comments in SQL queries."
+  citation:
+    quote: null
+    is_quote_valid: false
 ---
 
 <front>
