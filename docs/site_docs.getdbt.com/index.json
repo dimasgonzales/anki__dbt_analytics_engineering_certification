@@ -910,5 +910,89 @@
   {
     "url": "https://docs.getdbt.com/sql-reference/select",
     "local_path": "docs/site_docs.getdbt.com/web_cache/5e0ab3eea2aebad83e167233737e7b8b.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/ref",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/1162b74e9281d0f292e9767890d19b4a.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-implementation",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/26140fafd536c24304d561c681947ca3.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/parsing",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/4f109561c4cc64246f7c0549d9969b68.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-properties/freshness",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/11508d35118fbb68a0c673e1a98a4b94.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/global-configs/parsing",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/8abcc1c82347cd493cdb7f2ef84f041b.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Project/why-version-2",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/73eb37c75ff5ee3c68df2957bd66c374.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/tags",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/3bca3a2677759ba6b4baa6ddf08a18a3.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/node-selection/state-comparison-caveats",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/12be0a896f5982ba6f49aa3bc4e7dfb9.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/guide-to-jinja-debug",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/5d2bb24876708b238518278f863ab92c.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/global-configs/about-global-configs",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/6dea6ebfa56d21e50c91870e2167c37f.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/hooks-operations",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/186f2f4c9332104ded43de76d4350815.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/cloud/manage-access/about-user-access",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/9465ceff929455a2563d2dca45a278d8.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/project-configs/docs-paths",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/8cbbccc8bcbbdd9640878614ea73a0b5.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-properties/function-arguments",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/f6a17ae542c5b9a5601853b51b40f9e5.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/migrate-from-stored-procedures",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/deb1984e8d1269a7a99369e83b019a77.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/how-we-structure/4-marts",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/2faf9c882b4d8e2733880e8a15c306de.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/how-we-structure/2-staging",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/5ded841e1064c933cfece9775a7b6e68.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/databricks-configs",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/fb8b170850cd401fdb4b1adca830e8b8.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/project-configs/model-paths",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/7f7aba420bf63c5f6ab1fc24ec683ed7.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/define-properties",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/ac3321112fbe6eb89ead9ddbeaacc652.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Warehouse/db-connection-dbt-compile",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/250a4ad41456421808d60f944f279a11.md"
   }
 ]
