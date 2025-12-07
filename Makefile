@@ -37,3 +37,9 @@ generate-flashcards:
 publish:
 	@echo "Publishing flashcards to Anki..."
 	@uv run scripts/publish_anki_deck.py
+
+start-webapp:
+	@echo "Attempting to kill previous server process (if any)..."
+	@pkill -f "uv run server.py" || true
+	@echo "Starting server..."
+	@cd flashcard-app && uv run server.py
