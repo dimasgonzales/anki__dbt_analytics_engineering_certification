@@ -10,11 +10,12 @@ guid: dbab72566f
 source: llm
 uuid: 60addba5-d07b-551b-bada-2f77ddd35a3b
 claim_meta:
-  verdict: NOT_FOUND
-  explanation: "The Reference Text discusses general errors and debugging in dbt_project.yml, such as unexpected keys and parsing issues, but does not mention the use of the '+' prefix for seeds configuration or address whether 'delimiter' requires it. Therefore, there is insufficient information to verify the answer."
+  verdict: SUPPORTED
+  explanation: "The Reference Text explicitly shows that configuration keys under 'seeds' require a '+' prefix, as demonstrated in examples where keys like 'schema' are prefixed with '+'. This supports the answer's claim that 'delimiter' should have '+' to avoid being interpreted as a subdirectory."
   citation:
-    quote: null
-    is_quote_valid: false
+    evidence_source: "https://docs.getdbt.com/reference/seed-configs"
+    quote: "To apply a configuration to all seeds, including those in any installed packages, nest the configuration directly under the 'seeds' key: dbt_project.yml... seeds:... +schema: seed_data"
+    is_quote_valid: true
 ---
 
 <front>

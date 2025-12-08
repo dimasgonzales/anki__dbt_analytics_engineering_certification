@@ -10,11 +10,12 @@ guid: cb3ad01538
 source: llm
 uuid: a78f8737-6afc-5bda-9edc-ca1b2d60cd6c
 claim_meta:
-  verdict: NOT_FOUND
-  explanation: "The reference text does not mention 'Automatic Deferral' or specify how dbt Cloud CLI handles upstream dependencies by default. While it discusses a metadata service that allows referencing upstream models without local building, this is not explicitly linked to the CLI or the described mechanism."
+  verdict: SUPPORTED
+  explanation: "The reference text explicitly confirms the use of automatic deferral to the production environment in the dbt Cloud CLI, which aligns with the answer's core claim about handling upstream dependencies locally without building them."
   citation:
-    quote: null
-    is_quote_valid: false
+    evidence_source: "https://docs.getdbt.com/docs/cloud/configure-cloud-cli"
+    quote: "Automatic deferral of build artifacts to your Cloud project's production environment."
+    is_quote_valid: true
 ---
 
 <front>

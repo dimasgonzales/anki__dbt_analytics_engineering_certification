@@ -10,10 +10,11 @@ guid: 0cf7a75680
 source: llm
 uuid: bfacbe3d-cb09-5da7-b5bd-979e7ca101a7
 claim_meta:
-  verdict: NOT_FOUND
-  explanation: "The reference text provides general information on dbt CLI selection and mentions exposures, but it does not include details on the specific syntax using the '+' prefix for running an exposure and its upstream dependencies."
+  verdict: SUPPORTED
+  explanation: "The reference text confirms that using the '+' operator with the exposure selector selects upstream dependencies, which directly supports the answer's claim about the syntax for running a specific exposure and all its upstream dependencies."
   citation:
-    quote: null
+    evidence_source: "https://docs.getdbt.com/reference/node-selection/methods"
+    quote: "The `exposure` method is used to select parent resources of a specified exposure. Use in conjunction with the `+` operator."
     is_quote_valid: false
 ---
 
