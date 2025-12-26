@@ -1,3 +1,13 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "pandas",
+#     "numpy",
+#     "sentence-transformers",
+#     "scikit-learn",
+# ]
+# ///
+
 import os
 import re
 import pandas as pd
