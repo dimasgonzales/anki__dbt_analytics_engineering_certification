@@ -1,5 +1,7 @@
 output_deck.apkg
 
+logs
+
 .env
 .DS_Store
 

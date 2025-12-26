@@ -11,8 +11,9 @@ source: llm
 uuid: f5ac7b52-bd6c-573a-aa49-742bcab5bfa5
 claim_meta:
   verdict: NOT_FOUND
-  explanation: "The reference text does not mention `sources.json` or the specific statuses 'error' and 'runtime error', so there is insufficient information to verify the answer."
+  explanation: "The reference text supports that an 'error' in sources.json refers to stale data exceeding the error_after threshold, but it does not mention or define 'runtime error' as a distinct status. Therefore, there is not enough information to verify the full answer regarding the difference between the two statuses."
   citation:
+    evidence_source: null
     quote: null
     is_quote_valid: false
 ---

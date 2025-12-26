@@ -118,6 +118,39 @@ code {
 .codehilite .vi { color: #19177C } /* Name.Variable.Instance */
 .codehilite .vm { color: #19177C } /* Name.Variable.Magic */
 .codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+/* Table styling */
+table {
+ border-collapse: collapse;
+ width: 100%;
+ margin: 10px 0;
+}
+th, td {
+ border: 1px solid #ddd;
+ padding: 8px;
+}
+th {
+ background-color: #f2f2f2;
+ font-weight: bold;
+}
+
+/* Admonition styling */
+.admonition {
+ border: 1px solid #ddd;
+ border-radius: 4px;
+ margin: 10px 0;
+ padding: 10px;
+ text-align: left;
+ background-color: #fafafa;
+}
+.admonition-title {
+ font-weight: bold;
+ margin-bottom: 5px;
+}
+.admonition.note { border-left: 5px solid #448aff; }
+.admonition.warning { border-left: 5px solid #ff9100; }
+.admonition.danger { border-left: 5px solid #ff1744; }
+.admonition.tip { border-left: 5px solid #00c853; }
 """
 
 my_model = genanki.Model(
@@ -161,6 +194,14 @@ def parse_flashcard(filepath):
                 tags = frontmatter['tags']
                 # Convert hierarchical tags
                 tags = [tag.replace('/', '::') for tag in tags]
+            
+            # Check verdict
+            if frontmatter and 'claim_meta' in frontmatter:
+                verdict = frontmatter['claim_meta'].get('verdict')
+                if verdict != 'SUPPORTED':
+                    # return None early if not supported
+                    return None
+
         except yaml.YAMLError as e:
             print(f"Error parsing YAML in {filepath}: {e}")
     else:
@@ -175,14 +216,20 @@ def parse_flashcard(filepath):
         question = front_match.group(1).strip()
         answer = back_match.group(1).strip()
         
+        if 'claim_meta' in frontmatter:
+            verdict = frontmatter['claim_meta'].get('verdict')
+            if verdict != 'SUPPORTED':
+                print(f"Skipping {filepath}: Verdict is {verdict}")
+                return None
+        
         # Convert markdown to HTML with extensions
         question_html = markdown.markdown(
             question, 
-            extensions=['fenced_code', 'codehilite']
+            extensions=['fenced_code', 'codehilite', 'nl2br', 'tables', 'admonition']
         )
         answer_html = markdown.markdown(
             answer, 
-            extensions=['fenced_code', 'codehilite']
+            extensions=['fenced_code', 'codehilite', 'nl2br', 'tables', 'admonition']
         )
 
         return {

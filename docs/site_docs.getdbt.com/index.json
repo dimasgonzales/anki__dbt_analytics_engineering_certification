@@ -1010,5 +1010,273 @@
   {
     "url": "https://docs.getdbt.com/docs/dbt-versions/core-upgrade/upgrading-to-v1.10",
     "local_path": "docs/site_docs.getdbt.com/web_cache/512bf6ca72cfb018970e0086b736ea8e.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/flags",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/ece10dcdbd98672bee25e89dbcacc618.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/deploy/continuous-integration",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/30ae168f8d379f64cf8c03f8388428bb.md"
+  },
+  {
+    "url": "https://github.com/dbt-labs/docs.getdbt.com/discussions/1787",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/55114f30ccc1d9be1dcbae87d286c9f6.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/c790fe51bb4208c1bd9610a79a9ccfce.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Docs/documenting-macros",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/2a8a45dd4fbec3af66f3e2e1f23323d4.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-properties/arguments",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/7fc7d20050e9e6244c753ba986b6a5f5.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/deploy/source-freshness",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/939ca156f93432489aa660266c3835d0.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/project-configs/on-run-start-on-run-end",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/ba6d2dec705018fce8e36502dc54d819.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-properties/database",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/b6a4515d5fc5d2520a03e66ca7f9813b.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-properties/overrides",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/90cf66c5caa2c496b29131ec67da91ec.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/modules",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/f07921c1c253093604483afa22dfc979.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/empty-flag",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/0d3e04f9d1abdee40dd7793dcec089bc.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/global-configs/behavior-changes",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/f686ac72b42cbb67ee747c6b22e6f2d8.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/this",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/82138198f78b6f64d90ac52688f52ec9.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-classes",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/ae1240d9702714c7abd9932038c62614.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/quote_columns",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/1a44713748e57aa918e4b92012f33941.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-properties/columns",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/4068cca2cf8fead6be839ce441621c4a.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/project-configs/quoting",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/11fe5972d77ae18c73108d243c51fe2b.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/use-dbt-semantic-layer/sl-faqs",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/17dc38fb642d5ca374a332651ec7e89e.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/deploy/orchestrate-exposures",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/f4ff75b05776fbdcce0f82218049b00a.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/freshness",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/42c7dbc4961972d62ece7aaef67909fc.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/pre-hook-post-hook",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/8a95c17bea7592ea1ef60952943b74e7.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-versions/2024-release-notes",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/9fe6c1094cd3adbc995bfc34b5f7c852.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/explore/access-from-dbt-cloud",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/6e073d3ef28eeaac2265b61b7e7b27e6.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/global-configs/json-artifacts",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/568f722dd997156ce468811a01a4cd82.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/materialize-configs",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/dd8efb5013a741477040bf8143fcfa32.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/dbt-production-commands",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/39c4959392a3f6696dec30ce7bf3120c.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/artifacts/sl-manifest",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/e16bc8a41057f5f8e36ab498c875320d.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/artifacts/dbt-artifacts",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/7022754601309762e8cef3e0a885c730.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/artifacts/manifest-json",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/4d26f1c3129ec05cdf55851424ec7156.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/test",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/e68294b49845253e4bfa693a59aba612.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/72a85ffe3a12e3d2c013de25690d86fb.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/commands/list",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/23757c3ac513de2683ff8b1c524f7c6e.md"
+  },
+  {
+    "url": "https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/docs/docs/build/python-models.md",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/24d6abcdb9c734901fa91b3ea6f138af.md"
+  },
+  {
+    "url": "https://github.com/dbt-labs/docs.getdbt.com/issues/3518",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/57a12c23f39308d4756760e8d7eaeb71.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/meta",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/b46b61ab04e16364c088607c71adfb91.md"
+  },
+  {
+    "url": "https://github.com/dbt-labs/docs.getdbt.com/issues/4203",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/ae33866fba88c11d0db94de6e9a0536c.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/how-we-style/5-how-we-style-our-yaml",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/580291a572d7816e179631fecf1b19c8.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/faqs/Troubleshooting/long-sessions-cloud-cli",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/bae6caf120ea8f3dcdaa2d898d0a9432.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/blog/stakeholder-friendly-model-names",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/bd8ebdda887d3a78372b7dd45d0a472e.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/hard-deletes",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/3155e671cb63b772c62e5f70b95cd13e.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/invalidate_hard_deletes",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/52ee579a74f075dac830fa7e0e12c4d8.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/adapter",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/dac922e88c33a2f01e71f20f5b8f9ce1.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/guides/adapter-creation",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/2ff949c15120a5330fe0b489064ba8c7.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/on_configuration_change",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/aaf4b6a1e23e7cd542dd43d95e578f59.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/statement-blocks",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/936e2f2e062b33fa4ec1ab5dcdad9047.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/how-we-structure/3-intermediate",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/be784f9b886a950e58a9a245cf26ea8b.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/node-selection/exclude",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/2ed3bf3867056c14f728fb8af4392f92.md"
+  },
+  {
+    "url": "https://github.com/dbt-labs/docs.getdbt.com/issues/4526/linked_closing_reference?reference_location=REPO_ISSUES_INDEX",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/57cc8cc77d3ab93c8319ad7e22738795.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/env_var",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/af7c8f51343e241c41f1568837e8a4b9.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/core/installation-overview",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/53c621e81aff9d878b7baaf1991e0b26.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/build/environment-variables",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/7544475dfefa4d5e1a13878df27feab9.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/core/connect-data-platform/connection-profiles",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/b63632f661f225c353f5c4f060906af0.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/global-configs/environment-variable-configs",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/1ee8fbcac55f077b8d2551a2c6adc19d.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/var",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/c3a6cbfd889b547a64c852b0f9e83e48.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-querying",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/895e19b81334085106ef4c6688956737.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-api",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/ce07d24a7d043a8398411e76fe093188.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/dbt-cloud-apis/sl-graphql",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/42816261611815a11ff490799715ec5b.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/advanced-config-usage",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/97d63dcbfe7d3e95325d8e43d1f1b994.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/graph",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/57a56cac5d388133caaae4a3fc409d74.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/fromyaml",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/4a6135af330557ab9a0bec7070fdc6ed.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/best-practices/how-we-style/1-how-we-style-our-dbt-models",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/0ba7159b52b65519a39b59ee09572c93.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/dbt-jinja-functions/fromjson",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/321585cc7facadc50ab886a816c1fd60.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/node-selection/configure-state",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/7a66ce9a251d744274a1c3d67168ce14.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/docs/deploy/job-scheduler",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/1e12e0641e4141d76dae9a195484ba2b.md"
+  },
+  {
+    "url": "https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/blog/2021-11-22-sql-surrogate-keys.md",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/ccfbf54b6956492a4bf0dbc2668ba3e7.md"
+  },
+  {
+    "url": "https://docs.getdbt.com/reference/resource-configs/vertica-configs",
+    "local_path": "docs/site_docs.getdbt.com/web_cache/639c689ac531ede2651f73a678b65bfe.md"
   }
 ]
